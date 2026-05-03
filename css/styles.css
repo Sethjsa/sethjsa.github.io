@@ -1,29 +1,3 @@
-/* fun page lastfm widget */
-#lastfm-tracks {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#lastfm-tracks li {
-  padding: 4px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 0.9em;
-}
-
-#lastfm-tracks li:last-child {
-  border-bottom: none;
-}
-
-.nowplaying {
-  font-weight: bold;
-}
-
-.nowplaying::before {
-  content: "▶ ";
-  color: #c00;
-}
-
 /* publication table */
 table.pubs {
   width: 100%;
@@ -39,4 +13,67 @@ table.pubs td:first-child {
 table.pubs td:nth-child(3) {
   font-style: italic;
   min-width: 120px;
+}
+
+/* updates box */
+ul.updates {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 3px solid #ccc;
+  padding-left: 1em;
+}
+
+ul.updates li {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.93em;
+}
+
+ul.updates li:last-child {
+  border-bottom: none;
+}
+
+ul.updates .date {
+  color: #777;
+  font-size: 0.88em;
+  display: inline-block;
+  min-width: 7em;
+}
+
+/* fun page widgets */
+.widget-box {
+  margin: 1em 0;
+  padding: 0;
+}
+
+.widget-box img {
+  max-width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.strava-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  text-decoration: none;
+  color: #222;
+  transition: border-color 0.2s, background 0.2s;
+  font-size: 0.95em;
+}
+
+.strava-card:hover {
+  border-color: #fc4c02;
+  background: #fff7f5;
+  color: #000;
+}
+
+.strava-card .strava-icon {
+  color: #fc4c02;
+  font-size: 1.2em;
+  font-weight: bold;
 }

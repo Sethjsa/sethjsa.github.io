@@ -5,7 +5,6 @@
   <head>
     {% include frags/meta.html %}
     <title>Fun &ndash; Seth Aycock</title>
-    <script src="/js/lastfm.js" defer></script>
   </head>
   <body>
     {% include frags/nav.html %}
@@ -16,16 +15,15 @@
         </header>
         <p>
           I track what I listen to on <a href="https://www.last.fm/user/SetheryJ">Last.fm</a>.
-          Recent plays:
         </p>
-        <ul id="lastfm-tracks">
-          <li><em>Loading&hellip;</em></li>
-        </ul>
-        <p style="font-size:0.85em; color:#888">
-          Powered by <a href="https://www.last.fm/api">Last.fm API</a>.
-          To enable, add your API key to <code>js/lastfm.js</code>
-          (<a href="https://www.last.fm/api/account/create">get one free here</a>).
-        </p>
+        <div class="widget-box">
+          <a href="https://www.last.fm/user/SetheryJ">
+            <img
+              src="https://lastfm-recently-played.vercel.app/api?user=SetheryJ"
+              alt="Recently played tracks on Last.fm"
+            >
+          </a>
+        </div>
       </section>
 
       <section style="max-width:800px; text-align:justify">
@@ -33,10 +31,14 @@
           <h1><tt>running</tt></h1>
         </header>
         <p>
-          I run and track my activities on
-          <a href="https://www.strava.com/athletes/YOUR_ATHLETE_ID">Strava</a>.
-          <!-- Replace YOUR_ATHLETE_ID in the link above with your numeric Strava athlete ID,
-               visible in the URL when you visit your own Strava profile. -->
+          I run and track my activities on Strava.
+        </p>
+        <p>
+          <a class="strava-card" href="https://www.strava.com/athletes/YOUR_ATHLETE_ID">
+            <span class="strava-icon">&#9650;</span>
+            View my Strava profile
+          </a>
+          <!-- Replace YOUR_ATHLETE_ID with the number from your Strava profile URL -->
         </p>
       </section>
     </section>
