@@ -1,0 +1,42 @@
+/* fun page lastfm widget */
+#lastfm-tracks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#lastfm-tracks li {
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+}
+
+#lastfm-tracks li:last-child {
+  border-bottom: none;
+}
+
+.nowplaying {
+  font-weight: bold;
+}
+
+.nowplaying::before {
+  content: "▶ ";
+  color: #c00;
+}
+
+/* publication table */
+table.pubs {
+  width: 100%;
+}
+
+table.pubs td:first-child {
+  white-space: nowrap;
+  color: #666;
+  font-size: 0.9em;
+  min-width: 80px;
+}
+
+table.pubs td:nth-child(3) {
+  font-style: italic;
+  min-width: 120px;
+}
