@@ -1,6 +1,7 @@
 url: "https://sethjsa.github.io"
 baseurl: ""
 title: "Seth Aycock"
+permalink: /blog/:title/
 encoding: "utf-8"
 markdown: kramdown
 plugins:

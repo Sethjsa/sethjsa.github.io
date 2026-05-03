@@ -8,7 +8,7 @@ body {
   display: inline-flex;
   width: 99%;
   height: 99%;
-  font-family: Georgia, serif;
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   font-size: 15px;
   line-height: 1.6;
   color: #222;

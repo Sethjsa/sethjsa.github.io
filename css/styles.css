@@ -1,3 +1,52 @@
+/* blog post body */
+.post-body {
+  max-width: 680px;
+  text-align: justify;
+}
+
+.post-body h1, .post-body h2, .post-body h3 {
+  margin-top: 1.4em;
+  margin-bottom: 0.3em;
+}
+
+.post-meta {
+  color: #777;
+  font-size: 0.88em;
+  margin-top: 0.2em;
+  margin-bottom: 1.4em;
+}
+
+.post-body p {
+  margin: 0.7em 0;
+}
+
+.post-body pre {
+  background: #f4f4f4;
+  padding: 0.8em 1em;
+  overflow-x: auto;
+  font-size: 0.88em;
+  border-left: 3px solid #ccc;
+}
+
+.post-body code {
+  font-size: 0.88em;
+  background: #f4f4f4;
+  padding: 1px 4px;
+}
+
+.post-body pre code {
+  background: none;
+  padding: 0;
+}
+
+.post-body blockquote {
+  border-left: 3px solid #ccc;
+  margin-left: 0;
+  padding-left: 1em;
+  color: #555;
+  font-style: italic;
+}
+
 /* publication table */
 table.pubs {
   width: 100%;
