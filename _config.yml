@@ -1,12 +1,18 @@
 url: "https://sethjsa.github.io"
 baseurl: ""
 title: "Seth Aycock"
-permalink: /blog/:title/
+future: true
 encoding: "utf-8"
 markdown: kramdown
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      permalink: /blog/:title/
 exclude:
   - Gemfile
   - Gemfile.lock
