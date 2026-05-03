@@ -38,7 +38,10 @@
         <h1><tt>photos</tt></h1>
       </header>
       <p><a href="/not-work.html">&larr; Not Work</a></p>
-      <p>I take pictures indoors and outdoors, usually on film, on a Canon AE-1 Program. Here's an unordered selection of my best.</p>
+      <p>I take pictures indoors and outdoors, usually on film, on a Canon AE-1 Program. Film stocks used include Portra 400, Fuji 400, Cinestill 400/800T, Iflord HP5, and UltraMax 400. These photos were taken between 2018-now, in: 
+        Amsterdam, London, Edinburgh, Cambridge, Prague, Helsinki, Singapore, Iceland, Malta, Chicago, New York, Yosemite, San Francisco, Austin, Seattle, Rocky Mountains, Washington D.C., Baltimore, Belfast, Paris, Seoul, Lombok, Faroe Islands, Isle of Man, and others. 
+         I own all the images. </p>
+        <p> Here's an unordered selection of my best.</p>
       <div class="gallery">
         {% assign gallery_images = site.static_files | where_exp: "f", "f.path contains '/images/gallery/'" %}
         {% for img in gallery_images %}
@@ -47,9 +50,7 @@
           </a>
         {% endfor %}
       </div>
-      <p> These photos were taken between 2018-now, in: Amsterdam, London, Edinburgh, Cambridge, Prague, Helsinki, Singapore, Iceland, Malta, Chicago, New York, Yosemite, San Francisco, Austin, Seattle, Rocky Mountains, Washington D.C., Baltimore, Belfast, Paris, Seoul, Lombok, Faroe Islands, Isle of Man, and others.  </p>
-      <p> Film stocks used include Portra 400, Fuji 400, Cinestill 400/800T, Iflord HP5, and UltraMax 400. </p>
-      <p> I own all the images. </p>
+
     </section>
   </body>
 </html>
