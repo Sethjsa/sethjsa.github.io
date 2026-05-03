@@ -30,8 +30,21 @@
     <hr style="width:75%"/>
   </section>
   <section>
-    <p style="font-size:0.75em; color:#999; padding-left:8px;">
-      Updated {{ site.time | date: "%b %Y" }}
+    <p style="font-size:0.75em; color:#999; padding-left:8px; line-height:1.8">
+      Updated {{ site.time | date: "%b %Y" }}<br>
+      <span id="ams-time"></span>
     </p>
   </section>
 </nav>
+<script>
+  function updateTime() {
+    var t = new Date().toLocaleTimeString("en-GB", {
+      timeZone: "Europe/Amsterdam",
+      hour: "2-digit", minute: "2-digit"
+    });
+    var el = document.getElementById("ams-time");
+    if (el) el.textContent = t + " Amsterdam";
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
+</script>
