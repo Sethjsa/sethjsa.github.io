@@ -1,0 +1,36 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% include frags/meta.html %}
+    <title>CV &ndash; Seth Aycock</title>
+    <style>
+      section.cv-embed {
+        width: 100%;
+        height: 92vh;
+      }
+      section.cv-embed embed {
+        width: 100%;
+        height: 100%;
+      }
+      p.cv-fallback {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    {% include frags/nav.html %}
+    <section>
+      <header>
+        <h1>CV</h1>
+      </header>
+      <p>
+        <a href="/pdf/cv.pdf" download>Download PDF</a>
+      </p>
+      <section class="cv-embed">
+        <embed src="/pdf/cv.pdf" type="application/pdf">
+      </section>
+    </section>
+  </body>
+</html>

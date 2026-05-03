@@ -1,0 +1,44 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% include frags/meta.html %}
+    <title>Fun &ndash; Seth Aycock</title>
+    <script src="/js/lastfm.js" defer></script>
+  </head>
+  <body>
+    {% include frags/nav.html %}
+    <section>
+      <section style="max-width:800px; text-align:justify">
+        <header>
+          <h1><tt>music</tt></h1>
+        </header>
+        <p>
+          I track what I listen to on <a href="https://www.last.fm/user/SetheryJ">Last.fm</a>.
+          Recent plays:
+        </p>
+        <ul id="lastfm-tracks">
+          <li><em>Loading&hellip;</em></li>
+        </ul>
+        <p style="font-size:0.85em; color:#888">
+          Powered by <a href="https://www.last.fm/api">Last.fm API</a>.
+          To enable, add your API key to <code>js/lastfm.js</code>
+          (<a href="https://www.last.fm/api/account/create">get one free here</a>).
+        </p>
+      </section>
+
+      <section style="max-width:800px; text-align:justify">
+        <header>
+          <h1><tt>running</tt></h1>
+        </header>
+        <p>
+          I run and track my activities on
+          <a href="https://www.strava.com/athletes/YOUR_ATHLETE_ID">Strava</a>.
+          <!-- Replace YOUR_ATHLETE_ID in the link above with your numeric Strava athlete ID,
+               visible in the URL when you visit your own Strava profile. -->
+        </p>
+      </section>
+    </section>
+  </body>
+</html>
