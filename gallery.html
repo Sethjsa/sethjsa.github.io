@@ -1,0 +1,51 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% include frags/meta.html %}
+    <title>Photos &ndash; Seth Aycock</title>
+    <style>
+      .gallery {
+        columns: 3;
+        column-gap: 6px;
+        margin-top: 0.5em;
+      }
+      .gallery a {
+        display: block;
+        margin-bottom: 6px;
+        break-inside: avoid;
+        line-height: 0;
+      }
+      .gallery img {
+        width: 100%;
+        display: block;
+        border-radius: 2px;
+        transition: opacity 0.15s;
+      }
+      .gallery a:hover img {
+        opacity: 0.88;
+      }
+      @media (max-width: 700px) {
+        .gallery { columns: 2; }
+      }
+    </style>
+  </head>
+  <body>
+    {% include frags/nav.html %}
+    <section>
+      <header>
+        <h1><tt>photos</tt></h1>
+      </header>
+      <p><a href="/not-work.html">&larr; Not Work</a></p>
+      <div class="gallery">
+        {% assign gallery_images = site.static_files | where_exp: "f", "f.path contains '/images/gallery/'" %}
+        {% for img in gallery_images %}
+          <a href="{{ img.path }}" target="_blank">
+            <img src="{{ img.path }}" alt="" loading="lazy">
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  </body>
+</html>
