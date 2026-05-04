@@ -1,0 +1,145 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% include frags/meta.html %}
+    <title>Music &ndash; Seth Aycock</title>
+    <style>
+      .track-section {
+        margin-top: 1.6em;
+      }
+      .track-section h2 {
+        font-size: 1em;
+        margin-bottom: 0.8em;
+      }
+      .track-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4em;
+      }
+      .track-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
+      }
+      .track-title {
+        font-size: 0.9em;
+        font-weight: bold;
+      }
+      .track-description {
+        font-size: 0.8em;
+        color: #666;
+      }
+      .track-item iframe {
+        display: block;
+        border-radius: 4px;
+      }
+      #loading {
+        color: #999;
+        font-size: 0.9em;
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    {% include frags/nav.html %}
+    <section>
+      <section style="max-width:800px; text-align:justify">
+        <header>
+          <h1><tt>music</tt></h1>
+        </header>
+        <p>Things I have made.</p>
+
+        <!-- Hidden master widget used only to fetch the track list -->
+        <iframe
+          id="sc-master"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/sethjsa/tracks&auto_play=false"
+          style="display:none; width:1px; height:1px;"
+          allow="autoplay">
+        </iframe>
+
+        <p id="loading">Loading tracks&hellip;</p>
+
+        <div id="originals-section" class="track-section" style="display:none">
+          <header><h2><tt>originals</tt></h2></header>
+          <div id="originals-list" class="track-list"></div>
+        </div>
+
+        <div id="covers-section" class="track-section" style="display:none">
+          <header><h2><tt>covers</tt></h2></header>
+          <div id="covers-list" class="track-list"></div>
+        </div>
+      </section>
+    </section>
+
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script>
+      var widget = SC.Widget(document.getElementById('sc-master'));
+
+      widget.bind(SC.Widget.Events.READY, function () {
+        widget.getSounds(function (sounds) {
+          var loading = document.getElementById('loading');
+
+          if (!sounds || sounds.length === 0) {
+            loading.textContent = 'No tracks found.';
+            return;
+          }
+
+          loading.style.display = 'none';
+
+          var originalsEl = document.getElementById('originals-list');
+          var coversEl    = document.getElementById('covers-list');
+          var hasOriginals = false;
+          var hasCovers    = false;
+
+          sounds.forEach(function (sound) {
+            var isCover  = /cover/i.test(sound.title);
+            var targetEl = isCover ? coversEl : originalsEl;
+            if (isCover) { hasCovers = true; } else { hasOriginals = true; }
+
+            var encodedUrl = encodeURIComponent(sound.permalink_url);
+            var src = 'https://w.soundcloud.com/player/?url=' + encodedUrl
+              + '&color=%23888888'
+              + '&auto_play=false'
+              + '&hide_related=true'
+              + '&show_comments=false'
+              + '&show_user=false'
+              + '&show_reposts=false'
+              + '&show_teaser=false'
+              + '&visual=false';
+
+            var item = document.createElement('div');
+            item.className = 'track-item';
+
+            var title = document.createElement('div');
+            title.className = 'track-title';
+            title.textContent = sound.title;
+            item.appendChild(title);
+
+            if (sound.description && sound.description.trim()) {
+              var desc = document.createElement('div');
+              desc.className = 'track-description';
+              desc.textContent = sound.description.trim();
+              item.appendChild(desc);
+            }
+
+            var iframe = document.createElement('iframe');
+            iframe.width      = '100%';
+            iframe.height     = '80';
+            iframe.scrolling  = 'no';
+            iframe.frameBorder = 'no';
+            iframe.allow      = 'autoplay';
+            iframe.src        = src;
+            item.appendChild(iframe);
+
+            targetEl.appendChild(item);
+          });
+
+          if (hasOriginals) document.getElementById('originals-section').style.display = '';
+          if (hasCovers)    document.getElementById('covers-section').style.display    = '';
+        });
+      });
+    </script>
+  </body>
+</html>
