@@ -6,10 +6,10 @@
     </header>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/publications.html">Publications</a></li>
+      <li><a href="/publications.html">Papers</a></li>
       <li><a href="/cv.html">CV</a></li>
-      <li><a href="/not-work.html">Not Work</a></li>
-      <li><a href="/blog.html">Writing</a></li>
+      <li><a href="/not-work.html">Misc</a></li>
+      <li><a href="/blog.html">Notes</a></li>
     </ul>
     <hr style="width:75%"/>
   </section>
@@ -20,7 +20,8 @@
     <ul>
       <li><a href="mailto:s.aycock@uva.nl">Email</a></li>
       <li><a href="https://scholar.google.com/citations?user=R9VK010AAAAJ&hl=en">Google Scholar</a></li>
-      <li><a href="https://www.semanticscholar.org/author/Seth-Aycock/2291365225">Semantic Scholar</a></li>
+      <li><a href="https://aclanthology.org/people/seth-aycock/">ACL Anthology</a></li>
+      <!-- <li><a href="https://www.semanticscholar.org/author/Seth-Aycock/2291365225">Semantic Scholar</a></li> -->
       <li><a href="https://github.com/sethjsa">GitHub</a></li>
       <li><a href="https://www.linkedin.com/in/sethjsa">LinkedIn</a></li>
       <!-- <li><a href="https://orcid.org/0009-0000-8380-4239">ORCID</a></li> -->
@@ -43,7 +44,7 @@
       hour: "2-digit", minute: "2-digit"
     });
     var el = document.getElementById("ams-time");
-    if (el) el.textContent = t + " Amsterdam";
+    if (el) el.textContent = "It's " + t + " where I am";
   }
   updateTime();
   setInterval(updateTime, 1000);
