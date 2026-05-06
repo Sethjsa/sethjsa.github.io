@@ -21,9 +21,13 @@
         width: 100%;
         display: block;
         border-radius: 2px;
-        transition: opacity 0.15s;
+        opacity: 0;
+        transition: opacity 0.4s ease;
       }
-      .gallery a:hover img {
+      .gallery img.loaded {
+        opacity: 1;
+      }
+      .gallery a:hover img.loaded {
         opacity: 0.88;
       }
       @media (max-width: 700px) {
@@ -52,5 +56,24 @@
       </div>
 
     </section>
+    <script>
+      const gallery = document.querySelector('.gallery');
+      const items = Array.from(gallery.children);
+
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        gallery.appendChild(items[j]);
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+
+      gallery.querySelectorAll('img').forEach(img => {
+        const reveal = () => img.classList.add('loaded');
+        if (img.complete) {
+          reveal();
+        } else {
+          img.addEventListener('load', reveal);
+        }
+      });
+    </script>
   </body>
 </html>
