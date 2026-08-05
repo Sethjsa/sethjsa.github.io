@@ -8,33 +8,37 @@ date: 2026-08-05
 
 LLMs are good at predicting the next word. Does that mean they process language similarly to humans?
 
-- Do LLMs have the ability to learn a new language from grammar rules, like humans do?
+1. Do LLMs have the ability to learn a new language from grammar rules, like humans do?
 
-<!-- link paper -->
-Not really: LLMs learn better from unstructured parallel data, rather than descriptive grammar rules.
+   Not really: LLMs learn better from unstructured parallel data, rather than descriptive grammar rules. [[paper]](https://openreview.net/forum?id=aMBSY2ebPw)
 
-- Do LLMs reason about translation in a similar way to humans?
+2. Do LLMs reason about translation in a similar way to humans?
 
-<!-- link paper -->
-No: LLMs don't benefit from an explicit decomposition step, preferring simple self-refinement.
+   No: LLMs don't benefit from an explicit decomposition step, preferring simple self-refinement. [[paper]](https://aclanthology.org/2025.emnlp-main.1031/)
 
-- Are formal (metalinguistic) and functional (linguistic) competences dissociated in LLMs, like in humans?
+3. Are formal (metalinguistic) and functional (linguistic) competences dissociated in LLMs, like in humans?
 
-<!-- link paper -->
-There is an _asymmetric_ association: language analysis (exemplified as glossing) depends on language use (exemplified as translation).
+   There is an _asymmetric_ association: language analysis (exemplified as glossing) depends on language use (exemplified as translation). (Under submission)
 
-- Do LLMs with metalinguistic reasoning abilities also have strong linguistic abilities e.g. in translation, like for humans?
+4. Do LLMs with metalinguistic reasoning abilities also have strong linguistic abilities e.g. in translation, like for humans?
 
-<!-- describe next work -->
-Let's see!
+   Let's see!
 
-- Should we really expect _a priori_ LLMs to be good models of human neuro-organisation?
+5. Should we really expect _a priori_ LLMs to be good models of human neuro-organisation and translation abilities?
 
-<!-- describe position -->
-TBC.
+   TBC
 
 ### Related Works
 
 - Metalinguistic knowledge is rich: how can we best use it with LLMs for translating new languages?
 
-Applying reasoning to generate rationales and fine-tuning a smaller model on these outperforms long in-context learning with grammar rules.
+  Applying reasoning to generate rationales and fine-tuning a smaller model on these outperforms long in-context learning with grammar rules. (Under submission)
+
+- Metalinguistic knowledge is difficult to learn: can we measure how well LLMs can induce it from unlabelled text?
+
+  LLMs perform poorly on typological feature induction, especially after correcting for data contamination. (In progress)
+
+- Grammar in-context is an imperfect, cheap method for adding language capabilities: at the pre-training side, can merging separately pre-trained language-specific models instead, without joint multilingual pre-training?
+
+  No: merging separately pre-trained monolingual models causes performance to collapse from interference, lacking shared representations. Is there no free lunch for adding languages in pre-training and in-context?
+
