@@ -180,10 +180,6 @@ ul.updates .date {
   opacity: 1;
 }
 
-.gallery a:hover img.loaded {
-  opacity: 0.88;
-}
-
 .gallery .overlay {
   position: absolute;
   left: 0;
