@@ -21,10 +21,20 @@
         {% assign gallery_images = site.static_files | where_exp: "f", "f.path contains '/images/gallery/'" %}
         {% for img in gallery_images %}
           {% assign caption = site.data.gallery_captions[img.name] %}
+          {% assign meta = site.data.gallery_metadata[img.name] %}
           <a href="{{ img.path }}" target="_blank">
             <img src="{{ img.path }}" alt="{{ caption | default: '' }}" loading="lazy">
-            {% if caption %}
-              <span class="caption">{{ caption }}</span>
+            {% if caption or meta %}
+              <span class="overlay">
+                {% if caption %}<span class="caption">{{ caption }}</span>{% endif %}
+                {% if meta %}
+                  <span class="meta">
+                    {% if meta.location %}{{ meta.location }}{% endif %}
+                    {% if meta.film %}{% if meta.location %} &middot; {% endif %}{{ meta.film }}{% endif %}
+                    {% if meta.date %}{% if meta.location or meta.film %} &middot; {% endif %}{{ meta.date }}{% endif %}
+                  </span>
+                {% endif %}
+              </span>
             {% endif %}
           </a>
         {% endfor %}
