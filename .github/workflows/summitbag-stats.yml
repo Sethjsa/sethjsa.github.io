@@ -1,0 +1,51 @@
+name: Update Summit Bag stats
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      full_backfill:
+        description: "Rescan entire Strava activity history"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml
+
+      - name: Fetch and parse Strava activities
+        env:
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+        run: |
+          if [ "${{ github.event.inputs.full_backfill }}" = "true" ]; then
+            python scripts/update_summitbag_stats.py --full
+          else
+            python scripts/update_summitbag_stats.py
+          fi
+
+      - name: Commit updated stats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- _data/summitbag_stats.yml; then
+            echo "No changes to commit"
+          else
+            git add _data/summitbag_stats.yml
+            git commit -m "Update Summit Bag stats"
+            git push
+          fi
