@@ -48,11 +48,31 @@
         <p></p>
         <p>I also like bagging peaks, tracked via <a href="https://summitbag.com">Summit Bag</a>.
         </p>
+        {% assign sb = site.data.summitbag_stats %}
         <div class="widget-box">
           <p style="font-size:0.9em; color:#555; margin:0;">
-            <!-- update these by hand every so often -->
-            🏔️ Peaks bagged: 0 &nbsp;&middot;&nbsp; Elevation this year: 0m
+            ⛰️ {{ sb.peak_count }} peaks bagged
+            {% for type_years in sb.elevation %}
+              {% assign type = type_years[0] %}
+              {% assign years = type_years[1] %}
+              {% for yr in years %}
+                &nbsp;&middot;&nbsp; {{ type }}: {{ yr[1] }}m ({{ yr[0] }})
+              {% endfor %}
+            {% endfor %}
           </p>
+          {% if sb.latest_peaks and sb.latest_peaks.size > 0 %}
+            <p style="font-size:0.85em; color:#555; margin:0.5em 0 0;">
+              Latest: {% for p in sb.latest_peaks %}{{ p.name }} ({{ p.height_m }}m){% unless forloop.last %}, {% endunless %}{% endfor %}
+            </p>
+          {% endif %}
+          {% if sb.top_peaks and sb.top_peaks.size > 0 %}
+            <p style="font-size:0.85em; color:#555; margin:0.3em 0 0;">
+              Highest: {% for p in sb.top_peaks %}{{ p.name }} ({{ p.height_m }}m){% unless forloop.last %}, {% endunless %}{% endfor %}
+            </p>
+          {% endif %}
+          {% if sb.last_updated %}
+            <p style="font-size:0.75em; color:#999; margin:0.3em 0 0;">updated {{ sb.last_updated }}</p>
+          {% endif %}
         </div>
         <p></p>
         <p>Sometimes I collect <a href="https://squadrats.com/map/4d6ktQflKPatJGolMC8z8WmIFg93/14/earth">squares</a>.
