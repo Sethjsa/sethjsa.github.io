@@ -1,0 +1,8 @@
+# Captions for /gallery.html, shown as text at the bottom of a photo on hover.
+#
+# Key = the image's filename exactly as it appears in images/gallery/
+# (including extension and capitalization). Photos with no entry here
+# just show no caption.
+#
+# Example:
+# "000329660006.jpg": "Reykjavik, 2022"
