@@ -1,0 +1,533 @@
+# Structured metadata for /gallery.html, shown on hover alongside (separate
+# from) the caption in _data/gallery_captions.yml.
+#
+# Key = image filename as in images/gallery/. Fields: date (YYYY-MM),
+# film, location. Any field can be blank/omitted. Built by cross-referencing
+# the Google Drive "Film Photos" folder names (YY-MM - FILM - LOCATION)
+# against gallery filenames -- only unambiguous matches are included.
+# Photos not listed here show a caption (if any) with no metadata line.
+
+"000000200002.jpg":
+  date: 2022-07
+  film: "Cinestill 800"
+  location: "Seattle, Maryland"
+"000000200005.jpg":
+  date: 2022-07
+  film: "Cinestill 800"
+  location: "Seattle, Maryland"
+"000000200018.jpg":
+  date: 2022-07
+  film: "Cinestill 800"
+  location: "Seattle, Maryland"
+"000000210001.jpg":
+  date: 2022-07
+  film: "Ultramax 400"
+  location: "Seattle"
+"000000210006.jpg":
+  date: 2022-07
+  film: "Ultramax 400"
+  location: "Seattle"
+"000000210008.jpg":
+  date: 2022-07
+  film: "Ultramax 400"
+  location: "Seattle"
+"000000210025.jpg":
+  date: 2022-07
+  film: "Ultramax 400"
+  location: "Seattle"
+"000000220004.jpg":
+  date: 2022-06
+  film: "Ultramax 400"
+  location: "Philadelphia, Shenandoah, Washington D.C."
+"000000220005.jpg":
+  date: 2022-06
+  film: "Ultramax 400"
+  location: "Philadelphia, Shenandoah, Washington D.C."
+"000000220009.jpg":
+  date: 2022-06
+  film: "Ultramax 400"
+  location: "Philadelphia, Shenandoah, Washington D.C."
+"000000220012.jpg":
+  date: 2022-06
+  film: "Ultramax 400"
+  location: "Philadelphia, Shenandoah, Washington D.C."
+"000000220015.jpg":
+  date: 2022-06
+  film: "Ultramax 400"
+  location: "Philadelphia, Shenandoah, Washington D.C."
+"000000220023.jpg":
+  date: 2022-06
+  film: "Ultramax 400"
+  location: "Philadelphia, Shenandoah, Washington D.C."
+"000003010004.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010012.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010014.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010023.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010025.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010027.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010029.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010030.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010034.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000003010037.jpg":
+  date: 2022-07
+  film: "Fuji 200"
+  location: "New York City"
+"000015.JPG":
+  date: 2024-04
+  film: "Ultramax 400"
+  location: "Les Menuires, Hamburg"
+"000329650008.jpg":
+  date: 2022-07
+  film: "Ultramax 400"
+  location: "New York City"
+"000329650011.jpg":
+  date: 2022-07
+  film: "Ultramax 400"
+  location: "New York City"
+"000329660006.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco, Yosemite"
+"000329660008.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco, Yosemite"
+"000329660016.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco, Yosemite"
+"000329660018.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco, Yosemite"
+"000329660027.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco, Yosemite"
+"000329660033.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco, Yosemite"
+"000329670028.jpg":
+  date: 2022-08
+  film: "Fuji 200"
+  location: "Baltimore, Austin"
+"000329670034.jpg":
+  date: 2022-08
+  film: "Fuji 200"
+  location: "Baltimore, Austin"
+"000329670037.jpg":
+  date: 2022-08
+  film: "Fuji 200"
+  location: "Baltimore, Austin"
+"0066 - 18a.jpg":
+  date: 2025-10
+  film: "Ilford 400"
+  location: "London, Amsterdam"
+"0066 - 26a.jpg":
+  date: 2025-10
+  film: "Ilford 400"
+  location: "London, Amsterdam"
+"0258 - 08a.jpg":
+  date: 2025-11
+  film: "Fuji 400"
+  location: "Amsterdam, London, Cambridge, Newcastle"
+"0258 - 29a.jpg":
+  date: 2025-11
+  film: "Fuji 400"
+  location: "Amsterdam, London, Cambridge, Newcastle"
+"0258 - 32a.jpg":
+  date: 2025-11
+  film: "Fuji 400"
+  location: "Amsterdam, London, Cambridge, Newcastle"
+"0258 - 33a.jpg":
+  date: 2025-11
+  film: "Fuji 400"
+  location: "Amsterdam, London, Cambridge, Newcastle"
+"418795070011.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795070014.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795070017.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795070030.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795070033.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795080023.jpg":
+  date: 2021-09
+  film: "Ultramax 400"
+  location: "Cambridge, Edinburgh"
+"418795090027.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795090036.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100020.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100021.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100023.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100024.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100026.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100028.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100029.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"418795100038.jpg":
+  date: 2021-11
+  film: "Ultramax 400"
+  location: "Faroe Islands"
+"507624030012.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624030017.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624030020.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624030022.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624030024.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624030026.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624030029.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624040007.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624040028.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624040031.jpg":
+  date: 2023-01
+  film: "Lomo 400"
+  location: "Iceland"
+"507624050005.jpg":
+  date: 2023-01
+  film: "Fuji 200"
+  location: "Iceland"
+"507624050020.jpg":
+  date: 2023-01
+  film: "Fuji 200"
+  location: "Iceland"
+"507624050025.jpg":
+  date: 2023-01
+  film: "Fuji 200"
+  location: "Iceland"
+"507624050027.jpg":
+  date: 2023-01
+  film: "Fuji 200"
+  location: "Iceland"
+"507624050034.jpg":
+  date: 2023-01
+  film: "Fuji 200"
+  location: "Iceland"
+"6037 - 29.jpg":
+  date: 2024-10
+  film: null
+  location: "Prague, Amsterdam, Cambridge"
+"606916530012.jpg":
+  date: 2022-08
+  film: "Cinestill 800"
+  location: "Chicago"
+"606916530013.jpg":
+  date: 2022-08
+  film: "Cinestill 800"
+  location: "Chicago"
+"606916530028.jpg":
+  date: 2022-08
+  film: "Cinestill 800"
+  location: "Chicago"
+"606916530032.jpg":
+  date: 2022-08
+  film: "Cinestill 800"
+  location: "Chicago"
+"606916530035.jpg":
+  date: 2022-08
+  film: "Cinestill 800"
+  location: "Chicago"
+"606916540016.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Yosemite, San Francisco, Fort Collins"
+"606916540018.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Yosemite, San Francisco, Fort Collins"
+"606916540025.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Yosemite, San Francisco, Fort Collins"
+"606916540031.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Yosemite, San Francisco, Fort Collins"
+"606916540032.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Yosemite, San Francisco, Fort Collins"
+"606916540034.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Yosemite, San Francisco, Fort Collins"
+"606916550001.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco"
+"606916550002.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco"
+"606916550004.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco"
+"606916550019.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco"
+"606916550020.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "San Francisco"
+"606916560002.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560004.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560007.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560009.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560025.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560026.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560031.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560032.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"606916560034.jpg":
+  date: 2022-08
+  film: "Portra 400"
+  location: "Colorado, Chicago"
+"6734 - 10.jpg":
+  date: 2025-03
+  film: "Ilford XP2"
+  location: "Amsterdam, Les Arcs"
+"6734 - 22.jpg":
+  date: 2025-03
+  film: "Ilford XP2"
+  location: "Amsterdam, Les Arcs"
+"6734 - 34.jpg":
+  date: 2025-03
+  film: "Ilford XP2"
+  location: "Amsterdam, Les Arcs"
+"6735 - 06.jpg":
+  date: 2025-05
+  film: "Kodak 400"
+  location: "Paris, Singapore"
+"6735 - 12.jpg":
+  date: 2025-05
+  film: "Kodak 400"
+  location: "Paris, Singapore"
+"6735 - 19.jpg":
+  date: 2025-05
+  film: "Kodak 400"
+  location: "Paris, Singapore"
+"6816 - 02a.jpg":
+  date: 2025-05
+  film: "Cinestill 400"
+  location: "Lombok"
+"6816 - 04a.jpg":
+  date: 2025-05
+  film: "Cinestill 400"
+  location: "Lombok"
+"6816 - 05a.jpg":
+  date: 2025-05
+  film: "Cinestill 400"
+  location: "Lombok"
+"6816 - 07a.jpg":
+  date: 2025-05
+  film: "Cinestill 400"
+  location: "Lombok"
+"6816 - 09a.jpg":
+  date: 2025-05
+  film: "Cinestill 400"
+  location: "Lombok"
+"6816 - 22a.jpg":
+  date: 2025-05
+  film: "Cinestill 400"
+  location: "Lombok"
+"6817 - 13.jpg":
+  date: 2025-05
+  film: "Cinestill 800"
+  location: "Singapore"
+"6817 - 18.jpg":
+  date: 2025-05
+  film: "Cinestill 800"
+  location: "Singapore"
+"6818 - 18a.jpg":
+  date: 2025-05
+  film: "Portra 400"
+  location: "Singapore"
+"6818 - 29a.jpg":
+  date: 2025-05
+  film: "Portra 400"
+  location: "Singapore"
+"6818 - 30a.jpg":
+  date: 2025-05
+  film: "Portra 400"
+  location: "Singapore"
+"6818 - 31a.jpg":
+  date: 2025-05
+  film: "Portra 400"
+  location: "Singapore"
+"6818 - 35a.jpg":
+  date: 2025-05
+  film: "Portra 400"
+  location: "Singapore"
+"7212 - 08.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7212 - 17.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7212 - 18.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7212 - 21.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7212 - 30.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7213 - 06.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7213 - 07.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7213 - 33.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7213 - 36.jpg":
+  date: 2023-11
+  film: "Kodak Portra 400"
+  location: null
+"7214 - 02.jpg":
+  date: 2023-11
+  film: "Lomo 400"
+  location: null
+"7214 - 26.jpg":
+  date: 2023-11
+  film: "Lomo 400"
+  location: null
+"img0014.jpg":
+  date: null
+  film: null
+  location: "Malta"
+"img0018.jpg":
+  date: null
+  film: null
+  location: "Malta"
+"img0019.jpg":
+  date: null
+  film: null
+  location: "Malta"
