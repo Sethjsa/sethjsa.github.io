@@ -146,3 +146,63 @@ ul.updates .date {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+/* photo gallery */
+.gallery {
+  columns: 3;
+  column-gap: 6px;
+  margin-top: 0.5em;
+  visibility: hidden;
+}
+
+.gallery.shuffled {
+  visibility: visible;
+}
+
+.gallery a {
+  display: block;
+  position: relative;
+  margin-bottom: 6px;
+  break-inside: avoid;
+  line-height: 0;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  background: #eee;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery img.loaded {
+  opacity: 1;
+}
+
+.gallery a:hover img.loaded {
+  opacity: 0.88;
+}
+
+.gallery .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.2em 0.6em 0.5em;
+  font-size: 0.8em;
+  line-height: 1.3;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.gallery a:hover .caption {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .gallery { columns: 2; }
+}
