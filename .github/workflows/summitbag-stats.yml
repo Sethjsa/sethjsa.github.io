@@ -17,6 +17,7 @@ permissions:
 jobs:
   update-stats:
     runs-on: ubuntu-latest
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
 

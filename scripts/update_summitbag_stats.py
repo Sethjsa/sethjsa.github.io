@@ -11,9 +11,17 @@ This script pulls recent Strava activities via the Strava API, parses those
 lines out of each activity's description, and merges the results into
 _data/summitbag_stats.yml, which the site reads at build time.
 
+Strava's default rate limit (non-upload endpoints) is 100 requests / 15 min
+and 1,000 requests / day. A full-history backfill can easily need more
+requests than fit in a single day, so --full is resumable: it walks the
+activity history oldest-to-newest, checkpoints progress after every request,
+and stops cleanly (exit 0) once it hits the daily budget, picking back up
+from the checkpoint on the next run. Once a full backfill finishes, later
+runs (with or without --full) just process new activities incrementally.
+
 Usage:
     python scripts/update_summitbag_stats.py            # incremental: only activities since last run
-    python scripts/update_summitbag_stats.py --full      # rescan entire activity history
+    python scripts/update_summitbag_stats.py --full      # backfill entire history (resumable across runs)
 
 Requires environment variables:
     STRAVA_CLIENT_ID
@@ -49,15 +57,24 @@ RIDE_TYPES = {"Ride", "MountainBikeRide", "GravelRide", "EBikeRide", "VirtualRid
 HIKE_TYPES = {"Hike", "Walk", "Snowshoe"}
 SKI_TYPES = {"AlpineSki", "BackcountrySki", "NordicSki", "Snowboard"}
 
-# Strava enforces ~100 requests / 15 minutes on the default rate limit.
-# Stay comfortably under that.
-MAX_REQUESTS_PER_WINDOW = 90
+# Strava's actual default limits (non-upload endpoints): 100 req / 15 min,
+# 1,000 req / day. Stay just under both.
+MAX_REQUESTS_PER_WINDOW = 95
 WINDOW_SECONDS = 900
+DAILY_REQUEST_BUDGET = 950
 
 _request_times = collections.deque()
+_request_count = 0
+
+
+class BudgetExceeded(Exception):
+    pass
 
 
 def _throttle():
+    global _request_count
+    if _request_count >= DAILY_REQUEST_BUDGET:
+        raise BudgetExceeded()
     now = time.monotonic()
     while _request_times and now - _request_times[0] > WINDOW_SECONDS:
         _request_times.popleft()
@@ -66,6 +83,7 @@ def _throttle():
         print(f"  rate limit pacing: sleeping {sleep_for:.0f}s", file=sys.stderr)
         time.sleep(max(sleep_for, 0))
     _request_times.append(time.monotonic())
+    _request_count += 1
 
 
 def _get(url, access_token, params=None):
@@ -104,18 +122,20 @@ def get_access_token():
 
 
 def list_activity_summaries(access_token, after_epoch=None):
-    """Yield activity summaries (id, sport_type, start_date) newest-first."""
+    """Return activity summaries (id, sport_type, start_date), oldest first."""
     page = 1
+    out = []
     while True:
         params = {"per_page": 100, "page": page}
         if after_epoch is not None:
             params["after"] = after_epoch
         batch = _get(f"{API_BASE}/athlete/activities", access_token, params)
         if not batch:
-            return
-        for activity in batch:
-            yield activity
+            break
+        out.extend(batch)
         page += 1
+    out.sort(key=lambda a: a["start_date"])
+    return out
 
 
 def get_activity_detail(access_token, activity_id):
@@ -152,12 +172,20 @@ def parse_description(description):
 
 def load_state():
     if not DATA_FILE.exists():
-        return {"last_processed_epoch": 0, "peaks": {}, "elevation": {}}
+        return {
+            "last_processed_epoch": 0,
+            "backfill_cursor_epoch": 0,
+            "full_backfill_complete": False,
+            "peaks": {},
+            "elevation": {},
+        }
     with open(DATA_FILE) as f:
         raw = yaml.safe_load(f) or {}
     peaks = {p["name"]: p for p in raw.get("peaks", [])}
     return {
         "last_processed_epoch": raw.get("last_processed_epoch", 0),
+        "backfill_cursor_epoch": raw.get("backfill_cursor_epoch", 0),
+        "full_backfill_complete": raw.get("full_backfill_complete", False),
         "peaks": peaks,
         "elevation": raw.get("elevation", {}),
     }
@@ -170,6 +198,8 @@ def save_state(state):
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "last_processed_epoch": state["last_processed_epoch"],
+        "backfill_cursor_epoch": state["backfill_cursor_epoch"],
+        "full_backfill_complete": state["full_backfill_complete"],
         "peak_count": len(peaks_sorted),
         "latest_peaks": latest_peaks,
         "top_peaks": top_peaks,
@@ -181,48 +211,62 @@ def save_state(state):
         yaml.dump(out, f, sort_keys=False, allow_unicode=True)
 
 
+def epoch_of(summary):
+    return int(datetime.fromisoformat(summary["start_date"].replace("Z", "+00:00")).timestamp())
+
+
+def process_activity(access_token, state, summary):
+    detail = get_activity_detail(access_token, summary["id"])
+    peaks, elevation_reading = parse_description(detail.get("description"))
+    sport_type = summary.get("sport_type") or summary.get("type", "Other")
+    bucket = bucket_for(sport_type)
+    date = summary["start_date"][:10]
+
+    for name, height_m in peaks:
+        if name not in state["peaks"]:
+            state["peaks"][name] = {"name": name, "height_m": height_m, "type": bucket, "date": date}
+
+    if elevation_reading:
+        year, total_m = elevation_reading
+        state["elevation"].setdefault(bucket, {})
+        state["elevation"][bucket][year] = total_m
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--full", action="store_true", help="rescan entire activity history")
+    parser.add_argument("--full", action="store_true", help="backfill entire activity history (resumable)")
     args = parser.parse_args()
 
     access_token = get_access_token()
     state = load_state()
+    exhausted = False
 
-    after_epoch = None if args.full else state["last_processed_epoch"]
-    summaries = list(list_activity_summaries(access_token, after_epoch))
-    summaries.sort(key=lambda a: a["start_date"])  # oldest -> newest
+    try:
+        if args.full and not state["full_backfill_complete"]:
+            summaries = list_activity_summaries(access_token, None)
+            todo = [s for s in summaries if epoch_of(s) > state["backfill_cursor_epoch"]]
+            print(f"Full backfill: {len(todo)} activities remaining (of {len(summaries)} total)", file=sys.stderr)
+            for summary in todo:
+                process_activity(access_token, state, summary)
+                epoch = epoch_of(summary)
+                state["backfill_cursor_epoch"] = epoch
+                state["last_processed_epoch"] = max(state["last_processed_epoch"], epoch)
+            state["full_backfill_complete"] = True
+            print("Full backfill complete", file=sys.stderr)
+        else:
+            summaries = list_activity_summaries(access_token, state["last_processed_epoch"])
+            print(f"Found {len(summaries)} new activities to check", file=sys.stderr)
+            for summary in summaries:
+                process_activity(access_token, state, summary)
+                state["last_processed_epoch"] = max(state["last_processed_epoch"], epoch_of(summary))
+    except BudgetExceeded:
+        exhausted = True
+        print(f"Hit daily request budget ({DAILY_REQUEST_BUDGET}) - saving progress, will resume next run", file=sys.stderr)
 
-    print(f"Found {len(summaries)} activities to check", file=sys.stderr)
-
-    newest_epoch = state["last_processed_epoch"]
-    for summary in summaries:
-        detail = get_activity_detail(access_token, summary["id"])
-        peaks, elevation_reading = parse_description(detail.get("description"))
-        sport_type = summary.get("sport_type") or summary.get("type", "Other")
-        bucket = bucket_for(sport_type)
-        date = summary["start_date"][:10]
-
-        for name, height_m in peaks:
-            if name not in state["peaks"]:
-                state["peaks"][name] = {
-                    "name": name,
-                    "height_m": height_m,
-                    "type": bucket,
-                    "date": date,
-                }
-
-        if elevation_reading:
-            year, total_m = elevation_reading
-            state["elevation"].setdefault(bucket, {})
-            state["elevation"][bucket][year] = total_m
-
-        activity_epoch = int(datetime.fromisoformat(summary["start_date"].replace("Z", "+00:00")).timestamp())
-        newest_epoch = max(newest_epoch, activity_epoch)
-
-    state["last_processed_epoch"] = newest_epoch
     save_state(state)
-    print(f"Wrote {DATA_FILE} ({len(state['peaks'])} peaks)", file=sys.stderr)
+    print(f"Wrote {DATA_FILE} ({len(state['peaks'])} peaks so far)", file=sys.stderr)
+    if exhausted:
+        sys.exit(0)
 
 
 if __name__ == "__main__":

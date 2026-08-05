@@ -3,6 +3,8 @@
 # secrets are configured (see scripts/update_summitbag_stats.py docstring).
 last_updated: null
 last_processed_epoch: 0
+backfill_cursor_epoch: 0
+full_backfill_complete: false
 peak_count: 0
 latest_peaks: []
 top_peaks: []
