@@ -2,8 +2,9 @@ name: Update Summit Bag stats
 
 on:
   schedule:
-    # Every Monday at 06:00 UTC
-    - cron: "0 6 * * 1"
+    # Daily at 06:00 UTC. Cheap once caught up - only a handful of new
+    # activities to check most days.
+    - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       full_backfill:
