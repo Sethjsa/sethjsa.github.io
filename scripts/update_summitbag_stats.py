@@ -91,14 +91,20 @@ def _get(url, access_token, params=None):
         url = f"{url}?{urllib.parse.urlencode(params)}"
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {access_token}"})
     _throttle()
-    for attempt in range(5):
+    for attempt in range(3):
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                wait = 60 * (attempt + 1)
-                print(f"  429 rate limited, sleeping {wait}s", file=sys.stderr)
+                # We already pace to stay under the 15-min window limit, so a 429
+                # here means we've hit Strava's daily cap. Retrying won't help for
+                # hours - stop cleanly now instead of burning the job timeout.
+                print("  429 rate limited despite pacing - daily quota hit, stopping run", file=sys.stderr)
+                raise BudgetExceeded()
+            if e.code >= 500 and attempt < 2:
+                wait = 10 * (attempt + 1)
+                print(f"  {e.code} error, retrying in {wait}s", file=sys.stderr)
                 time.sleep(wait)
                 continue
             raise
@@ -240,6 +246,7 @@ def main():
     access_token = get_access_token()
     state = load_state()
     exhausted = False
+    unexpected_error = None
 
     try:
         if args.full and not state["full_backfill_complete"]:
@@ -262,9 +269,16 @@ def main():
     except BudgetExceeded:
         exhausted = True
         print(f"Hit daily request budget ({DAILY_REQUEST_BUDGET}) - saving progress, will resume next run", file=sys.stderr)
+    except Exception as e:
+        # Whatever went wrong, don't throw away the progress made so far -
+        # save it, then still surface the failure so CI shows it clearly.
+        unexpected_error = e
+        print(f"Unexpected error ({e!r}) - saving progress made so far before failing", file=sys.stderr)
 
     save_state(state)
     print(f"Wrote {DATA_FILE} ({len(state['peaks'])} peaks so far)", file=sys.stderr)
+    if unexpected_error is not None:
+        raise unexpected_error
     if exhausted:
         sys.exit(0)
 
