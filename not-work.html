@@ -36,6 +36,11 @@
         </header>
         <p>
           I spend time <a href="https://www.strava.com/athletes/34997852">outdoors</a>.
+        <!-- Strava's public embed widget started showing a login wall instead of
+             activity data (not a code issue on this end - likely a Strava-side
+             privacy/deprecation change). Replaced with a plain link card below;
+             leaving the old iframe here in case Strava fixes it and it's worth
+             reverting to.
         <div class="widget-box">
           <iframe
             height='350'
@@ -45,6 +50,13 @@
             scrolling='no'
             src='https://www.strava.com/athletes/34997852/latest-rides/40b61b38f26ec5b5ef8dba71e063ccf19a29c777'>
           </iframe>
+        </div>
+        -->
+        <div class="widget-box">
+          <a class="strava-card" href="https://www.strava.com/athletes/34997852" target="_blank" rel="noopener">
+            <span class="strava-icon">&#9650;</span>
+            View my activity on Strava
+          </a>
         </div>
         <p></p>
         <p>I particularly like going uphill.
