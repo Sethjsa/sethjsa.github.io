@@ -147,6 +147,73 @@ ul.updates .date {
   font-weight: bold;
 }
 
+/* recent public activities, with minimaps */
+.strava-recent-title {
+  display: block;
+  color: #fc4c02;
+  font-weight: bold;
+  font-size: 0.75em;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.4em;
+}
+
+.strava-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.strava-recent-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5em 0.8em;
+  text-decoration: none;
+  color: #222;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.strava-recent-card:hover {
+  border-color: #fc4c02;
+  background: #fff7f5;
+  color: #000;
+}
+
+.strava-minimap {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+}
+
+.strava-minimap-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.strava-minimap-path {
+  fill: none;
+  stroke: #fc4c02;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.strava-recent-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 0.9em;
+}
+
+.strava-recent-meta {
+  font-size: 0.85em;
+  color: #777;
+  margin-top: 0.15em;
+}
+
 /* photo gallery */
 .gallery {
   columns: 3;

@@ -55,25 +55,15 @@
           </iframe>
         </div>
         -->
-        {% assign latest_activity = site.data.summitbag_activities | last %}
+        {% include frags/strava_recent.html %}
+        {% unless site.data.summitbag_stats.recent_public_activities and site.data.summitbag_stats.recent_public_activities.size > 0 %}
         <div class="widget-box">
-          {% if latest_activity %}
-            <a class="strava-card" href="https://www.strava.com/activities/{{ latest_activity.id }}" target="_blank" rel="noopener" style="flex-direction:column; align-items:flex-start; width:280px;">
-              <span style="color:#fc4c02; font-weight:bold; font-size:0.8em; letter-spacing:0.03em;">STRAVA &middot; LATEST ACTIVITY</span>
-              <strong style="margin-top:0.3em;">{{ latest_activity.name }}</strong>
-              <span style="font-size:0.85em; color:#777; margin-top:0.3em;">
-                {{ latest_activity.start_date_local | date: "%-d %b %Y" }}
-                {% if latest_activity.distance %}&middot; {{ latest_activity.distance | divided_by: 1000.0 | round: 1 }} km{% endif %}
-                {% if latest_activity.total_elevation_gain %}&middot; {{ latest_activity.total_elevation_gain | round }} m gain{% endif %}
-              </span>
-            </a>
-          {% else %}
-            <a class="strava-card" href="https://www.strava.com/athletes/34997852" target="_blank" rel="noopener">
-              <span class="strava-icon">&#9650;</span>
-              View my activity on Strava
-            </a>
-          {% endif %}
+          <a class="strava-card" href="https://www.strava.com/athletes/34997852" target="_blank" rel="noopener">
+            <span class="strava-icon">&#9650;</span>
+            View my activity on Strava
+          </a>
         </div>
+        {% endunless %}
         <p></p>
         <p>I particularly like going uphill.
         </p>

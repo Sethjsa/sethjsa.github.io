@@ -1,0 +1,91 @@
+{% assign sb = site.data.summitbag_stats %}
+{% if sb.recent_public_activities and sb.recent_public_activities.size > 0 %}
+<div class="widget-box strava-recent">
+  <span class="strava-recent-title">STRAVA &middot; RECENT ACTIVITIES</span>
+  <div class="strava-recent-list">
+    {% for a in sb.recent_public_activities %}
+      <a class="strava-recent-card" href="https://www.strava.com/activities/{{ a.id }}" target="_blank" rel="noopener">
+        <span class="strava-minimap" data-polyline="{{ a.map_summary_polyline }}"></span>
+        <span class="strava-recent-info">
+          <strong>{{ a.name }}</strong>
+          <span class="strava-recent-meta">
+            {{ a.start_date_local | date: "%-d %b %Y" }}
+            {% if a.distance %}&middot; {{ a.distance | divided_by: 1000.0 | round: 1 }} km{% endif %}
+            {% if a.total_elevation_gain %}&middot; {{ a.total_elevation_gain | round }} m gain{% endif %}
+          </span>
+        </span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+(function() {
+  // Decodes a Google-encoded polyline into [lat, lng] pairs.
+  function decodePolyline(str) {
+    var points = [];
+    var index = 0, lat = 0, lng = 0;
+    while (index < str.length) {
+      var result = 1, shift = 0, b;
+      do {
+        b = str.charCodeAt(index++) - 63 - 1;
+        result += b << shift;
+        shift += 5;
+      } while (b >= 0x1f);
+      lat += (result & 1) ? ~(result >> 1) : (result >> 1);
+
+      result = 1;
+      shift = 0;
+      do {
+        b = str.charCodeAt(index++) - 63 - 1;
+        result += b << shift;
+        shift += 5;
+      } while (b >= 0x1f);
+      lng += (result & 1) ? ~(result >> 1) : (result >> 1);
+
+      points.push([lat * 1e-5, lng * 1e-5]);
+    }
+    return points;
+  }
+
+  function buildMinimap(el) {
+    var encoded = el.getAttribute('data-polyline');
+    if (!encoded) return;
+    var points = decodePolyline(encoded);
+    if (points.length < 2) return;
+
+    var lats = points.map(function(p) { return p[0]; });
+    var lngs = points.map(function(p) { return p[1]; });
+    var minLat = Math.min.apply(null, lats), maxLat = Math.max.apply(null, lats);
+    var minLng = Math.min.apply(null, lngs), maxLng = Math.max.apply(null, lngs);
+    var latRange = Math.max(maxLat - minLat, 1e-6);
+    var lngRange = Math.max(maxLng - minLng, 1e-6);
+
+    var SIZE = 44, PAD = 4;
+    var plot = SIZE - PAD * 2;
+    var scale = Math.min(plot / lngRange, plot / latRange);
+    var offsetX = (plot - lngRange * scale) / 2;
+    var offsetY = (plot - latRange * scale) / 2;
+
+    var svgns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(svgns, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + SIZE + ' ' + SIZE);
+    svg.setAttribute('class', 'strava-minimap-svg');
+
+    var d = points.map(function(p, i) {
+      var x = PAD + offsetX + (p[1] - minLng) * scale;
+      var y = SIZE - (PAD + offsetY + (p[0] - minLat) * scale); // flip: lat up = svg y down
+      return (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }).join(' ');
+
+    var path = document.createElementNS(svgns, 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('class', 'strava-minimap-path');
+    svg.appendChild(path);
+    el.appendChild(svg);
+  }
+
+  document.querySelectorAll('.strava-minimap').forEach(buildMinimap);
+})();
+</script>
+{% endif %}
