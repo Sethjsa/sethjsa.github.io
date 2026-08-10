@@ -65,13 +65,13 @@ most_recent:
   venue: TivoliVredenburg
   location: Utrecht, Utrecht, Netherlands
 top_locations:
-- name: Amsterdam, North Holland, Netherlands
+- name: Amsterdam
   count: 27
-- name: London, England, United Kingdom
+- name: London
   count: 13
-- name: Cambridge, England, United Kingdom
+- name: Cambridge
   count: 4
-- name: Utrecht, Utrecht, Netherlands
+- name: Utrecht
   count: 3
-- name: The Hague, South Holland, Netherlands
+- name: The Hague
   count: 2

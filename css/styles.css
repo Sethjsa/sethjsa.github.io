@@ -473,6 +473,7 @@ table.peaks-table td.peaks-summit-cell {
   display: flex;
   flex-wrap: wrap;
   gap: 1.2em;
+  text-align: left;
 }
 
 .lfm-top-col {
@@ -497,12 +498,10 @@ table.peaks-table td.peaks-summit-cell {
 
 .lfm-top-col li {
   padding: 2px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .lfm-top-col .lfm-sub {
+  display: block;
   color: #999;
   font-size: 0.85em;
 }

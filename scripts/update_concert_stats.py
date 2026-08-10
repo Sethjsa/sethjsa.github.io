@@ -156,6 +156,8 @@ def main():
     favorites = parse_concert_rows(section_table(soup, "Favorite Concerts"), limit=5)
     recent = parse_concert_rows(section_table(soup, "Most Recent Concerts"), limit=5)
     top_locations = parse_count_table(section_table(soup, "Top Locations"), limit=5)
+    for loc in top_locations:
+        loc["name"] = loc["name"].split(",")[0].strip()
     grand_totals = parse_grand_totals(section_table(soup, "Grand Totals"))
 
     if not recent and not favorites:
