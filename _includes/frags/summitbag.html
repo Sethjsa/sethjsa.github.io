@@ -311,6 +311,10 @@
           dateCell.className = 'peaks-date-cell';
           dateCell.rowSpan = group.peaks.length;
           dateCell.textContent = formatDate(group.date);
+          if (COLORS[p.type]) {
+            dateCell.style.color = COLORS[p.type];
+            dateCell.style.fontWeight = '600';
+          }
           row.appendChild(dateCell);
         }
 
