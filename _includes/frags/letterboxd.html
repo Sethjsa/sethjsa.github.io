@@ -1,6 +1,7 @@
 {% assign lb_recent = site.data.letterboxd_recent %}
 {% assign lb_ratings = site.data.letterboxd_ratings %}
 {% if lb_recent.recent.size > 0 or lb_ratings.top_rated.size > 0 %}
+<p class="media-section-title">Films &mdash; Letterboxd</p>
 <div class="widget-box letterboxd-viz">
   {% if lb_ratings.top_rated.size > 0 %}
     <p class="lb-section-title">Top rated{% if lb_ratings.total_rated %} (of {{ lb_ratings.total_rated }} logged){% endif %}</p>

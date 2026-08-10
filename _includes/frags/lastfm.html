@@ -1,5 +1,6 @@
 {% assign lfm = site.data.lastfm_stats %}
 {% if lfm.total_scrobbles > 0 %}
+<p class="media-section-title">Music &mdash; last.fm</p>
 <div class="widget-box lastfm-viz">
   <div id="lastfm-chart"></div>
 
@@ -21,6 +22,18 @@
       <ol id="lfm-top-tracks"></ol>
     </div>
   </div>
+
+  {% if lfm.recent_albums.size > 0 %}
+    <h4 style="margin-top:0.8em;">Recently played albums</h4>
+    <ol class="lfm-recent-albums">
+      {% for a in lfm.recent_albums %}
+        <li>
+          {% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}
+          <span class="lfm-sub">{{ a.artist }}</span>
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
 
   <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
     {{ lfm.total_scrobbles }} scrobbles &middot; updated {{ lfm.last_updated }}

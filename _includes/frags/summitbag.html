@@ -24,6 +24,7 @@
           <li>
             {% if p.flag %}{{ p.flag }} {% endif %}{{ p.name }}
             <span class="peak-height">&ndash; {{ p.height_m }}m</span>
+            <span class="peak-date">({{ p.date | date: "%-d.%-m.%y" }})</span>
           </li>
         {% endfor %}
       </ol>

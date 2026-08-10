@@ -439,6 +439,12 @@ table.peaks-table td.peaks-summit-cell {
   font-variant-numeric: tabular-nums;
 }
 
+.top-peaks-box .peak-date {
+  color: #999;
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+}
+
 /* last.fm top lists */
 .lfm-period-toggle {
   display: flex;
@@ -499,6 +505,32 @@ table.peaks-table td.peaks-summit-cell {
 .lfm-top-col .lfm-sub {
   color: #999;
   font-size: 0.85em;
+}
+
+.lfm-recent-albums {
+  margin: 0.3em 0 0;
+  padding-left: 1.2em;
+  font-size: 0.85em;
+}
+
+.lfm-recent-albums li {
+  padding: 2px 0;
+}
+
+/* section labels separating the music/film/concerts widgets */
+.media-section-title {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #999;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2em;
+  margin: 1.4em 0 0.5em;
+  font-weight: 700;
+}
+
+.media-section-title:first-of-type {
+  margin-top: 0.8em;
 }
 
 /* letterboxd */

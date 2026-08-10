@@ -258,7 +258,15 @@ def load_state():
 def save_state(state):
     peaks_sorted = sorted(state["peaks"].values(), key=lambda p: p["date"])
     latest_peaks = [dict(p) for p in reversed(peaks_sorted[-5:])]
-    top_peaks = [dict(p) for p in sorted(peaks_sorted, key=lambda p: p["height_m"], reverse=True)[:5]]
+    top_peaks = []
+    seen_dates = set()
+    for p in sorted(peaks_sorted, key=lambda p: p["height_m"], reverse=True):
+        if p["date"] in seen_dates:
+            continue
+        seen_dates.add(p["date"])
+        top_peaks.append(dict(p))
+        if len(top_peaks) == 5:
+            break
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "last_processed_epoch": state["last_processed_epoch"],

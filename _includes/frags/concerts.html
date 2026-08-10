@@ -1,0 +1,54 @@
+{% assign cs = site.data.concert_stats %}
+{% if cs.most_recent.size > 0 or cs.top_ranked.size > 0 %}
+<p class="media-section-title">Concerts &mdash; Concert Archives</p>
+<div class="widget-box concerts-viz">
+  <div class="lfm-top-lists">
+    {% if cs.most_recent.size > 0 %}
+      <div class="lfm-top-col">
+        <h4>Most recent</h4>
+        <ol>
+          {% for c in cs.most_recent %}
+            <li>
+              <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.name }}</a>
+              <span class="lfm-sub">{{ c.venue }}{% if c.date %} &middot; {{ c.date }}{% endif %}</span>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+    {% if cs.top_ranked.size > 0 %}
+      <div class="lfm-top-col">
+        <h4>Favourites</h4>
+        <ol>
+          {% for c in cs.top_ranked %}
+            <li>
+              <a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.name }}</a>
+              <span class="lfm-sub">{{ c.venue }}{% if c.date %} &middot; {{ c.date }}{% endif %}</span>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+    {% if cs.top_locations.size > 0 %}
+      <div class="lfm-top-col">
+        <h4>Top locations</h4>
+        <ol>
+          {% for l in cs.top_locations %}
+            <li>
+              {{ l.name }}
+              <span class="lfm-sub">{{ l.count }} concert{% unless l.count == 1 %}s{% endunless %}</span>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+  </div>
+
+  <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
+    {% if cs.grand_totals["Concerts Attended"] %}{{ cs.grand_totals["Concerts Attended"] }} concerts{% endif %}
+    {% if cs.grand_totals["Bands Seen"] %}&middot; {{ cs.grand_totals["Bands Seen"] }} bands{% endif %}
+    {% if cs.grand_totals["Venues Visited"] %}&middot; {{ cs.grand_totals["Venues Visited"] }} venues{% endif %}
+    &middot; updated {{ cs.last_updated }}
+  </p>
+</div>
+{% endif %}

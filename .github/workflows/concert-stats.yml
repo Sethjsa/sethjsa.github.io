@@ -1,0 +1,50 @@
+name: Update concert stats
+
+on:
+  schedule:
+    # Weekly, Sunday 07:00 UTC. Concert attendance changes rarely, and this
+    # job carries a heavier Playwright/Chromium dependency than the daily jobs.
+    - cron: "0 7 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml beautifulsoup4 playwright
+      - run: playwright install --with-deps chromium
+
+      - name: Scrape Concert Archives profile
+        run: python scripts/update_concert_stats.py
+
+      - name: Commit updated stats
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- _data/concert_stats.yml; then
+            echo "No changes to commit"
+          else
+            git add _data/concert_stats.yml
+            git commit -m "Update concert stats"
+            for i in 1 2 3 4 5; do
+              if git push; then
+                exit 0
+              fi
+              echo "push rejected, fetching + rebasing and retrying ($i/5)"
+              git fetch origin master
+              git rebase origin/master
+            done
+            echo "::error::Failed to push updated stats after retries"
+            exit 1
+          fi
