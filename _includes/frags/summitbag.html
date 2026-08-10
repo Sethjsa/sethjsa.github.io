@@ -1,0 +1,265 @@
+{% assign sb = site.data.summitbag_stats %}
+{% if sb.peak_count > 0 %}
+<div class="widget-box summitbag-viz">
+  <script type="application/json" id="summitbag-data">{{ sb | jsonify }}</script>
+  <div id="summitbag-chart"></div>
+  <div id="peaksbox">
+    <ul class="peaks-list" id="peaks-list"></ul>
+  </div>
+  <p style="font-size:0.75em; color:#999; margin:0.4em 0 0;">
+    ⛰️ {{ sb.peak_count }} peaks bagged &middot; updated {{ sb.last_updated }}
+  </p>
+  <noscript>
+    <p style="font-size:0.85em; color:#555;">
+      {% for type_years in sb.elevation %}
+        {{ type_years[0] }}:
+        {% for yr in type_years[1] %}{{ yr[0] }} &ndash; {{ yr[1] }}m{% unless forloop.last %}, {% endunless %}{% endfor %}
+        <br>
+      {% endfor %}
+    </p>
+    <ul>
+      {% for p in sb.peaks reversed %}
+        <li>{% if p.flag %}{{ p.flag }} {% endif %}{{ p.name }} &ndash; {{ p.height_m }}m ({{ p.date }})</li>
+      {% endfor %}
+    </ul>
+  </noscript>
+</div>
+
+<script>
+(function() {
+  var dataEl = document.getElementById('summitbag-data');
+  if (!dataEl) return;
+  var sb = JSON.parse(dataEl.textContent);
+
+  var BUCKETS = ['Run', 'Ride', 'Hike', 'Ski', 'Other'];
+  var COLORS = {
+    Run: 'var(--series-run)',
+    Ride: 'var(--series-ride)',
+    Hike: 'var(--series-hike)',
+    Ski: 'var(--series-ski)',
+    Other: 'var(--series-other)'
+  };
+  var svgns = 'http://www.w3.org/2000/svg';
+
+  function niceCeil(v) {
+    if (v <= 0) return 100;
+    var mag = Math.pow(10, Math.floor(Math.log(v) / Math.LN10));
+    var steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) {
+      var candidate = steps[i] * mag;
+      if (candidate >= v) return candidate;
+    }
+    return 10 * mag;
+  }
+
+  function formatMeters(v) {
+    return Math.round(v).toLocaleString('en-GB');
+  }
+
+  var tooltipEl;
+  function ensureTooltip() {
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.className = 'sb-tooltip';
+      document.body.appendChild(tooltipEl);
+    }
+    return tooltipEl;
+  }
+
+  function attachTooltip(el, metaText, valueText) {
+    function position(evt) {
+      var tip = ensureTooltip();
+      var x = (evt && evt.clientX !== undefined) ? evt.clientX : el.getBoundingClientRect().left;
+      var y = (evt && evt.clientY !== undefined) ? evt.clientY : el.getBoundingClientRect().top;
+      tip.style.left = (x + 12) + 'px';
+      tip.style.top = (y + 12) + 'px';
+    }
+    function show(evt) {
+      var tip = ensureTooltip();
+      tip.textContent = '';
+      var valueEl = document.createElement('div');
+      valueEl.className = 'sb-tooltip-value';
+      valueEl.textContent = valueText;
+      var metaEl = document.createElement('div');
+      metaEl.className = 'sb-tooltip-meta';
+      metaEl.textContent = metaText;
+      tip.appendChild(valueEl);
+      tip.appendChild(metaEl);
+      tip.classList.add('sb-visible');
+      position(evt);
+      el.classList.add('sb-hover');
+    }
+    function hide() {
+      var tip = ensureTooltip();
+      tip.classList.remove('sb-visible');
+      el.classList.remove('sb-hover');
+    }
+    el.addEventListener('pointerenter', show);
+    el.addEventListener('pointermove', position);
+    el.addEventListener('pointerleave', hide);
+    el.addEventListener('focus', function() { show(null); });
+    el.addEventListener('blur', hide);
+  }
+
+  function buildChart() {
+    var elevation = sb.elevation || {};
+    var years = [];
+    BUCKETS.forEach(function(b) {
+      Object.keys(elevation[b] || {}).forEach(function(y) {
+        y = parseInt(y, 10);
+        if (years.indexOf(y) === -1) years.push(y);
+      });
+    });
+    years.sort(function(a, b) { return a - b; });
+    if (years.length === 0) return;
+
+    var totals = years.map(function(year) {
+      var t = 0;
+      BUCKETS.forEach(function(b) { t += (elevation[b] && elevation[b][year]) || 0; });
+      return t;
+    });
+    var niceMax = niceCeil(Math.max.apply(null, totals));
+
+    var W = 480, H = 200;
+    var padLeft = 46, padBottom = 22, padTop = 10, padRight = 10;
+    var plotW = W - padLeft - padRight;
+    var plotH = H - padTop - padBottom;
+    var barSlot = plotW / years.length;
+    var barW = Math.min(24, barSlot * 0.6);
+    var gap = 2;
+
+    var svg = document.createElementNS(svgns, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    [0, niceMax / 2, niceMax].forEach(function(t) {
+      var y = padTop + plotH - (t / niceMax) * plotH;
+      var line = document.createElementNS(svgns, 'line');
+      line.setAttribute('x1', padLeft);
+      line.setAttribute('x2', W - padRight);
+      line.setAttribute('y1', y);
+      line.setAttribute('y2', y);
+      line.setAttribute('class', 'sb-gridline');
+      svg.appendChild(line);
+
+      var label = document.createElementNS(svgns, 'text');
+      label.setAttribute('x', padLeft - 6);
+      label.setAttribute('y', y + 3);
+      label.setAttribute('text-anchor', 'end');
+      label.setAttribute('class', 'sb-axis-label');
+      label.textContent = formatMeters(t);
+      svg.appendChild(label);
+    });
+
+    years.forEach(function(year, i) {
+      var x = padLeft + i * barSlot + (barSlot - barW) / 2;
+      var baseline = padTop + plotH;
+      var segs = [];
+      BUCKETS.forEach(function(b) {
+        var v = (elevation[b] && elevation[b][year]) || 0;
+        if (v > 0) segs.push({ bucket: b, value: v });
+      });
+
+      var cumulative = 0;
+      segs.forEach(function(s, idx) {
+        var isTop = idx === segs.length - 1;
+        var yTop = baseline - ((cumulative + s.value) / niceMax) * plotH;
+        var yBottom = baseline - (cumulative / niceMax) * plotH;
+        var drawTop = yTop + (idx === 0 ? 0 : gap / 2);
+        var drawBottom = yBottom - (isTop ? 0 : gap / 2);
+        var h = Math.max(drawBottom - drawTop, 0);
+
+        var mark;
+        if (isTop && h > 0) {
+          var r = Math.min(4, h, barW / 2);
+          var d = 'M ' + x + ' ' + (drawTop + r) +
+                  ' Q ' + x + ' ' + drawTop + ' ' + (x + r) + ' ' + drawTop +
+                  ' L ' + (x + barW - r) + ' ' + drawTop +
+                  ' Q ' + (x + barW) + ' ' + drawTop + ' ' + (x + barW) + ' ' + (drawTop + r) +
+                  ' L ' + (x + barW) + ' ' + drawBottom +
+                  ' L ' + x + ' ' + drawBottom + ' Z';
+          mark = document.createElementNS(svgns, 'path');
+          mark.setAttribute('d', d);
+        } else {
+          mark = document.createElementNS(svgns, 'rect');
+          mark.setAttribute('x', x);
+          mark.setAttribute('y', drawTop);
+          mark.setAttribute('width', barW);
+          mark.setAttribute('height', h);
+        }
+        mark.setAttribute('fill', COLORS[s.bucket]);
+        mark.setAttribute('class', 'sb-bar-seg');
+        mark.setAttribute('tabindex', '0');
+        mark.setAttribute('role', 'img');
+        mark.setAttribute('aria-label', s.bucket + ' ' + year + ': ' + formatMeters(s.value) + 'm');
+        attachTooltip(mark, s.bucket + ' · ' + year, formatMeters(s.value) + 'm');
+        svg.appendChild(mark);
+
+        cumulative += s.value;
+      });
+
+      var xLabel = document.createElementNS(svgns, 'text');
+      xLabel.setAttribute('x', x + barW / 2);
+      xLabel.setAttribute('y', H - padBottom + 14);
+      xLabel.setAttribute('text-anchor', 'middle');
+      xLabel.setAttribute('class', 'sb-axis-label');
+      xLabel.textContent = year;
+      svg.appendChild(xLabel);
+    });
+
+    var container = document.getElementById('summitbag-chart');
+    container.appendChild(svg);
+
+    var usedBuckets = BUCKETS.filter(function(b) {
+      return Object.keys(elevation[b] || {}).length > 0;
+    });
+    var legend = document.createElement('div');
+    legend.className = 'sb-legend-row';
+    usedBuckets.forEach(function(b) {
+      var item = document.createElement('span');
+      var swatch = document.createElement('span');
+      swatch.className = 'sb-swatch';
+      swatch.style.background = COLORS[b];
+      item.appendChild(swatch);
+      item.appendChild(document.createTextNode(b));
+      legend.appendChild(item);
+    });
+    container.appendChild(legend);
+  }
+
+  function formatDate(d) {
+    var parts = d.split('-');
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
+  }
+
+  function buildPeaksList() {
+    var peaks = (sb.peaks || []).slice().reverse();
+    var list = document.getElementById('peaks-list');
+    if (!list || peaks.length === 0) return;
+    var lastDate = null;
+    peaks.forEach(function(p) {
+      if (p.date !== lastDate) {
+        var heading = document.createElement('li');
+        heading.className = 'peaks-date-heading';
+        heading.textContent = formatDate(p.date);
+        list.appendChild(heading);
+        lastDate = p.date;
+      }
+      var row = document.createElement('li');
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'peak-name';
+      nameSpan.textContent = (p.flag ? p.flag + ' ' : '') + p.name;
+      var heightSpan = document.createElement('span');
+      heightSpan.className = 'peak-height';
+      heightSpan.textContent = p.height_m + 'm';
+      row.appendChild(nameSpan);
+      row.appendChild(heightSpan);
+      list.appendChild(row);
+    });
+  }
+
+  buildChart();
+  buildPeaksList();
+})();
+</script>
+{% endif %}

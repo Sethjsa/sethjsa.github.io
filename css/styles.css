@@ -213,3 +213,162 @@ ul.updates .date {
 @media (max-width: 700px) {
   .gallery { columns: 2; }
 }
+
+/* summit bag stats */
+.summitbag-viz {
+  --series-run:   #2a78d6;
+  --series-ride:  #008300;
+  --series-hike:  #e87ba4;
+  --series-ski:   #eda100;
+  --series-other: #1baf7a;
+  --sb-gridline:  #e1e0d9;
+  max-width: 500px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .summitbag-viz {
+    --series-run:   #3987e5;
+    --series-ride:  #008300;
+    --series-hike:  #d55181;
+    --series-ski:   #c98500;
+    --series-other: #199e70;
+    --sb-gridline:  #2c2c2a;
+  }
+}
+
+.summitbag-viz svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.summitbag-viz .sb-axis-label {
+  fill: #777;
+  font-size: 10px;
+}
+
+.summitbag-viz .sb-gridline {
+  stroke: var(--sb-gridline);
+  stroke-width: 1;
+}
+
+.summitbag-viz .sb-bar-seg {
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.summitbag-viz .sb-bar-seg:hover,
+.summitbag-viz .sb-bar-seg.sb-hover {
+  opacity: 0.75;
+}
+
+.sb-legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin-top: 0.3em;
+  font-size: 0.78em;
+  color: #777;
+}
+
+.sb-legend-row .sb-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 0.35em;
+  vertical-align: middle;
+}
+
+.sb-tooltip {
+  position: fixed;
+  pointer-events: none;
+  background: #222;
+  color: #fff;
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  font-size: 0.78em;
+  line-height: 1.4;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  max-width: 200px;
+}
+
+.sb-tooltip.sb-visible {
+  opacity: 1;
+}
+
+.sb-tooltip .sb-tooltip-value {
+  font-weight: 600;
+  color: #fff;
+}
+
+.sb-tooltip .sb-tooltip-meta {
+  color: #ccc;
+}
+
+/* peaks scrollbox */
+#peaksbox {
+  overflow-y: scroll;
+  height: 200px;
+  width: 100%;
+  margin-top: 0.6em;
+}
+
+#peaksbox::-webkit-scrollbar {
+  width: 7px;
+}
+
+#peaksbox::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0,0,0,0.35);
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+}
+
+.peaks-date-heading {
+  display: block;
+  color: #555;
+  font-size: 0.8em;
+  margin: 0.6em 0 0.2em;
+}
+
+.peaks-date-heading:first-child {
+  margin-top: 0;
+}
+
+ul.peaks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.peaks-list li {
+  padding: 3px 0;
+  border-bottom: 1px solid #d8d9da;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+ul.peaks-list li.peaks-date-heading {
+  border-bottom: none;
+  padding: 0;
+}
+
+ul.peaks-list li:last-child {
+  border-bottom: none;
+}
+
+ul.peaks-list .peak-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+ul.peaks-list .peak-height {
+  color: #555;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
