@@ -37,17 +37,26 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet -- _data/lastfm_stats.yml _data/letterboxd_recent.yml; then
             echo "No changes to commit"
-          else
+            exit 0
+          fi
+          cp _data/lastfm_stats.yml /tmp/lastfm_stats.yml
+          cp _data/letterboxd_recent.yml /tmp/letterboxd_recent.yml
+          # Reset onto the latest tip each retry and reapply our
+          # freshly-computed output verbatim, rather than rebasing - a plain
+          # rebase can hit a real content conflict on these generated files
+          # (not just non-fast-forward) and abort, silently dropping this
+          # run's work. "Ours" always wins for machine-generated data.
+          for i in 1 2 3 4 5; do
+            cp /tmp/lastfm_stats.yml _data/lastfm_stats.yml
+            cp /tmp/letterboxd_recent.yml _data/letterboxd_recent.yml
             git add _data/lastfm_stats.yml _data/letterboxd_recent.yml
             git commit -m "Update media stats"
-            for i in 1 2 3 4 5; do
-              if git push; then
-                exit 0
-              fi
-              echo "push rejected, fetching + rebasing and retrying ($i/5)"
-              git fetch origin master
-              git rebase origin/master
-            done
-            echo "::error::Failed to push updated stats after retries"
-            exit 1
-          fi
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected, resetting onto latest origin/master and reapplying ($i/5)"
+            git fetch origin master
+            git reset --hard origin/master
+          done
+          echo "::error::Failed to push updated stats after retries"
+          exit 1

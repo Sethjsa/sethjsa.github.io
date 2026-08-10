@@ -53,20 +53,28 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet -- _data/summitbag_stats.yml _data/summitbag_activities.json; then
             echo "No changes to commit"
-          else
+            exit 0
+          fi
+          cp _data/summitbag_stats.yml /tmp/summitbag_stats.yml
+          cp _data/summitbag_activities.json /tmp/summitbag_activities.json
+          # A long run (this one can take hours) can finish after other
+          # commits have landed on master. A plain rebase can hit a real
+          # content conflict on these generated files (not just
+          # non-fast-forward) and abort, silently dropping this run's work -
+          # so instead reset onto the latest tip each retry and reapply our
+          # freshly-computed output verbatim ("ours" always wins for these
+          # machine-generated files; there's nothing to merge line-by-line).
+          for i in 1 2 3 4 5; do
+            cp /tmp/summitbag_stats.yml _data/summitbag_stats.yml
+            cp /tmp/summitbag_activities.json _data/summitbag_activities.json
             git add _data/summitbag_stats.yml _data/summitbag_activities.json
             git commit -m "Update Summit Bag stats"
-            # A long run (this one can take hours) can finish after other
-            # commits have landed on master - retry with a rebase instead of
-            # letting a non-fast-forward push silently drop this run's work.
-            for i in 1 2 3 4 5; do
-              if git push; then
-                exit 0
-              fi
-              echo "push rejected, fetching + rebasing and retrying ($i/5)"
-              git fetch origin master
-              git rebase origin/master
-            done
-            echo "::error::Failed to push updated stats after retries"
-            exit 1
-          fi
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected, resetting onto latest origin/master and reapplying ($i/5)"
+            git fetch origin master
+            git reset --hard origin/master
+          done
+          echo "::error::Failed to push updated stats after retries"
+          exit 1
