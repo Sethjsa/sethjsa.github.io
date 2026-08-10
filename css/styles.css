@@ -312,7 +312,7 @@ ul.updates .date {
   --lfm-series-5: #1baf7a;
   --lfm-series-other: #898781;
   --chart-gridline: #e1e0d9;
-  max-width: 500px;
+  max-width: 640px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -544,8 +544,8 @@ table.peaks-table td.peaks-summit-cell {
 }
 
 .lfm-top-col {
-  flex: 1 1 150px;
-  min-width: 150px;
+  flex: 1 1 190px;
+  min-width: 190px;
 }
 
 .lfm-top-col h4 {
@@ -599,8 +599,8 @@ table.peaks-table td.peaks-summit-cell {
   margin-top: 0.8em;
 }
 
-/* letterboxd */
-.letterboxd-viz .lb-section-title {
+/* shared small-caps sub-section label, used inside letterboxd/lastfm widgets */
+.lb-section-title {
   font-size: 0.75em;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -609,9 +609,11 @@ table.peaks-table td.peaks-summit-cell {
   font-weight: 600;
 }
 
-.letterboxd-viz .lb-section-title:first-child {
+.lb-section-title:first-child {
   margin-top: 0;
 }
+
+/* letterboxd */
 
 .letterboxd-viz ol.lb-top-rated {
   margin: 0;
@@ -672,4 +674,20 @@ table.peaks-table td.peaks-summit-cell {
   color: #fff;
   text-shadow: 0 1px 2px rgba(0,0,0,0.9);
   background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+}
+
+/* album art is square, unlike movie posters */
+.lfm-poster,
+.lfm-poster img {
+  width: 80px;
+}
+
+.lfm-poster img {
+  height: 80px;
+}
+
+.lfm-poster-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

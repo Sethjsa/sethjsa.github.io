@@ -2,8 +2,21 @@
 {% if lfm.total_scrobbles > 0 %}
 <p class="media-section-title">Music</p>
 <div class="widget-box lastfm-viz">
-  <div id="lastfm-chart"></div>
+  {% if lfm.recent_albums.size > 0 %}
+    <p class="lb-section-title">Recently played</p>
+    <div class="lb-recent-scroll lfm-recent-scroll">
+      {% for a in lfm.recent_albums %}
+        <a class="lb-poster lfm-poster" href="{{ a.url }}" target="_blank" rel="noopener" title="{{ a.name }}{% if a.artist %} - {{ a.artist }}{% endif %}">
+          {% if a.image %}
+            <img src="{{ a.image }}" alt="{{ a.name }}" loading="lazy">
+          {% endif %}
+          <span class="lb-rating lfm-poster-label">{{ a.artist }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
 
+  <p class="lb-section-title" style="margin-top:0.8em;">Top of the charts</p>
   <div class="lfm-period-toggle">
     <button type="button" data-period="overall" class="active">All-time</button>
     <button type="button" data-period="12month">Last 12 months</button>
@@ -23,17 +36,8 @@
     </div>
   </div>
 
-  {% if lfm.recent_albums.size > 0 %}
-    <h4 style="margin-top:0.8em;">Recently played albums</h4>
-    <ol class="lfm-recent-albums">
-      {% for a in lfm.recent_albums %}
-        <li>
-          {% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}
-          <span class="lfm-sub">{{ a.artist }}</span>
-        </li>
-      {% endfor %}
-    </ol>
-  {% endif %}
+  <p class="lb-section-title" style="margin-top:0.8em;">Scrobbles per year</p>
+  <div id="lastfm-chart"></div>
 
   <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
     {{ lfm.total_scrobbles }} scrobbles &middot; updated {{ lfm.last_updated }}
