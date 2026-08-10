@@ -11,6 +11,10 @@ on:
         description: "Rescan entire Strava activity history"
         type: boolean
         default: false
+      refresh_recent_days:
+        description: "Reprocess activities from the last N days (backfills newly-added fields without a full rescan). Leave 0 to skip."
+        type: number
+        default: 0
 
 permissions:
   contents: write
@@ -36,6 +40,8 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.full_backfill }}" = "true" ]; then
             python scripts/update_summitbag_stats.py --full
+          elif [ "${{ github.event.inputs.refresh_recent_days }}" != "0" ] && [ -n "${{ github.event.inputs.refresh_recent_days }}" ]; then
+            python scripts/update_summitbag_stats.py --refresh-recent-days "${{ github.event.inputs.refresh_recent_days }}"
           else
             python scripts/update_summitbag_stats.py
           fi
