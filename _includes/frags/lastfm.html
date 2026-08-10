@@ -1,0 +1,288 @@
+{% assign lfm = site.data.lastfm_stats %}
+{% if lfm.total_scrobbles > 0 %}
+<div class="widget-box lastfm-viz">
+  <div id="lastfm-chart"></div>
+
+  <div class="lfm-period-toggle">
+    <button type="button" data-period="overall" class="active">All-time</button>
+    <button type="button" data-period="12month">Last 12 months</button>
+  </div>
+  <div class="lfm-top-lists">
+    <div class="lfm-top-col">
+      <h4>Top artists</h4>
+      <ol id="lfm-top-artists"></ol>
+    </div>
+    <div class="lfm-top-col">
+      <h4>Top albums</h4>
+      <ol id="lfm-top-albums"></ol>
+    </div>
+    <div class="lfm-top-col">
+      <h4>Top tracks</h4>
+      <ol id="lfm-top-tracks"></ol>
+    </div>
+  </div>
+
+  <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
+    {{ lfm.total_scrobbles }} scrobbles &middot; updated {{ lfm.last_updated }}
+  </p>
+</div>
+
+<script type="application/json" id="lastfm-data">{{ lfm | jsonify }}</script>
+<script>
+(function() {
+  var dataEl = document.getElementById('lastfm-data');
+  if (!dataEl) return;
+  var lfm = JSON.parse(dataEl.textContent);
+  var svgns = 'http://www.w3.org/2000/svg';
+
+  var chartArtists = lfm.chart_artists || [];
+  var SERIES_VARS = ['var(--lfm-series-1)', 'var(--lfm-series-2)', 'var(--lfm-series-3)', 'var(--lfm-series-4)', 'var(--lfm-series-5)'];
+  var COLORS = {};
+  chartArtists.forEach(function(name, i) { COLORS[name] = SERIES_VARS[i] || 'var(--lfm-series-other)'; });
+  COLORS['Other'] = 'var(--lfm-series-other)';
+
+  function niceCeil(v) {
+    if (v <= 0) return 100;
+    var mag = Math.pow(10, Math.floor(Math.log(v) / Math.LN10));
+    var steps = [1, 2, 2.5, 5, 10];
+    for (var i = 0; i < steps.length; i++) {
+      var candidate = steps[i] * mag;
+      if (candidate >= v) return candidate;
+    }
+    return 10 * mag;
+  }
+
+  function formatNum(v) {
+    return Math.round(v).toLocaleString('en-GB');
+  }
+
+  var tooltipEl;
+  function ensureTooltip() {
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.className = 'sb-tooltip';
+      document.body.appendChild(tooltipEl);
+    }
+    return tooltipEl;
+  }
+
+  function attachTooltip(el, metaText, valueText) {
+    function position(evt) {
+      var tip = ensureTooltip();
+      var x = (evt && evt.clientX !== undefined) ? evt.clientX : el.getBoundingClientRect().left;
+      var y = (evt && evt.clientY !== undefined) ? evt.clientY : el.getBoundingClientRect().top;
+      tip.style.left = (x + 12) + 'px';
+      tip.style.top = (y + 12) + 'px';
+    }
+    function show(evt) {
+      var tip = ensureTooltip();
+      tip.textContent = '';
+      var valueEl = document.createElement('div');
+      valueEl.className = 'sb-tooltip-value';
+      valueEl.textContent = valueText;
+      var metaEl = document.createElement('div');
+      metaEl.className = 'sb-tooltip-meta';
+      metaEl.textContent = metaText;
+      tip.appendChild(valueEl);
+      tip.appendChild(metaEl);
+      tip.classList.add('sb-visible');
+      position(evt);
+      el.classList.add('sb-hover');
+    }
+    function hide() {
+      var tip = ensureTooltip();
+      tip.classList.remove('sb-visible');
+      el.classList.remove('sb-hover');
+    }
+    el.addEventListener('pointerenter', show);
+    el.addEventListener('pointermove', position);
+    el.addEventListener('pointerleave', hide);
+    el.addEventListener('focus', function() { show(null); });
+    el.addEventListener('blur', hide);
+  }
+
+  function buildChart() {
+    var byYear = lfm.scrobbles_by_year || {};
+    var years = Object.keys(byYear).map(function(y) { return parseInt(y, 10); }).sort(function(a, b) { return a - b; });
+    if (years.length === 0) return;
+
+    var order = chartArtists.concat(['Other']);
+    var totals = years.map(function(year) {
+      var counts = byYear[year] || byYear[String(year)] || {};
+      var t = 0;
+      Object.keys(counts).forEach(function(k) { t += counts[k]; });
+      return t;
+    });
+    var niceMax = niceCeil(Math.max.apply(null, totals));
+
+    var W = 480, H = 210;
+    var padLeft = 46, padBottom = 22, padTop = 18, padRight = 10;
+    var plotW = W - padLeft - padRight;
+    var plotH = H - padTop - padBottom;
+    var barSlot = plotW / years.length;
+    var barW = Math.min(24, barSlot * 0.6);
+    var gap = 2;
+
+    var svg = document.createElementNS(svgns, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    [0, niceMax / 2, niceMax].forEach(function(t) {
+      var y = padTop + plotH - (t / niceMax) * plotH;
+      var line = document.createElementNS(svgns, 'line');
+      line.setAttribute('x1', padLeft);
+      line.setAttribute('x2', W - padRight);
+      line.setAttribute('y1', y);
+      line.setAttribute('y2', y);
+      line.setAttribute('class', 'sb-gridline');
+      svg.appendChild(line);
+
+      var label = document.createElementNS(svgns, 'text');
+      label.setAttribute('x', padLeft - 6);
+      label.setAttribute('y', y + 3);
+      label.setAttribute('text-anchor', 'end');
+      label.setAttribute('class', 'sb-axis-label');
+      label.textContent = formatNum(t);
+      svg.appendChild(label);
+    });
+
+    years.forEach(function(year, i) {
+      var x = padLeft + i * barSlot + (barSlot - barW) / 2;
+      var baseline = padTop + plotH;
+      var counts = byYear[year] || byYear[String(year)] || {};
+      var segs = [];
+      order.forEach(function(name) {
+        var v = counts[name] || 0;
+        if (v > 0) segs.push({ name: name, value: v });
+      });
+
+      var cumulative = 0;
+      segs.forEach(function(s, idx) {
+        var isTop = idx === segs.length - 1;
+        var yTop = baseline - ((cumulative + s.value) / niceMax) * plotH;
+        var yBottom = baseline - (cumulative / niceMax) * plotH;
+        var drawTop = yTop + (idx === 0 ? 0 : gap / 2);
+        var drawBottom = yBottom - (isTop ? 0 : gap / 2);
+        var h = Math.max(drawBottom - drawTop, 0);
+
+        var mark;
+        if (isTop && h > 0) {
+          var r = Math.min(4, h, barW / 2);
+          var d = 'M ' + x + ' ' + (drawTop + r) +
+                  ' Q ' + x + ' ' + drawTop + ' ' + (x + r) + ' ' + drawTop +
+                  ' L ' + (x + barW - r) + ' ' + drawTop +
+                  ' Q ' + (x + barW) + ' ' + drawTop + ' ' + (x + barW) + ' ' + (drawTop + r) +
+                  ' L ' + (x + barW) + ' ' + drawBottom +
+                  ' L ' + x + ' ' + drawBottom + ' Z';
+          mark = document.createElementNS(svgns, 'path');
+          mark.setAttribute('d', d);
+        } else {
+          mark = document.createElementNS(svgns, 'rect');
+          mark.setAttribute('x', x);
+          mark.setAttribute('y', drawTop);
+          mark.setAttribute('width', barW);
+          mark.setAttribute('height', h);
+        }
+        mark.style.fill = COLORS[s.name] || 'var(--lfm-series-other)';
+        mark.setAttribute('class', 'sb-bar-seg');
+        mark.setAttribute('tabindex', '0');
+        mark.setAttribute('role', 'img');
+        mark.setAttribute('aria-label', s.name + ' ' + year + ': ' + formatNum(s.value) + ' scrobbles');
+        attachTooltip(mark, s.name + ' · ' + year, formatNum(s.value) + ' scrobbles');
+        svg.appendChild(mark);
+
+        cumulative += s.value;
+      });
+
+      var totalTop = baseline - (totals[i] / niceMax) * plotH;
+      var totalLabel = document.createElementNS(svgns, 'text');
+      totalLabel.setAttribute('x', x + barW / 2);
+      totalLabel.setAttribute('y', Math.max(totalTop - 4, padTop - 2));
+      totalLabel.setAttribute('class', 'sb-bar-total');
+      totalLabel.textContent = formatNum(totals[i]);
+      svg.appendChild(totalLabel);
+
+      var xLabel = document.createElementNS(svgns, 'text');
+      xLabel.setAttribute('x', x + barW / 2);
+      xLabel.setAttribute('y', H - padBottom + 14);
+      xLabel.setAttribute('text-anchor', 'middle');
+      xLabel.setAttribute('class', 'sb-axis-label');
+      xLabel.textContent = year;
+      svg.appendChild(xLabel);
+    });
+
+    var container = document.getElementById('lastfm-chart');
+    container.appendChild(svg);
+
+    var legend = document.createElement('div');
+    legend.className = 'sb-legend-row';
+    order.forEach(function(name) {
+      var used = years.some(function(year) {
+        var counts = byYear[year] || byYear[String(year)] || {};
+        return (counts[name] || 0) > 0;
+      });
+      if (!used) return;
+      var item = document.createElement('span');
+      var swatch = document.createElement('span');
+      swatch.className = 'sb-swatch';
+      swatch.style.background = COLORS[name] || 'var(--lfm-series-other)';
+      item.appendChild(swatch);
+      item.appendChild(document.createTextNode(name));
+      legend.appendChild(item);
+    });
+    container.appendChild(legend);
+  }
+
+  function renderTopLists(period) {
+    var artists = (lfm.top_artists && lfm.top_artists[period]) || [];
+    var albums = (lfm.top_albums && lfm.top_albums[period]) || [];
+    var tracks = (lfm.top_tracks && lfm.top_tracks[period]) || [];
+
+    var artistsEl = document.getElementById('lfm-top-artists');
+    var albumsEl = document.getElementById('lfm-top-albums');
+    var tracksEl = document.getElementById('lfm-top-tracks');
+    artistsEl.textContent = '';
+    albumsEl.textContent = '';
+    tracksEl.textContent = '';
+
+    artists.forEach(function(a) {
+      var li = document.createElement('li');
+      li.textContent = a.name;
+      artistsEl.appendChild(li);
+    });
+    albums.forEach(function(a) {
+      var li = document.createElement('li');
+      li.textContent = a.name + ' ';
+      var sub = document.createElement('span');
+      sub.className = 'lfm-sub';
+      sub.textContent = a.artist;
+      li.appendChild(sub);
+      albumsEl.appendChild(li);
+    });
+    tracks.forEach(function(t) {
+      var li = document.createElement('li');
+      li.textContent = t.name + ' ';
+      var sub = document.createElement('span');
+      sub.className = 'lfm-sub';
+      sub.textContent = t.artist;
+      li.appendChild(sub);
+      tracksEl.appendChild(li);
+    });
+  }
+
+  function setupToggle() {
+    var buttons = document.querySelectorAll('.lfm-period-toggle button');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        buttons.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        renderTopLists(btn.getAttribute('data-period'));
+      });
+    });
+  }
+
+  buildChart();
+  renderTopLists('overall');
+  setupToggle();
+})();
+</script>
+{% endif %}

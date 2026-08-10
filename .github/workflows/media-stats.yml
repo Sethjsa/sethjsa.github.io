@@ -1,0 +1,44 @@
+name: Update media stats
+
+on:
+  schedule:
+    # Daily at 06:30 UTC (offset from the Summit Bag run at 06:00).
+    - cron: "30 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml
+
+      - name: Fetch Last.fm stats
+        env:
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+        run: python scripts/update_lastfm_stats.py
+
+      - name: Fetch Letterboxd recent films
+        run: python scripts/update_letterboxd_recent.py
+
+      - name: Commit updated stats
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- _data/lastfm_stats.yml _data/letterboxd_recent.yml; then
+            echo "No changes to commit"
+          else
+            git add _data/lastfm_stats.yml _data/letterboxd_recent.yml
+            git commit -m "Update media stats"
+            git push
+          fi
