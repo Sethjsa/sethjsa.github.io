@@ -88,7 +88,7 @@ def get_recent_tracks(limit=200):
     return [t for t in tracks if "date" in t]
 
 
-def recent_albums(limit=5, scan=200):
+def recent_albums(limit=5, scan=400):
     """Most recently played distinct albums, newest first."""
     tracks = get_recent_tracks(limit=scan)
     seen = set()
@@ -214,7 +214,7 @@ def main():
     top_tracks_12month = get_top_tracks("12month")
 
     scrobbles_by_year, chart_artists = build_scrobbles_by_year(user_info)
-    recent_albums_list = recent_albums()
+    recent_albums_list = recent_albums(limit=15)
 
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
