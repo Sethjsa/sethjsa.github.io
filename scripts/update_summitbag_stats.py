@@ -197,6 +197,16 @@ def parse_description(description):
     return peaks, elevation_reading
 
 
+def peak_key(activity_id, name, date):
+    # Peak NAMES are not unique ascents - the same hill gets climbed on
+    # different days, and each ascent should be kept, not overwrite the
+    # last one. Key by (activity, name) so repeats are distinct entries;
+    # fall back to (date, name) only for legacy entries with no activity_id.
+    if activity_id:
+        return f"{activity_id}:{name}"
+    return f"{date}:{name}"
+
+
 def load_state():
     state = {
         "last_processed_epoch": 0,
@@ -212,7 +222,10 @@ def load_state():
         state["last_processed_epoch"] = raw.get("last_processed_epoch", 0)
         state["backfill_cursor_epoch"] = raw.get("backfill_cursor_epoch", 0)
         state["full_backfill_complete"] = raw.get("full_backfill_complete", False)
-        state["peaks"] = {p["name"]: p for p in raw.get("peaks", [])}
+        state["peaks"] = {
+            peak_key(p.get("activity_id"), p["name"], p["date"]): p
+            for p in raw.get("peaks", [])
+        }
         state["elevation"] = raw.get("elevation", {})
     if ACTIVITIES_FILE.exists():
         with open(ACTIVITIES_FILE) as f:
@@ -269,10 +282,13 @@ def process_activity(access_token, state, summary):
     flag = flag_for_country(country) if country else None
 
     for name, height_m in peaks:
-        # Overwrite (not just insert-if-missing) so re-running over already-seen
-        # activities - e.g. after adding a new field - fills in the gap on
-        # existing entries instead of skipping them.
-        state["peaks"][name] = {
+        # Keyed per-ascent (activity + name), not just name - the same peak
+        # gets climbed on different days and each ascent must be kept.
+        # Overwrite (not insert-if-missing) so re-running over an
+        # already-seen activity - e.g. after adding a new field - fills in
+        # the gap instead of skipping it.
+        key = peak_key(detail.get("id"), name, date)
+        state["peaks"][key] = {
             "name": name,
             "height_m": height_m,
             "type": bucket,
@@ -280,6 +296,8 @@ def process_activity(access_token, state, summary):
             "location_city": city,
             "location_country": country,
             "flag": flag,
+            "activity_id": detail.get("id"),
+            "activity_name": detail.get("name"),
         }
 
     if elevation_reading:

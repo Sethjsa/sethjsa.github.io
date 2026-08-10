@@ -3,9 +3,33 @@
 <div class="widget-box summitbag-viz">
   <script type="application/json" id="summitbag-data">{{ sb | jsonify }}</script>
   <div id="summitbag-chart"></div>
+
+  <p class="sb-subtitle">Here are all the peaks I've summited since 2022.</p>
   <div id="peaksbox">
-    <ul class="peaks-list" id="peaks-list"></ul>
+    <table class="peaks-table">
+      <colgroup>
+        <col style="width:5.2em">
+        <col>
+        <col style="width:4em">
+      </colgroup>
+      <tbody id="peaks-list"></tbody>
+    </table>
   </div>
+
+  {% if sb.top_peaks and sb.top_peaks.size > 0 %}
+    <div class="top-peaks-box">
+      <p class="top-peaks-title">Highest peaks bagged</p>
+      <ol>
+        {% for p in sb.top_peaks %}
+          <li>
+            {% if p.flag %}{{ p.flag }} {% endif %}{{ p.name }}
+            <span class="peak-height">&ndash; {{ p.height_m }}m</span>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  {% endif %}
+
   <p style="font-size:0.75em; color:#999; margin:0.4em 0 0;">
     ⛰️ {{ sb.peak_count }} peaks bagged &middot; updated {{ sb.last_updated }}
   </p>
@@ -19,7 +43,10 @@
     </p>
     <ul>
       {% for p in sb.peaks reversed %}
-        <li>{% if p.flag %}{{ p.flag }} {% endif %}{{ p.name }} &ndash; {{ p.height_m }}m ({{ p.date }})</li>
+        <li>
+          {% if p.flag %}{{ p.flag }} {% endif %}{{ p.name }} &ndash; {{ p.height_m }}m ({{ p.date }})
+          {% if p.activity_id %} &ndash; <a href="https://www.strava.com/activities/{{ p.activity_id }}">{{ p.activity_name | default: "Strava activity" }}</a>{% endif %}
+        </li>
       {% endfor %}
     </ul>
   </noscript>
@@ -31,11 +58,13 @@
   if (!dataEl) return;
   var sb = JSON.parse(dataEl.textContent);
 
-  var BUCKETS = ['Run', 'Ride', 'Hike', 'Ski', 'Other'];
+  var CHART_MIN_YEAR = 2022;
+
+  var BUCKETS = ['Hike', 'Run', 'Ride', 'Ski', 'Other'];
   var COLORS = {
+    Hike: 'var(--series-hike)',
     Run: 'var(--series-run)',
     Ride: 'var(--series-ride)',
-    Hike: 'var(--series-hike)',
     Ski: 'var(--series-ski)',
     Other: 'var(--series-other)'
   };
@@ -107,7 +136,7 @@
     BUCKETS.forEach(function(b) {
       Object.keys(elevation[b] || {}).forEach(function(y) {
         y = parseInt(y, 10);
-        if (years.indexOf(y) === -1) years.push(y);
+        if (y >= CHART_MIN_YEAR && years.indexOf(y) === -1) years.push(y);
       });
     });
     years.sort(function(a, b) { return a - b; });
@@ -120,8 +149,8 @@
     });
     var niceMax = niceCeil(Math.max.apply(null, totals));
 
-    var W = 480, H = 200;
-    var padLeft = 46, padBottom = 22, padTop = 10, padRight = 10;
+    var W = 480, H = 210;
+    var padLeft = 46, padBottom = 22, padTop = 18, padRight = 10;
     var plotW = W - padLeft - padRight;
     var plotH = H - padTop - padBottom;
     var barSlot = plotW / years.length;
@@ -197,6 +226,14 @@
         cumulative += s.value;
       });
 
+      var totalTop = baseline - (totals[i] / niceMax) * plotH;
+      var totalLabel = document.createElementNS(svgns, 'text');
+      totalLabel.setAttribute('x', x + barW / 2);
+      totalLabel.setAttribute('y', Math.max(totalTop - 4, padTop - 2));
+      totalLabel.setAttribute('class', 'sb-bar-total');
+      totalLabel.textContent = formatMeters(totals[i]) + 'm';
+      svg.appendChild(totalLabel);
+
       var xLabel = document.createElementNS(svgns, 'text');
       xLabel.setAttribute('x', x + barW / 2);
       xLabel.setAttribute('y', H - padBottom + 14);
@@ -210,7 +247,7 @@
     container.appendChild(svg);
 
     var usedBuckets = BUCKETS.filter(function(b) {
-      return Object.keys(elevation[b] || {}).length > 0;
+      return years.some(function(year) { return (elevation[b] && elevation[b][year]) > 0; });
     });
     var legend = document.createElement('div');
     legend.className = 'sb-legend-row';
@@ -234,27 +271,62 @@
 
   function buildPeaksList() {
     var peaks = (sb.peaks || []).slice().reverse();
-    var list = document.getElementById('peaks-list');
-    if (!list || peaks.length === 0) return;
-    var lastDate = null;
+    var tbody = document.getElementById('peaks-list');
+    if (!tbody || peaks.length === 0) return;
+
+    // Group consecutive (newest-first) peaks by the activity they came from,
+    // falling back to date for older entries collected before activity_id
+    // was captured.
+    var groups = [];
+    var currentGroup = null;
     peaks.forEach(function(p) {
-      if (p.date !== lastDate) {
-        var heading = document.createElement('li');
-        heading.className = 'peaks-date-heading';
-        heading.textContent = formatDate(p.date);
-        list.appendChild(heading);
-        lastDate = p.date;
+      var key = p.activity_id ? ('a' + p.activity_id) : ('d' + p.date);
+      if (!currentGroup || currentGroup.key !== key) {
+        currentGroup = { key: key, date: p.date, activity_id: p.activity_id, activity_name: p.activity_name, peaks: [] };
+        groups.push(currentGroup);
       }
-      var row = document.createElement('li');
-      var nameSpan = document.createElement('span');
-      nameSpan.className = 'peak-name';
-      nameSpan.textContent = (p.flag ? p.flag + ' ' : '') + p.name;
-      var heightSpan = document.createElement('span');
-      heightSpan.className = 'peak-height';
-      heightSpan.textContent = p.height_m + 'm';
-      row.appendChild(nameSpan);
-      row.appendChild(heightSpan);
-      list.appendChild(row);
+      currentGroup.peaks.push(p);
+    });
+
+    groups.forEach(function(group) {
+      if (group.activity_id && group.activity_name) {
+        var titleRow = document.createElement('tr');
+        titleRow.className = 'peaks-activity-row';
+        var titleCell = document.createElement('td');
+        titleCell.colSpan = 3;
+        var link = document.createElement('a');
+        link.href = 'https://www.strava.com/activities/' + group.activity_id;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = group.activity_name;
+        titleCell.appendChild(link);
+        titleRow.appendChild(titleCell);
+        tbody.appendChild(titleRow);
+      }
+
+      group.peaks.forEach(function(p, idx) {
+        var row = document.createElement('tr');
+
+        if (idx === 0) {
+          var dateCell = document.createElement('td');
+          dateCell.className = 'peaks-date-cell';
+          dateCell.rowSpan = group.peaks.length;
+          dateCell.textContent = formatDate(group.date);
+          row.appendChild(dateCell);
+        }
+
+        var summitCell = document.createElement('td');
+        summitCell.className = 'peaks-summit-cell';
+        summitCell.textContent = (p.flag ? p.flag + ' ' : '') + p.name;
+        row.appendChild(summitCell);
+
+        var elevCell = document.createElement('td');
+        elevCell.className = 'peaks-elevation-cell';
+        elevCell.textContent = p.height_m + 'm';
+        row.appendChild(elevCell);
+
+        tbody.appendChild(row);
+      });
     });
   }
 

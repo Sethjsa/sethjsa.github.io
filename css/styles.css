@@ -216,10 +216,10 @@ ul.updates .date {
 
 /* summit bag stats */
 .summitbag-viz {
-  --series-run:   #2a78d6;
-  --series-ride:  #008300;
-  --series-hike:  #e87ba4;
-  --series-ski:   #eda100;
+  --series-hike:  #008300;
+  --series-run:   #e34948;
+  --series-ride:  #2a78d6;
+  --series-ski:   #4a3aa7;
   --series-other: #1baf7a;
   --sb-gridline:  #e1e0d9;
   max-width: 500px;
@@ -227,10 +227,10 @@ ul.updates .date {
 
 @media (prefers-color-scheme: dark) {
   .summitbag-viz {
-    --series-run:   #3987e5;
-    --series-ride:  #008300;
-    --series-hike:  #d55181;
-    --series-ski:   #c98500;
+    --series-hike:  #008300;
+    --series-run:   #e66767;
+    --series-ride:  #3987e5;
+    --series-ski:   #9085e9;
     --series-other: #199e70;
     --sb-gridline:  #2c2c2a;
   }
@@ -308,12 +308,23 @@ ul.updates .date {
   color: #ccc;
 }
 
+.sb-bar-total {
+  fill: #777;
+  font-size: 9px;
+  text-anchor: middle;
+}
+
+.sb-subtitle {
+  font-size: 0.8em;
+  color: #777;
+  margin: 0.6em 0 0.3em;
+}
+
 /* peaks scrollbox */
 #peaksbox {
   overflow-y: scroll;
-  height: 200px;
+  height: 220px;
   width: 100%;
-  margin-top: 0.6em;
 }
 
 #peaksbox::-webkit-scrollbar {
@@ -326,49 +337,79 @@ ul.updates .date {
   box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
 }
 
-.peaks-date-heading {
-  display: block;
-  color: #555;
-  font-size: 0.8em;
-  margin: 0.6em 0 0.2em;
+table.peaks-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.85em;
 }
 
-.peaks-date-heading:first-child {
-  margin-top: 0;
-}
-
-ul.peaks-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-ul.peaks-list li {
-  padding: 3px 0;
+table.peaks-table td {
+  padding: 3px 6px 3px 0;
   border-bottom: 1px solid #d8d9da;
+  vertical-align: top;
+}
+
+table.peaks-table tr.peaks-activity-row td {
+  border-bottom: none;
+  padding-top: 0.6em;
+  font-size: 0.85em;
+}
+
+table.peaks-table tr.peaks-activity-row:first-child td {
+  padding-top: 2px;
+}
+
+table.peaks-table tr.peaks-activity-row a {
+  color: #444;
+  font-weight: 600;
+}
+
+table.peaks-table td.peaks-date-cell {
+  color: #555;
   font-size: 0.9em;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-ul.peaks-list li.peaks-date-heading {
-  border-bottom: none;
-  padding: 0;
+table.peaks-table td.peaks-elevation-cell {
+  color: #555;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
 }
 
-ul.peaks-list li:last-child {
-  border-bottom: none;
-}
-
-ul.peaks-list .peak-name {
+table.peaks-table td.peaks-summit-cell {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-ul.peaks-list .peak-height {
+/* static top-peaks box */
+.top-peaks-box {
+  margin-top: 0.8em;
+  padding: 0.6em 0.8em;
+  background: #ECEDEE;
+}
+
+.top-peaks-box .top-peaks-title {
+  font-size: 0.8em;
   color: #555;
+  font-weight: 600;
+  margin: 0 0 0.3em;
+}
+
+.top-peaks-box ol {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 0.85em;
+}
+
+.top-peaks-box li {
+  padding: 1px 0;
+}
+
+.top-peaks-box .peak-height {
+  color: #777;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }
