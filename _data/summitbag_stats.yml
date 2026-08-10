@@ -34,18 +34,18 @@ top_peaks:
   height_m: 3776
   type: Hike
   date: '2026-08-03'
-- name: Joujugatake Peak
-  height_m: 3734
+- name: Aiguille Rouge
+  height_m: 3227
+  type: Ski
+  date: '2025-03-25'
+- name: Mount Okuhotaka
+  height_m: 3190
   type: Hike
-  date: '2026-08-03'
-- name: Mishimagatake Peak
-  height_m: 3734
+  date: '2026-07-15'
+- name: Mount Yari
+  height_m: 3180
   type: Hike
-  date: '2026-08-03'
-- name: Asahidake Peak
-  height_m: 3733
-  type: Hike
-  date: '2026-08-03'
+  date: '2026-07-14'
 peaks:
 - name: Bradda Hill
   height_m: 233
@@ -1139,3 +1139,4 @@ elevation:
     2024: 9791
     2025: 11187
     2026: 15135
+recent_public_activities: []
