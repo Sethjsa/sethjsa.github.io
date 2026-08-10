@@ -40,5 +40,14 @@ jobs:
           else
             git add _data/lastfm_stats.yml _data/letterboxd_recent.yml
             git commit -m "Update media stats"
-            git push
+            for i in 1 2 3 4 5; do
+              if git push; then
+                exit 0
+              fi
+              echo "push rejected, fetching + rebasing and retrying ($i/5)"
+              git fetch origin master
+              git rebase origin/master
+            done
+            echo "::error::Failed to push updated stats after retries"
+            exit 1
           fi

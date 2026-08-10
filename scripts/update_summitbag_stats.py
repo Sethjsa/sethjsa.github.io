@@ -107,32 +107,22 @@ def _throttle():
     _request_count += 1
 
 
-def _get(url, access_token, params=None):
-    if params:
-        url = f"{url}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(url, headers={"Authorization": f"Bearer {access_token}"})
-    _throttle()
-    for attempt in range(3):
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                # We already pace to stay under the 15-min window limit, so a 429
-                # here means we've hit Strava's daily cap. Retrying won't help for
-                # hours - stop cleanly now instead of burning the job timeout.
-                print("  429 rate limited despite pacing - daily quota hit, stopping run", file=sys.stderr)
-                raise BudgetExceeded()
-            if e.code >= 500 and attempt < 2:
-                wait = 10 * (attempt + 1)
-                print(f"  {e.code} error, retrying in {wait}s", file=sys.stderr)
-                time.sleep(wait)
-                continue
-            raise
-    raise RuntimeError(f"Failed to fetch {url} after retries")
+_token_cache = {"token": None, "obtained_at": 0.0}
+# Refresh well before Strava's stated 6h expiry - long runs (rate-limit
+# pacing can stretch this to 1-2+ hours) shouldn't get caught out by a
+# stale token, whatever the exact cause of any individual expiry.
+TOKEN_REFRESH_INTERVAL = 2700  # 45 minutes
 
 
-def get_access_token():
+def _valid_access_token(force=False):
+    now = time.monotonic()
+    if force or _token_cache["token"] is None or now - _token_cache["obtained_at"] > TOKEN_REFRESH_INTERVAL:
+        _token_cache["token"] = _fetch_access_token()
+        _token_cache["obtained_at"] = now
+    return _token_cache["token"]
+
+
+def _fetch_access_token():
     client_id = os.environ["STRAVA_CLIENT_ID"]
     client_secret = os.environ["STRAVA_CLIENT_SECRET"]
     refresh_token = os.environ["STRAVA_REFRESH_TOKEN"]
@@ -148,7 +138,38 @@ def get_access_token():
     return payload["access_token"]
 
 
-def list_activity_summaries(access_token, after_epoch=None):
+def _get(url, params=None):
+    if params:
+        url = f"{url}?{urllib.parse.urlencode(params)}"
+    _throttle()
+    for attempt in range(3):
+        token = _valid_access_token(force=(attempt > 0))
+        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code == 401 and attempt == 0:
+                # Token expired/invalid earlier than expected - force a fresh
+                # one and retry once before giving up.
+                print("  401 unauthorized - refreshing token and retrying", file=sys.stderr)
+                continue
+            if e.code == 429:
+                # We already pace to stay under the 15-min window limit, so a 429
+                # here means we've hit Strava's daily cap. Retrying won't help for
+                # hours - stop cleanly now instead of burning the job timeout.
+                print("  429 rate limited despite pacing - daily quota hit, stopping run", file=sys.stderr)
+                raise BudgetExceeded()
+            if e.code >= 500 and attempt < 2:
+                wait = 10 * (attempt + 1)
+                print(f"  {e.code} error, retrying in {wait}s", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            raise
+    raise RuntimeError(f"Failed to fetch {url} after retries")
+
+
+def list_activity_summaries(after_epoch=None):
     """Return activity summaries (id, sport_type, start_date), oldest first."""
     page = 1
     out = []
@@ -156,7 +177,7 @@ def list_activity_summaries(access_token, after_epoch=None):
         params = {"per_page": 100, "page": page}
         if after_epoch is not None:
             params["after"] = after_epoch
-        batch = _get(f"{API_BASE}/athlete/activities", access_token, params)
+        batch = _get(f"{API_BASE}/athlete/activities", params)
         if not batch:
             break
         out.extend(batch)
@@ -165,8 +186,8 @@ def list_activity_summaries(access_token, after_epoch=None):
     return out
 
 
-def get_activity_detail(access_token, activity_id):
-    return _get(f"{API_BASE}/activities/{activity_id}", access_token)
+def get_activity_detail(activity_id):
+    return _get(f"{API_BASE}/activities/{activity_id}")
 
 
 def bucket_for(sport_type):
@@ -271,8 +292,8 @@ ACTIVITY_FIELDS = (
 )
 
 
-def process_activity(access_token, state, summary):
-    detail = get_activity_detail(access_token, summary["id"])
+def process_activity(state, summary):
+    detail = get_activity_detail(summary["id"])
     peaks, elevation_reading = parse_description(detail.get("description"))
     sport_type = summary.get("sport_type") or summary.get("type", "Other")
     bucket = bucket_for(sport_type)
@@ -315,28 +336,27 @@ def main():
     parser.add_argument("--full", action="store_true", help="backfill entire activity history (resumable)")
     args = parser.parse_args()
 
-    access_token = get_access_token()
     state = load_state()
     exhausted = False
     unexpected_error = None
 
     try:
         if args.full and not state["full_backfill_complete"]:
-            summaries = list_activity_summaries(access_token, None)
+            summaries = list_activity_summaries(None)
             todo = [s for s in summaries if epoch_of(s) > state["backfill_cursor_epoch"]]
             print(f"Full backfill: {len(todo)} activities remaining (of {len(summaries)} total)", file=sys.stderr)
             for summary in todo:
-                process_activity(access_token, state, summary)
+                process_activity(state, summary)
                 epoch = epoch_of(summary)
                 state["backfill_cursor_epoch"] = epoch
                 state["last_processed_epoch"] = max(state["last_processed_epoch"], epoch)
             state["full_backfill_complete"] = True
             print("Full backfill complete", file=sys.stderr)
         else:
-            summaries = list_activity_summaries(access_token, state["last_processed_epoch"])
+            summaries = list_activity_summaries(state["last_processed_epoch"])
             print(f"Found {len(summaries)} new activities to check", file=sys.stderr)
             for summary in summaries:
-                process_activity(access_token, state, summary)
+                process_activity(state, summary)
                 state["last_processed_epoch"] = max(state["last_processed_epoch"], epoch_of(summary))
     except BudgetExceeded:
         exhausted = True

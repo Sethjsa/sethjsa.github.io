@@ -50,5 +50,17 @@ jobs:
           else
             git add _data/summitbag_stats.yml _data/summitbag_activities.json
             git commit -m "Update Summit Bag stats"
-            git push
+            # A long run (this one can take hours) can finish after other
+            # commits have landed on master - retry with a rebase instead of
+            # letting a non-fast-forward push silently drop this run's work.
+            for i in 1 2 3 4 5; do
+              if git push; then
+                exit 0
+              fi
+              echo "push rejected, fetching + rebasing and retrying ($i/5)"
+              git fetch origin master
+              git rebase origin/master
+            done
+            echo "::error::Failed to push updated stats after retries"
+            exit 1
           fi
