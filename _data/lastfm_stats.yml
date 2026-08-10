@@ -197,3 +197,24 @@ chart_artists:
 - Johnny Flynn
 - Why?
 - Kurt Vile
+recent_albums:
+- name: III
+  artist: Khun Narin
+  url: https://www.last.fm/music/Khun+Narin/_/Bang+Fai+Saen
+  image: https://lastfm-img.freetls.fastly.net/i/u/300x300/246522c6aac0f34bdd673d8e0c138671.jpg
+- name: Héritage
+  artist: Songhoy Blues
+  url: https://www.last.fm/music/Songhoy+Blues/_/Issa
+  image: https://lastfm-img.freetls.fastly.net/i/u/300x300/127bfaf735a12eb0efb718d72ac3b96e.jpg
+- name: Windswept Adan
+  artist: Ichiko Aoba
+  url: https://www.last.fm/music/Ichiko+Aoba/_/Adan+no+Shima+no+Tanjyosai
+  image: https://lastfm-img.freetls.fastly.net/i/u/300x300/3a39fc6acd5c9eb5f5c2ac532c8d69fa.png
+- name: Warato'o
+  artist: Narasirato
+  url: https://www.last.fm/music/Narasirato/_/Roromera+Dub
+  image: https://lastfm-img.freetls.fastly.net/i/u/300x300/75c7f0deb254f61ed9aece265ba1d6eb.png
+- name: Wall of Eyes
+  artist: The Smile
+  url: https://www.last.fm/music/The+Smile/_/You+Know+Me!
+  image: https://lastfm-img.freetls.fastly.net/i/u/300x300/a43c6cfd9d14f09ae31e7f1b00fae5b8.jpg
