@@ -605,13 +605,42 @@ table.peaks-table td.peaks-summit-cell {
 }
 
 /* collapsible "Stats" sections wrapping bar charts */
-.stats-details summary.lb-section-title {
-  cursor: pointer;
+.stats-details {
+  margin: 0.6em 0;
 }
 
-.stats-details summary.lb-section-title::marker {
+.stats-details summary.lb-section-title {
+  cursor: pointer;
+  display: inline-block;
+  list-style: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.3em 0.6em;
+  margin: 0;
+}
+
+.stats-details summary.lb-section-title::-webkit-details-marker {
+  display: none;
+}
+
+.stats-details summary.lb-section-title:hover {
+  border-color: #bbb;
+}
+
+.stats-details summary.lb-section-title::after {
+  content: "\25B8";
+  display: inline-block;
+  margin-left: 0.4em;
   font-size: 0.9em;
   color: #bbb;
+}
+
+.stats-details[open] summary.lb-section-title::after {
+  content: "\25BE";
+}
+
+.stats-details[open] summary.lb-section-title {
+  margin-bottom: 0.5em;
 }
 
 /* letterboxd */
