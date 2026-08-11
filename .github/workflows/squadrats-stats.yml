@@ -1,0 +1,57 @@
+name: Update squadrats stats
+
+on:
+  schedule:
+    # Weekly, Sunday 07:30 UTC (offset from the concert-stats run).
+    - cron: "30 7 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml Pillow shapely
+
+      - name: Compute explorer-tile stats
+        run: python scripts/update_squadrats_stats.py
+
+      - name: Commit updated stats
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- _data/squadrats_stats.yml images/squadrats_tiles.png; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          cp _data/squadrats_stats.yml /tmp/squadrats_stats.yml
+          cp images/squadrats_tiles.png /tmp/squadrats_tiles.png
+          # Reset onto the latest tip each retry and reapply our
+          # freshly-computed output verbatim, rather than rebasing - a plain
+          # rebase can hit a real content conflict on these generated files
+          # (not just non-fast-forward) and abort, silently dropping this
+          # run's work. "Ours" always wins for machine-generated data.
+          for i in 1 2 3 4 5; do
+            cp /tmp/squadrats_stats.yml _data/squadrats_stats.yml
+            cp /tmp/squadrats_tiles.png images/squadrats_tiles.png
+            git add _data/squadrats_stats.yml images/squadrats_tiles.png
+            git commit -m "Update squadrats stats"
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected, resetting onto latest origin/master and reapplying ($i/5)"
+            git fetch origin master
+            git reset --hard origin/master
+          done
+          echo "::error::Failed to push updated stats after retries"
+          exit 1

@@ -683,3 +683,82 @@ table.peaks-table td.peaks-summit-cell {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* squadrats / explorer tiles */
+.squadrats-viz {
+  max-width: 800px;
+}
+
+.sq-layout {
+  display: flex;
+  gap: 1.2em;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.sq-tilemap {
+  flex: 0 0 auto;
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.sq-tilemap img {
+  display: block;
+  max-width: 220px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.sq-stats-grid {
+  flex: 1 1 260px;
+  min-width: 220px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8em 1em;
+}
+
+.sq-stat-value {
+  display: block;
+  font-size: 1.3em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.sq-stat-label {
+  display: block;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #999;
+}
+
+.sq-countries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sq-countries li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  padding: 3px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+}
+
+.sq-countries li:last-child {
+  border-bottom: none;
+}
+
+.sq-country-name {
+  flex: 1 1 auto;
+}
+
+.sq-country-pct {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
