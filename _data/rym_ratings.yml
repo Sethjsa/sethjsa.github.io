@@ -7,29 +7,34 @@ top_rated:
   name: Funeral
   year: 2017
   rating: 10
+  stars: 5.0
   image: https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/2b/09/6e/2b096e8c-ae65-fc42-a4b1-19abb4100433/886446576442.jpg/600x600bb.jpg
   url: https://music.apple.com/us/album/funeral/1249417623?uo=4
 - artist: Andrea Laszlo De Simone
   name: Una lunghissima ombra
   year: 2025
   rating: 10
+  stars: 5.0
   image: https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/13/ca/49/13ca499e-29a2-36f6-1ef5-084877ef2de0/25UM1IM02499.rgb.jpg/600x600bb.jpg
   url: https://music.apple.com/us/album/una-lunghissima-ombra/1845131491?uo=4
 - artist: Everything Everything
   name: Get to Heaven
   year: 2015
   rating: 10
+  stars: 5.0
   image: https://is1-ssl.mzstatic.com/image/thumb/Music30/v4/8f/f0/b7/8ff0b7c0-8fb5-df9a-2de7-693ac46bff46/850477007145.jpg/600x600bb.jpg
   url: https://music.apple.com/us/album/get-to-heaven-deluxe-version/1135475796?uo=4
 - artist: Everything Everything
   name: Raw Data Feel
   year: 2022
   rating: 10
+  stars: 5.0
   image: https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/b9/29/95/b9299566-1566-7168-806d-4003fead2c08/850477007381_1.jpg/600x600bb.jpg
   url: https://music.apple.com/us/album/a-fever-dream/1608221340?uo=4
 - artist: Fishmans
   name: Long Season
   year: 2018
   rating: 10
+  stars: 5.0
   image: https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/16/e3/2d/16e32ddd-32b0-f0a0-91aa-c847a1094df5/00602567908678.rgb.jpg/600x600bb.jpg
   url: https://music.apple.com/us/album/long-season/1416925635?uo=4

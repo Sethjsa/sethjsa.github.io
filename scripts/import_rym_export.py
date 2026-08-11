@@ -74,11 +74,15 @@ def main():
         if not rating:
             continue
         artist = html.unescape(f'{r.get(" First Name", r.get("First Name", "")).strip()} {r.get("Last Name", "").strip()}'.strip())
+        rating = int(rating)
         albums.append({
             "artist": artist,
             "name": html.unescape(r["Title"].strip()),
             "year": int(r["Release_Date"]) if r.get("Release_Date") else None,
-            "rating": int(rating),
+            "rating": rating,
+            # RYM's 1-10 scale is really 0.5-5 stars underneath (same scale
+            # Letterboxd uses) - shown as stars to match that widget exactly.
+            "stars": rating / 2.0,
         })
 
     albums.sort(key=lambda a: a["rating"], reverse=True)
