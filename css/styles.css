@@ -643,19 +643,19 @@ table.peaks-table td.peaks-summit-cell {
   margin-bottom: 0.5em;
 }
 
-/* letterboxd */
+/* shared top-rated list, used by letterboxd/lastfm(rym) widgets */
 
-.letterboxd-viz ol.lb-top-rated {
+ol.lb-top-rated {
   margin: 0;
   padding-left: 1.2em;
   font-size: 0.85em;
 }
 
-.letterboxd-viz ol.lb-top-rated li {
+ol.lb-top-rated li {
   padding: 2px 0;
 }
 
-.letterboxd-viz .lb-rating-text {
+.lb-rating-text {
   color: #999;
   font-size: 0.85em;
 }
