@@ -2,33 +2,28 @@
 {% if sq.total_tiles > 0 %}
 <div class="widget-box squadrats-viz">
   <div class="sq-layout">
-    <a class="sq-tilemap" href="https://www.statshunters.com/share/4a769afeb9f9/heatmap" target="_blank" rel="noopener" title="Largest connected cluster of explorer tiles">
-      <img src="/images/squadrats_tiles.png" alt="Grid of my largest connected cluster of explorer tiles">
-    </a>
-    <div class="sq-stats-grid">
-      <div class="sq-stat">
-        <span class="sq-stat-value">{{ sq.total_tiles }}</span>
-        <span class="sq-stat-label">Explorer tiles</span>
+    <div class="sq-tilemap-wrap">
+      <div class="lfm-period-toggle sq-view-toggle">
+        <button type="button" data-view="squares" class="active">Squares</button>
+        <button type="button" data-view="map">Map</button>
       </div>
-      <div class="sq-stat">
-        <span class="sq-stat-value">{{ sq.max_square }}&times;{{ sq.max_square }}</span>
-        <span class="sq-stat-label">Max square</span>
+      <a class="sq-tilemap" href="https://www.statshunters.com/share/4a769afeb9f9/heatmap" target="_blank" rel="noopener" title="Largest connected cluster of explorer tiles">
+        <img id="sq-img-squares" src="/images/squadrats_tiles.png" alt="Grid of my largest connected cluster of explorer tiles">
+        <img id="sq-img-map" src="/images/squadrats_map.png" alt="Same tile cluster overlaid on a basic country outline" style="display:none;">
+      </a>
+    </div>
+    <div class="lfm-top-lists sq-stats-lists">
+      <div class="lfm-top-col">
+        <p class="lb-section-title">Explorer tiles</p>
+        <p class="sq-stat-value">{{ sq.total_tiles }}</p>
       </div>
-      <div class="sq-stat">
-        <span class="sq-stat-value">{{ sq.max_cluster_tiles }}</span>
-        <span class="sq-stat-label">Max cluster</span>
+      <div class="lfm-top-col">
+        <p class="lb-section-title">Max square</p>
+        <p class="sq-stat-value">{{ sq.max_square }}&times;{{ sq.max_square }}</p>
       </div>
-      <div class="sq-stat">
-        <span class="sq-stat-value">{{ sq.max_connected_row }}</span>
-        <span class="sq-stat-label">Longest row</span>
-      </div>
-      <div class="sq-stat">
-        <span class="sq-stat-value">{{ sq.max_connected_column }}</span>
-        <span class="sq-stat-label">Longest column</span>
-      </div>
-      <div class="sq-stat">
-        <span class="sq-stat-value">{{ sq.max_visited_tile_visits }}</span>
-        <span class="sq-stat-label">Most-visited tile</span>
+      <div class="lfm-top-col">
+        <p class="lb-section-title">Max cluster</p>
+        <p class="sq-stat-value">{{ sq.max_cluster_tiles }}</p>
       </div>
     </div>
   </div>
@@ -50,4 +45,22 @@
     explorer tiles are {{ sq.zoom }}-zoom map squares, tracked via <a href="https://www.statshunters.com" target="_blank" rel="noopener">StatsHunters</a> &middot; updated {{ sq.last_updated }}
   </p>
 </div>
+
+<script>
+(function() {
+  var toggle = document.querySelector('.sq-view-toggle');
+  if (!toggle) return;
+  var squares = document.getElementById('sq-img-squares');
+  var map = document.getElementById('sq-img-map');
+  toggle.querySelectorAll('button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      toggle.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var isMap = btn.getAttribute('data-view') === 'map';
+      squares.style.display = isMap ? 'none' : '';
+      map.style.display = isMap ? '' : 'none';
+    });
+  });
+})();
+</script>
 {% endif %}

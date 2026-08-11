@@ -696,8 +696,20 @@ table.peaks-table td.peaks-summit-cell {
   align-items: flex-start;
 }
 
-.sq-tilemap {
+.sq-tilemap-wrap {
   flex: 0 0 auto;
+}
+
+.squadrats-viz .sq-view-toggle {
+  margin: 0 0 0.4em;
+}
+
+.squadrats-viz .sq-view-toggle button.active {
+  border-color: #fc4c02;
+  color: #fc4c02;
+}
+
+.sq-tilemap {
   display: block;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -712,27 +724,16 @@ table.peaks-table td.peaks-summit-cell {
   image-rendering: pixelated;
 }
 
-.sq-stats-grid {
+.sq-stats-lists {
   flex: 1 1 260px;
   min-width: 220px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.8em 1em;
 }
 
 .sq-stat-value {
-  display: block;
+  margin: 0;
   font-size: 1.3em;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-}
-
-.sq-stat-label {
-  display: block;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: #999;
 }
 
 .sq-countries {

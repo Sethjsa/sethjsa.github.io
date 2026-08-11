@@ -30,12 +30,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- _data/squadrats_stats.yml images/squadrats_tiles.png; then
+          if git diff --quiet -- _data/squadrats_stats.yml images/squadrats_tiles.png images/squadrats_map.png; then
             echo "No changes to commit"
             exit 0
           fi
           cp _data/squadrats_stats.yml /tmp/squadrats_stats.yml
           cp images/squadrats_tiles.png /tmp/squadrats_tiles.png
+          cp images/squadrats_map.png /tmp/squadrats_map.png
           # Reset onto the latest tip each retry and reapply our
           # freshly-computed output verbatim, rather than rebasing - a plain
           # rebase can hit a real content conflict on these generated files
@@ -44,7 +45,8 @@ jobs:
           for i in 1 2 3 4 5; do
             cp /tmp/squadrats_stats.yml _data/squadrats_stats.yml
             cp /tmp/squadrats_tiles.png images/squadrats_tiles.png
-            git add _data/squadrats_stats.yml images/squadrats_tiles.png
+            cp /tmp/squadrats_map.png images/squadrats_map.png
+            git add _data/squadrats_stats.yml images/squadrats_tiles.png images/squadrats_map.png
             git commit -m "Update squadrats stats"
             if git push; then
               exit 0
