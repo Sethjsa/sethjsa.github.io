@@ -39,7 +39,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from shapely.geometry import Point, shape
 from shapely.prepared import prep
 
@@ -53,6 +53,28 @@ API_BASE = f"https://www.statshunters.com/share/{SHARE_HASH}/api"
 ZOOM = 14
 COUNTRIES_URL = "https://raw.githubusercontent.com/datasets/geo-countries/main/data/countries.geojson"
 MAX_COUNTRY_TILES = 300_000  # skip completion % for absurdly large countries (compute safety)
+
+# A handful of well-known places for map context. Small/manually curated
+# rather than pulled from a full gazetteer - "a few place names", not a
+# real map's worth of labels. Only ones that fall within the rendered
+# crop actually get drawn. Extend this list if the home region shifts.
+PLACE_LABELS = [
+    ("Amsterdam", 52.3676, 4.9041),
+    ("Rotterdam", 51.9244, 4.4777),
+    ("Utrecht", 52.0907, 5.1214),
+    ("The Hague", 52.0705, 4.3007),
+    ("Haarlem", 52.3874, 4.6462),
+    ("Almere", 52.3508, 5.2647),
+    ("Hilversum", 52.2292, 5.1669),
+    ("Alkmaar", 52.6324, 4.7534),
+    ("Amersfoort", 52.1561, 5.3878),
+    ("Leiden", 52.1601, 4.4970),
+    ("Purmerend", 52.5050, 4.9591),
+    ("Hoorn", 52.6425, 5.0597),
+    ("Gouda", 52.0115, 4.7104),
+    ("Antwerp", 51.2194, 4.4025),
+    ("Brussels", 50.8503, 4.3517),
+]
 
 
 def fetch_json(url):
@@ -266,7 +288,7 @@ def count_tiles_in_geom(geom, prepared):
 
 def compute_country_completion(visited, countries):
     if not visited:
-        return []
+        return [], {}
 
     # numerator: which country each visited tile falls in
     visited_by_country = defaultdict(set)
@@ -302,7 +324,7 @@ def compute_country_completion(visited, countries):
         })
 
     results.sort(key=lambda r: r["pct"], reverse=True)
-    return results
+    return results, visited_by_country
 
 
 def render_tile_grid(tiles, scale=4, pad=1):
@@ -367,6 +389,18 @@ def render_map_overlay(tiles, countries, scale=4, pad=1):
         py0 = (y - min_y + pad) * scale
         draw.rectangle([px0, py0, px0 + scale - 2, py0 + scale - 2], fill=tile_color)
 
+    try:
+        font = ImageFont.load_default(size=11)
+    except TypeError:
+        font = ImageFont.load_default()
+    label_color = (110, 110, 110, 255)
+    for name, lat, lng in PLACE_LABELS:
+        if not (crop_min_lat <= lat <= crop_max_lat and crop_min_lng <= lng <= crop_max_lng):
+            continue
+        px, py = to_px(lat, lng)
+        draw.ellipse([px - 1.5, py - 1.5, px + 1.5, py + 1.5], fill=label_color)
+        draw.text((px + 4, py - 5), name, fill=label_color, font=font)
+
     MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
     img.save(MAP_FILE)
 
@@ -388,9 +422,19 @@ def main():
 
     stats, components = compute_tile_stats(tile_counts)
     countries = fetch_country_polygons()
-    country_completion = compute_country_completion(visited, countries)
-    render_tile_grid(components[0])
-    render_map_overlay(components[0], countries)
+    country_completion, visited_by_country = compute_country_completion(visited, countries)
+
+    # Render every tile in the home country (the one with the most visited
+    # tiles), not just the strictly-4-connected cluster - a real map of
+    # ridden tiles naturally has gaps (rivers, motorways, unridden streets)
+    # that would otherwise fragment it into lots of separate islands.
+    if visited_by_country:
+        home_country = max(visited_by_country, key=lambda k: len(visited_by_country[k]))
+        render_tiles = visited_by_country[home_country]
+    else:
+        render_tiles = components[0]
+    render_tile_grid(render_tiles)
+    render_map_overlay(render_tiles, countries)
 
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),

@@ -1,45 +1,39 @@
 {% assign sq = site.data.squadrats_stats %}
 {% if sq.total_tiles > 0 %}
 <div class="widget-box squadrats-viz">
-  <div class="sq-layout">
-    <div class="sq-tilemap-wrap">
+  <div class="lfm-top-lists">
+    <div class="lfm-top-col sq-map-col">
       <div class="lfm-period-toggle sq-view-toggle">
         <button type="button" data-view="squares" class="active">Squares</button>
         <button type="button" data-view="map">Map</button>
       </div>
-      <a class="sq-tilemap" href="https://www.statshunters.com/share/4a769afeb9f9/heatmap" target="_blank" rel="noopener" title="Largest connected cluster of explorer tiles">
-        <img id="sq-img-squares" src="/images/squadrats_tiles.png" alt="Grid of my largest connected cluster of explorer tiles">
-        <img id="sq-img-map" src="/images/squadrats_map.png" alt="Same tile cluster overlaid on a basic country outline" style="display:none;">
+      <a class="sq-tilemap" href="https://www.statshunters.com/share/4a769afeb9f9/heatmap" target="_blank" rel="noopener" title="My explorer tiles">
+        <img id="sq-img-squares" src="/images/squadrats_tiles.png" alt="Grid of my explorer tiles">
+        <img id="sq-img-map" src="/images/squadrats_map.png" alt="Same tiles overlaid on a basic map with place names" style="display:none;">
       </a>
     </div>
-    <div class="lfm-top-lists sq-stats-lists">
-      <div class="lfm-top-col">
-        <p class="lb-section-title">Explorer tiles</p>
-        <p class="sq-stat-value">{{ sq.total_tiles }}</p>
-      </div>
-      <div class="lfm-top-col">
-        <p class="lb-section-title">Max square</p>
-        <p class="sq-stat-value">{{ sq.max_square }}&times;{{ sq.max_square }}</p>
-      </div>
-      <div class="lfm-top-col">
-        <p class="lb-section-title">Max cluster</p>
-        <p class="sq-stat-value">{{ sq.max_cluster_tiles }}</p>
-      </div>
+    <div class="lfm-top-col">
+      <p class="lb-section-title">Explorer tiles</p>
+      <ol class="sq-stat-list">
+        <li><span class="sq-stat-value">{{ sq.total_tiles }}</span><span class="lfm-sub">explorer tiles</span></li>
+        <li><span class="sq-stat-value">{{ sq.max_square }}&times;{{ sq.max_square }}</span><span class="lfm-sub">max square</span></li>
+        <li><span class="sq-stat-value">{{ sq.max_cluster_tiles }}</span><span class="lfm-sub">max cluster</span></li>
+      </ol>
     </div>
+    {% if sq.country_completion and sq.country_completion.size > 0 %}
+      <div class="lfm-top-col">
+        <p class="lb-section-title">Top countries</p>
+        <ol>
+          {% for c in sq.country_completion limit:5 %}
+            <li>
+              {{ c.name }}
+              <span class="lfm-sub">{{ c.pct }}% &middot; {{ c.visited }} / {{ c.total }} tiles</span>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
   </div>
-
-  {% if sq.country_completion and sq.country_completion.size > 0 %}
-    <p class="lb-section-title">Country completion</p>
-    <ol class="sq-countries">
-      {% for c in sq.country_completion %}
-        <li>
-          <span class="sq-country-name">{{ c.name }}</span>
-          <span class="sq-country-pct">{{ c.pct }}%</span>
-          <span class="lfm-sub">{{ c.visited }} / {{ c.total }} tiles</span>
-        </li>
-      {% endfor %}
-    </ol>
-  {% endif %}
 
   <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
     explorer tiles are {{ sq.zoom }}-zoom map squares, tracked via <a href="https://www.statshunters.com" target="_blank" rel="noopener">StatsHunters</a> &middot; updated {{ sq.last_updated }}
