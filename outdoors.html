@@ -1,0 +1,67 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% include frags/meta.html %}
+    <title>Outdoors &ndash; Seth Aycock</title>
+  </head>
+  <body>
+    {% include frags/nav.html %}
+    <section>
+
+      <section style="max-width:800px; text-align:justify">
+        <header>
+          <h1><tt>outdoors</tt></h1>
+        </header>
+        <p>
+          I spend time <a href="https://www.strava.com/athletes/34997852">outdoors</a>.
+        <!-- Strava's public embed widget started showing a login wall instead of
+             activity data (not a code issue on this end - likely a Strava-side
+             privacy/deprecation change). Replaced with a plain link card below;
+             leaving the old iframe here in case Strava fixes it and it's worth
+             reverting to.
+        <div class="widget-box">
+          <iframe
+            height='350'
+            width='380'
+            frameborder='0'
+            allowtransparency='true'
+            scrolling='no'
+            src='https://www.strava.com/athletes/34997852/latest-rides/40b61b38f26ec5b5ef8dba71e063ccf19a29c777'>
+          </iframe>
+        </div>
+        -->
+        {% include frags/strava_recent.html %}
+        {% unless site.data.summitbag_stats.recent_public_activities and site.data.summitbag_stats.recent_public_activities.size > 0 %}
+        <div class="widget-box">
+          <a class="strava-card" href="https://www.strava.com/athletes/34997852" target="_blank" rel="noopener">
+            <span class="strava-icon">&#9650;</span>
+            View my activity on Strava
+          </a>
+        </div>
+        {% endunless %}
+        <p></p>
+        <p>I particularly like going uphill.
+        </p>
+        {% include frags/summitbag.html %}
+        <p></p>
+        <p>Sometimes I collect <a href="https://squadrats.com/map/4d6ktQflKPatJGolMC8z8WmIFg93/14/earth">squares</a>.
+        </p>
+        <!-- Replaced with a static widget sourced from StatsHunters - see
+             _includes/frags/squadrats.html. Leaving the live iframe here in
+             case we want to revert.
+        <div class="widget-box">
+          <iframe
+            src="https://squadrats.com/map/4d6ktQflKPatJGolMC8z8WmIFg93/14/earth"
+            width="380" height="660" frameborder="0" allowscrolling="no"
+            style="border-radius:4px;">
+          </iframe>
+        </div>
+        -->
+        {% include frags/squadrats.html %}
+      </section>
+
+    </section>
+  </body>
+</html>
