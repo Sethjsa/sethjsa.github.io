@@ -327,7 +327,7 @@ def compute_country_completion(visited, countries):
     return results, visited_by_country
 
 
-def render_tile_grid(tiles, scale=4, pad=1):
+def render_tile_grid(tiles, scale=8, pad=1):
     xs = [t[0] for t in tiles]
     ys = [t[1] for t in tiles]
     min_x, max_x = min(xs), max(xs)
@@ -349,7 +349,7 @@ def render_tile_grid(tiles, scale=4, pad=1):
     img.save(HEATMAP_FILE)
 
 
-def render_map_overlay(tiles, countries, scale=4, pad=1):
+def render_map_overlay(tiles, countries, scale=8, pad=1):
     """Same tile-grid canvas as render_tile_grid, but with basic country
     border outlines drawn underneath the tiles for geographic context."""
     xs = [t[0] for t in tiles]
@@ -371,6 +371,7 @@ def render_map_overlay(tiles, countries, scale=4, pad=1):
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
     border_color = (180, 180, 180, 255)
+    border_width = max(1, scale // 4)
 
     for c in countries:
         minx, miny, maxx, maxy = c["bounds"]
@@ -381,7 +382,7 @@ def render_map_overlay(tiles, countries, scale=4, pad=1):
             for ring in rings:
                 points = [to_px(lat, lng) for lng, lat in ring.coords]
                 if len(points) > 1:
-                    draw.line(points, fill=border_color, width=1)
+                    draw.line(points, fill=border_color, width=border_width)
 
     tile_color = (252, 76, 2, 200)  # semi-transparent so borders stay visible underneath
     for (x, y) in tiles:
@@ -389,17 +390,24 @@ def render_map_overlay(tiles, countries, scale=4, pad=1):
         py0 = (y - min_y + pad) * scale
         draw.rectangle([px0, py0, px0 + scale - 2, py0 + scale - 2], fill=tile_color)
 
+    # Font/marker sizes scale with `scale` so labels stay the same apparent
+    # size once the image is displayed at a fixed CSS box - the point of
+    # bumping `scale` is a sharper source image (like a @2x asset), not a
+    # bigger one.
+    font_size = round(11 * scale / 4)
     try:
-        font = ImageFont.load_default(size=11)
+        font = ImageFont.load_default(size=font_size)
     except TypeError:
         font = ImageFont.load_default()
     label_color = (110, 110, 110, 255)
+    marker_r = 1.5 * scale / 4
+    label_offset = 4 * scale / 4
     for name, lat, lng in PLACE_LABELS:
         if not (crop_min_lat <= lat <= crop_max_lat and crop_min_lng <= lng <= crop_max_lng):
             continue
         px, py = to_px(lat, lng)
-        draw.ellipse([px - 1.5, py - 1.5, px + 1.5, py + 1.5], fill=label_color)
-        draw.text((px + 4, py - 5), name, fill=label_color, font=font)
+        draw.ellipse([px - marker_r, py - marker_r, px + marker_r, py + marker_r], fill=label_color)
+        draw.text((px + label_offset, py - label_offset - 1), name, fill=label_color, font=font)
 
     MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
     img.save(MAP_FILE)
