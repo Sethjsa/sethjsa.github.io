@@ -30,7 +30,10 @@ Requires environment variables:
 """
 import argparse
 import collections
+import csv
+import io
 import json
+import math
 import os
 import re
 import sys
@@ -38,6 +41,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -66,6 +70,41 @@ def flag_for_country(country_name):
     if not iso2:
         return None
     return "".join(chr(0x1F1E6 + ord(c) - ord("A")) for c in iso2)
+
+
+GEONAMES_CITIES_URL = "https://download.geonames.org/export/dump/cities15000.zip"
+
+
+def fetch_cities_gazetteer():
+    """Strava's location_city often comes back null, but start_latlng is
+    still populated - so reverse-geocode ourselves against a public
+    gazetteer (GeoNames, cities with population > 15,000) rather than
+    depending on Strava's field."""
+    req = urllib.request.Request(GEONAMES_CITIES_URL, headers={"User-Agent": "sethjsa.github.io stats script"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        zip_bytes = resp.read()
+    cities = []
+    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+        with zf.open("cities15000.txt") as f:
+            reader = csv.reader(io.TextIOWrapper(f, encoding="utf-8"), delimiter="\t")
+            for row in reader:
+                # GeoNames dump columns: geonameid, name, asciiname, ...,
+                # latitude(4), longitude(5), ...
+                name, lat, lng = row[1], float(row[4]), float(row[5])
+                cities.append((name, lat, lng))
+    return cities
+
+
+def nearest_city(lat, lng, cities):
+    if lat is None or lng is None or not cities:
+        return None
+    lat_scale = math.cos(math.radians(lat))
+    best_name, best_dist = None, None
+    for name, city_lat, city_lng in cities:
+        d = (city_lat - lat) ** 2 + ((city_lng - lng) * lat_scale) ** 2
+        if best_dist is None or d < best_dist:
+            best_name, best_dist = name, d
+    return best_name
 
 TOKEN_URL = "https://www.strava.com/oauth/token"
 API_BASE = "https://www.strava.com/api/v3"
@@ -275,6 +314,26 @@ def save_state(state):
         if a.get("private") is False and a.get("start_date")
     ]
     public_activities.sort(key=lambda a: a["start_date"], reverse=True)
+    recent5 = public_activities[:5]
+
+    # Strava's own location_city often comes back null - reverse-geocode
+    # from start_latlng instead, but only for the handful of activities
+    # actually shown, not the whole archive.
+    cities = None
+    if any(a.get("location_city") is None and a.get("start_latlng") for a in recent5):
+        try:
+            cities = fetch_cities_gazetteer()
+        except Exception as e:
+            print(f"Failed to fetch city gazetteer ({e!r}) - city names will be omitted", file=sys.stderr)
+
+    def city_for(a):
+        if a.get("location_city"):
+            return a["location_city"]
+        latlng = a.get("start_latlng")
+        if cities and latlng and len(latlng) == 2:
+            return nearest_city(latlng[0], latlng[1], cities)
+        return None
+
     recent_public_activities = [
         {
             "id": a["id"],
@@ -284,10 +343,10 @@ def save_state(state):
             "distance": a.get("distance"),
             "total_elevation_gain": a.get("total_elevation_gain"),
             "moving_time": a.get("moving_time"),
-            "location_city": a.get("location_city"),
+            "location_city": city_for(a),
             "map_summary_polyline": a.get("map_summary_polyline"),
         }
-        for a in public_activities[:5]
+        for a in recent5
     ]
 
     out = {
