@@ -349,6 +349,10 @@ def save_state(state):
         for a in recent5
     ]
 
+    total_elevation_m = sum(
+        m for by_year in state["elevation"].values() for m in by_year.values()
+    )
+
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "last_processed_epoch": state["last_processed_epoch"],
@@ -359,6 +363,7 @@ def save_state(state):
         "top_peaks": top_peaks,
         "peaks": peaks_sorted,
         "elevation": state["elevation"],
+        "total_elevation_m": round(total_elevation_m),
         "recent_public_activities": recent_public_activities,
     }
     with open(DATA_FILE, "w") as f:

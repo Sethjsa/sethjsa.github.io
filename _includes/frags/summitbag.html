@@ -36,7 +36,7 @@
   </details>
 
   <p style="font-size:0.75em; color:#999; margin:0.4em 0 0;">
-    ⛰️ {{ sb.peak_count }} peaks bagged &middot; updated {{ sb.last_updated }}
+    ⛰️ {{ sb.peak_count }} peaks bagged &middot; {{ sb.total_elevation_m | divided_by: 1000.0 | round }} km total elevation gain &middot; updated {{ sb.last_updated }}
   </p>
   <noscript>
     <p style="font-size:0.85em; color:#555;">
