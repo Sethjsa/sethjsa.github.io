@@ -1,37 +1,20 @@
-{% assign rym_recent = site.data.rym_recent %}
 {% assign rym_ratings = site.data.rym_ratings %}
-{% if rym_recent.recent.size > 0 or rym_ratings.top_rated.size > 0 %}
+{% if rym_ratings.top_rated.size > 0 %}
 <p class="media-section-title">Albums</p>
 <div class="widget-box rym-viz">
-  {% if rym_recent.recent.size > 0 %}
-    <p class="lb-section-title">Recently rated</p>
-    <div class="lb-recent-scroll">
-      {% for a in rym_recent.recent %}
-        <a class="lb-poster lfm-poster" href="{{ a.url }}" target="_blank" rel="noopener" title="{{ a.name }} - {{ a.artist }} ({{ a.rating }} stars)">
-          {% if a.image %}
-            <img src="{{ a.image }}" alt="{{ a.name }}" loading="lazy">
-          {% endif %}
-          <span class="lb-rating lfm-poster-label">{{ a.rating }}&#9733; &middot; {{ a.artist }}</span>
-        </a>
-      {% endfor %}
-    </div>
-  {% endif %}
-
-  {% if rym_ratings.top_rated.size > 0 %}
-    <p class="lb-section-title">Top rated</p>
-    <ol class="lb-top-rated">
-      {% for a in rym_ratings.top_rated %}
-        <li>
-          <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.name }}</a>
-          &ndash; {{ a.artist }}
-          <span class="lb-rating-text">&middot; {{ a.rating }}/10</span>
-        </li>
-      {% endfor %}
-    </ol>
-  {% endif %}
+  <p class="lb-section-title">Top rated</p>
+  <ol class="lb-top-rated">
+    {% for a in rym_ratings.top_rated %}
+      <li>
+        <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.name }}</a>
+        &ndash; {{ a.artist }}
+        <span class="lb-rating-text">&middot; {{ a.rating }}/10</span>
+      </li>
+    {% endfor %}
+  </ol>
 
   <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
-    {{ rym_ratings.total_rated }} rated on <a href="https://rateyourmusic.com/~SetheryJ" target="_blank" rel="noopener">RateYourMusic</a> &middot; updated {{ rym_recent.last_updated | default: rym_ratings.last_updated }}
+    {{ rym_ratings.total_rated }} rated on <a href="https://rateyourmusic.com/~SetheryJ" target="_blank" rel="noopener">RateYourMusic</a> &middot; updated {{ rym_ratings.last_updated }}
   </p>
 </div>
 {% endif %}
