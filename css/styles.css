@@ -289,7 +289,7 @@ ul.updates .date {
   --series-ski:   #4a3aa7;
   --series-other: #1baf7a;
   --chart-gridline: #e1e0d9;
-  max-width: 500px;
+  max-width: 800px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -312,7 +312,7 @@ ul.updates .date {
   --lfm-series-5: #1baf7a;
   --lfm-series-other: #898781;
   --chart-gridline: #e1e0d9;
-  max-width: 640px;
+  max-width: 800px;
 }
 
 @media (prefers-color-scheme: dark) {
