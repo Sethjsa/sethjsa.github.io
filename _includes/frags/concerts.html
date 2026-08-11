@@ -5,7 +5,7 @@
   <div class="lfm-top-lists">
     {% if cs.most_recent.size > 0 %}
       <div class="lfm-top-col">
-        <h4>Most recent</h4>
+        <p class="lb-section-title">Most recent</p>
         <ol>
           {% for c in cs.most_recent %}
             <li>
@@ -18,7 +18,7 @@
     {% endif %}
     {% if cs.top_ranked.size > 0 %}
       <div class="lfm-top-col">
-        <h4>Favourites</h4>
+        <p class="lb-section-title">Favourites</p>
         <ol>
           {% for c in cs.top_ranked %}
             <li>
@@ -31,7 +31,7 @@
     {% endif %}
     {% if cs.top_locations.size > 0 %}
       <div class="lfm-top-col">
-        <h4>Top locations</h4>
+        <p class="lb-section-title">Top locations</p>
         <ol>
           {% for l in cs.top_locations %}
             <li>

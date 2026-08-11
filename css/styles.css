@@ -576,7 +576,7 @@ table.peaks-table td.peaks-summit-cell {
 
 /* section labels separating the music/film/concerts widgets */
 .media-section-title {
-  font-size: 0.7em;
+  font-size: 1em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #999;
