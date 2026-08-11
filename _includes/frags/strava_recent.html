@@ -71,7 +71,12 @@
     var minLat = Math.min.apply(null, lats), maxLat = Math.max.apply(null, lats);
     var minLng = Math.min.apply(null, lngs), maxLng = Math.max.apply(null, lngs);
     var latRange = Math.max(maxLat - minLat, 1e-6);
-    var lngRange = Math.max(maxLng - minLng, 1e-6);
+    // Longitude degrees cover less real-world distance than latitude degrees
+    // away from the equator - scale by cos(latitude) so routes keep their
+    // true aspect ratio instead of looking stretched.
+    var meanLatRad = (minLat + maxLat) / 2 * Math.PI / 180;
+    var lngScale = Math.cos(meanLatRad);
+    var lngRange = Math.max((maxLng - minLng) * lngScale, 1e-6);
 
     var SIZE = 44, PAD = 4;
     var plot = SIZE - PAD * 2;
@@ -85,7 +90,7 @@
     svg.setAttribute('class', 'strava-minimap-svg');
 
     var d = points.map(function(p, i) {
-      var x = PAD + offsetX + (p[1] - minLng) * scale;
+      var x = PAD + offsetX + (p[1] - minLng) * lngScale * scale;
       var y = SIZE - (PAD + offsetY + (p[0] - minLat) * scale); // flip: lat up = svg y down
       return (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1);
     }).join(' ');
