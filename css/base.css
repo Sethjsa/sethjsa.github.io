@@ -63,6 +63,17 @@ nav > section > ul > li > a:hover {
   color: #000;
 }
 
+nav .nav-subheading {
+  font-size: 0.68em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+  margin: 6px 0 2px;
+  padding: 4px 8px 3px;
+}
+
 body > section {
   width: 85%;
   height: 95%;
