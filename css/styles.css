@@ -604,6 +604,16 @@ table.peaks-table td.peaks-summit-cell {
   margin-top: 0;
 }
 
+/* collapsible "Stats" sections wrapping bar charts */
+.stats-details summary.lb-section-title {
+  cursor: pointer;
+}
+
+.stats-details summary.lb-section-title::marker {
+  font-size: 0.9em;
+  color: #bbb;
+}
+
 /* letterboxd */
 
 .letterboxd-viz ol.lb-top-rated {
@@ -713,6 +723,8 @@ table.peaks-table td.peaks-summit-cell {
 .sq-tilemap img {
   display: block;
   max-width: 190px;
+  max-height: 190px;
+  width: auto;
   height: auto;
   image-rendering: pixelated;
 }

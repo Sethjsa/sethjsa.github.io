@@ -3,19 +3,6 @@
 {% if lb_recent.recent.size > 0 or lb_ratings.top_rated.size > 0 %}
 <p class="media-section-title">Films</p>
 <div class="widget-box letterboxd-viz">
-  {% if lb_ratings.top_rated.size > 0 %}
-    <p class="lb-section-title">Top rated</p>
-    <ol class="lb-top-rated">
-      {% for m in lb_ratings.top_rated %}
-        <li>
-          <a href="{{ m.url }}" target="_blank" rel="noopener">{{ m.name }}</a>
-          {% if m.year %}({{ m.year }}){% endif %}
-          <span class="lb-rating-text">&middot; {{ m.rating }}&#9733;</span>
-        </li>
-      {% endfor %}
-    </ol>
-  {% endif %}
-
   {% if lb_recent.recent.size > 0 %}
     <p class="lb-section-title">Recently logged</p>
     <div class="lb-recent-scroll">
@@ -28,6 +15,19 @@
         </a>
       {% endfor %}
     </div>
+  {% endif %}
+
+  {% if lb_ratings.top_rated.size > 0 %}
+    <p class="lb-section-title">Top rated</p>
+    <ol class="lb-top-rated">
+      {% for m in lb_ratings.top_rated %}
+        <li>
+          <a href="{{ m.url }}" target="_blank" rel="noopener">{{ m.name }}</a>
+          {% if m.year %}({{ m.year }}){% endif %}
+          <span class="lb-rating-text">&middot; {{ m.rating }}&#9733;</span>
+        </li>
+      {% endfor %}
+    </ol>
   {% endif %}
 
   <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">

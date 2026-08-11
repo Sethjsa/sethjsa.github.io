@@ -2,7 +2,6 @@
 {% if sb.peak_count > 0 %}
 <div class="widget-box summitbag-viz">
   <script type="application/json" id="summitbag-data">{{ sb | jsonify }}</script>
-  <div id="summitbag-chart"></div>
 
   <p class="sb-subtitle">Here are all the peaks I've summited since 2022.</p>
   <div id="peaksbox">
@@ -30,6 +29,11 @@
       </ol>
     </div>
   {% endif %}
+
+  <details class="stats-details">
+    <summary class="lb-section-title">Stats</summary>
+    <div id="summitbag-chart"></div>
+  </details>
 
   <p style="font-size:0.75em; color:#999; margin:0.4em 0 0;">
     ⛰️ {{ sb.peak_count }} peaks bagged &middot; updated {{ sb.last_updated }}

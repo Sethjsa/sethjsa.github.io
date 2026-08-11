@@ -424,15 +424,10 @@ def main():
     countries = fetch_country_polygons()
     country_completion, visited_by_country = compute_country_completion(visited, countries)
 
-    # Render every tile in the home country (the one with the most visited
-    # tiles), not just the strictly-4-connected cluster - a real map of
-    # ridden tiles naturally has gaps (rivers, motorways, unridden streets)
-    # that would otherwise fragment it into lots of separate islands.
-    if visited_by_country:
-        home_country = max(visited_by_country, key=lambda k: len(visited_by_country[k]))
-        render_tiles = visited_by_country[home_country]
-    else:
-        render_tiles = components[0]
+    # Render just the largest connected cluster - rendering the whole home
+    # country made the box far too big (Den Helder to Rotterdam). This is
+    # meant to be a small square showing the biggest connected grid.
+    render_tiles = components[0]
     render_tile_grid(render_tiles)
     render_map_overlay(render_tiles, countries)
 

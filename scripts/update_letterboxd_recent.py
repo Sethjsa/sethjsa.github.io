@@ -29,7 +29,7 @@ RSS_URL = "https://letterboxd.com/ducksalad/rss/"
 NS = {"letterboxd": "https://letterboxd.com"}
 
 IMG_RE = re.compile(r'<img src="([^"]+)"')
-KEEP = 12
+KEEP = 15
 
 
 def fetch_rss():
