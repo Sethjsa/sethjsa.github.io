@@ -30,17 +30,23 @@ jobs:
       - name: Fetch Letterboxd recent films
         run: python scripts/update_letterboxd_recent.py
 
+      - name: Fetch RYM recent ratings
+        env:
+          RYM_COOKIE: ${{ secrets.RYM_COOKIE }}
+        run: python scripts/update_rym_recent.py
+
       - name: Commit updated stats
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- _data/lastfm_stats.yml _data/letterboxd_recent.yml; then
+          if git diff --quiet -- _data/lastfm_stats.yml _data/letterboxd_recent.yml _data/rym_recent.yml; then
             echo "No changes to commit"
             exit 0
           fi
           cp _data/lastfm_stats.yml /tmp/lastfm_stats.yml
           cp _data/letterboxd_recent.yml /tmp/letterboxd_recent.yml
+          cp _data/rym_recent.yml /tmp/rym_recent.yml
           # Reset onto the latest tip each retry and reapply our
           # freshly-computed output verbatim, rather than rebasing - a plain
           # rebase can hit a real content conflict on these generated files
@@ -49,7 +55,8 @@ jobs:
           for i in 1 2 3 4 5; do
             cp /tmp/lastfm_stats.yml _data/lastfm_stats.yml
             cp /tmp/letterboxd_recent.yml _data/letterboxd_recent.yml
-            git add _data/lastfm_stats.yml _data/letterboxd_recent.yml
+            cp /tmp/rym_recent.yml _data/rym_recent.yml
+            git add _data/lastfm_stats.yml _data/letterboxd_recent.yml _data/rym_recent.yml
             git commit -m "Update media stats"
             if git push; then
               exit 0
