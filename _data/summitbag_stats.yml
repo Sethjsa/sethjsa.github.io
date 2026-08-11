@@ -1692,14 +1692,14 @@ elevation:
     2023: 24376
     2024: 1566
     2025: 34149
-    2026: 28980
+    2026: 26464
   Run:
     2021: 1676
     2022: 17761
     2023: 26451
     2024: 1576
     2025: 33975
-    2026: 28927
+    2026: 26574
   Ride:
     2022: 3445
     2023: 9990
@@ -1707,6 +1707,22 @@ elevation:
     2025: 11187
     2026: 15135
 recent_public_activities:
+- id: 19541579264
+  name: 45' D2
+  sport_type: Run
+  start_date_local: '2026-07-31T20:12:57Z'
+  distance: 10033.9
+  total_elevation_gain: 56.0
+  moving_time: 2651
+  map_summary_polyline: ywyxEk`_tYv@|Bz@~CVd@Zv@^p@N`@Jh@Dv@Ab@Uv@OZUVAVPhAHt@Jf@d@pAXh@Vt@Pd@J^T`@J^R`@Tz@\bBZnCR|CDrCSjD?PDNLVHFj@H`AT`AJp@RhC^vAZz@Lb@J^BlAVx@JN?l@ClAH|BMzBe@`Aa@n@a@jCoA`Aa@^WpB_APSJWd@wBTsADORc@h@s@rA{A\[rA{@`@]bAkAXg@Pi@BOPsCJy@Ag@KmBG_@Ei@_B_HAa@Ba@b@gArAeE|@aCHa@ASMQcB}@y@e@m@c@k@Ua@Ym@[i@_@[M[W}@c@}@k@oBaAkDmBgAs@cB{@o@a@_@Ow@c@eAw@[Mc@CmCm@mBk@cAm@]W_@_@_@Q[CqAc@MC[@k@Mu@IYI_@GSIUAM@a@NSDm@\qAXQHgBV{@JQFk@~@gApAc@p@MjAC^U|AIz@EREbAq@~I^~Al@dBXhA^jAf@rA`ArBJ\H^BXBn@Ej@ENk@hAETZbCl@hBd@bAn@nBb@jAJRp@jCDb@Ll@TdC@v@NnDAz@SnC?HJ\PRd@JbANj@Nn@HrB^dALf@Lj@HPFpARt@TjALdEDbBQlBc@\Mz@g@PItBeAhBu@`Ak@z@]PMJMV{@b@cCXgAlA_BnAoAn@g@t@_@r@u@t@aALYT{@J}BFq@@y@EqAQmBq@oCi@iCCm@@Or@wBFYt@}BjAcDBGAOEOeAk@_@MUQu@g@]Qa@YuAo@uA{@iFsCo@a@qAq@yBoA}DuBcC{Ao@Uq@M{@Us@OgBg@e@WaBmAiA[]QSEmAQqCk@[CSF}Al@SDq@Ry@Pq@HeB\IJMZs@z@[d@]\KR
+- id: 19513523100
+  name: 50' D1
+  sport_type: Run
+  start_date_local: '2026-07-29T19:35:38Z'
+  distance: 10019.4
+  total_elevation_gain: 54.0
+  moving_time: 3012
+  map_summary_polyline: '}wyxEm`_tYXv@j@vBb@rAb@dA`@fAl@nADTFrACb@Sz@WRIRAR@LRbBJb@nCjHR~@JVd@fB^jBLhBJzB?^D`@?rASbD@NFPJPHFl@NbC`@^JhAN`@J|AT`@HZL|@Ph@Ff@LfAPf@@d@Ar@Br@HRGhAOvAOn@QZM^SbAa@h@]dAe@h@_@pAm@`@UdAe@VYJWVeAh@mCPa@z@mAf@c@d@k@hBoAVUt@w@j@w@Tw@D_@?]JkAHg@B]?eAQ}CQ}@Qe@]uAG]]gACe@BWNm@zAuE`@aAj@kBDM?OEKMKaAc@SMm@Y}@o@o@[m@_@OG]UeAk@WScBy@eAo@yAs@c@Ye@SMKOGg@WgAs@OG_Ak@UQ[Kc@Y]OGGEAs@a@c@[a@QcA[g@G}@SqCy@m@c@SK]_@SMi@I{@[aAOq@QgB]k@Gg@Fw@\yBj@eAT_ALc@LUT_@j@Ub@eAjAO^QlBOl@Gp@GXEp@Mz@GfAGTQlDIfADVZfAfAfDVhAtAjD`@t@Pz@Bb@EhAMd@OXQPCP?NZ`Ct@bC^x@R`@X~@`@bALj@Pd@B\\fALt@XjDBbADf@?^Ft@?TCx@UtBDh@NRFDr@N`@DvCj@r@HvBd@p@HpA`@h@BVJbAPt@BTCR?tAJb@?|@M^Ij@EhAU\UhB}@b@Qb@WxAo@pAu@t@Y\QV_@\eATwAXkALYh@y@hBkB\[PIz@o@hAmA\e@P]XiAHaBDWDqAAe@G_@IwAGi@Oo@E[c@{Ac@sBAm@`BoFj@eBp@iBDUGSWQa@O_@U]OUOg@W_Aq@s@Y{A}@SIw@g@_@QsAw@_@Ow@m@i@Sk@]gAk@m@a@u@_@_@[eCoAyCgBqAUo@U}Cs@WIYSmAiAe@Gs@Se@Sg@OgBSuB_@k@LaCv@oATw@P{@NQHIH{@nA]\W\[\AD'
 - id: 10661136546
   name: Afternoon Run
   sport_type: Run
@@ -1731,19 +1747,3 @@ recent_public_activities:
   total_elevation_gain: 52.0
   moving_time: 2672
   map_summary_polyline: ayl~Hgo~\_@Pa@B{Ag@QAMPKv@GLgAP_A^kAr@m@j@W`@Sd@Mj@Gl@@~@Rx@l@xAT\VR?`@Fd@XTr@BvBa@tBQhA?fCNx@XdAx@b@j@pA`Cp@~Ab@vAz@zDr@vENzBHfEGvD]rE@lABt@Jp@h@rCTf@NN^NdAGPFhB_@`Ac@\IlBCxAPtB~@zChDbCxBrBz@lBlAlCbAbGxCb@N|AT`AEtAa@fAu@x@mAfCwHHg@BuA?_EEkC@gAZmEXcCd@}BVy@bDsJtBuLvAgGr@aBtAeCTYXGVB|A~@f@n@x@vA^x@h@hBxAxGX|@`@p@n@r@f@\XHv@KzA{@lAi@pASxAIj@NxAt@~BrAbAZxCT|CWfBi@nEkClCcDxAuApDoAx@@XPdExDh@t@rAlC\\tCzDxA|CrCvEnBtDbErIxD|FnAfA`@RT?RGLQb@aAD_@PWLVXvAR@^SRi@@QKaAD_@DM~B}Ef@u@`A{@`@aAXqAr@qFVkAl@sDtAsCvDwGRc@Lg@B{AU_FM{Je@yHUqBOgE?iADq@t@kEDCBDVQL]@[HQx@Xb@OpAgA`BeAfEqDv@g@pBaAdCo@vBw@^F\ThAbB|ApApAlCZ\HAv@gFz@{G`A{J|@yK^uF^yGb@sJh@{NZoL@_BE_B_@eE@{@RsB[aAI{@HqRCyBI{ASqBg@_Cs@qBw@qAw@_AYM]FcJrIqR~Pw@x@[PyJzI_@^cAdB}@bAeAr@iBv@kC~BSf@AN@b@nBzGDh@Mb@gf@rb@gJjIQFEGsD{IIMUIUTwAfEMToCtDo@l@a@Rq@PcAAs@QwBaAw@OiABq@ToA|@_IbIyVtXkIhIgEbDkGrD}FdCqGvBU\Ml@?r@NjDCn@ETeAlEwBzE_@\yH|D_Cn@uB@Y^uCvH_EpNiApDqB`FSbAq@xGK`@QXWHw@FsB~@eBHk@Mq@sAs@}DEq@@mBXcG@eCIiDSuCOaA[{AuAmFaA}Cs@sAaAsAo@m@cAe@u@O{BKgADgBXoBl@u@KOUOoAe@q@q@iB]oACi@F_ALg@Xi@v@s@jAq@|Cm@HSJs@HG`@@v@`@l@Br@QpBkAdA[`NkAp@Ov@c@jAaAd@m@Me@gByJIE}A~@a@Da@b@qAh@mErCCNb@`C
-- id: 10640721014
-  name: Afternoon Walk
-  sport_type: Walk
-  start_date_local: '2024-01-27T13:55:45Z'
-  distance: 5008.4
-  total_elevation_gain: 17.0
-  moving_time: 4226
-  map_summary_polyline: wdn|Hczv[H?H@?BFAJIt@EH?NEjAK@AAKNA`@BTGrAKx@KZx@DTRRFPYKJk@K_@GE@G@?BDJCX?XCj@QZEx@?TERHFCZ?DG@QQa@OG?ABJD@Ag@DKFEDO?GNHVVPf@HENQTKXA?FF?ID@EPENSGW?IB]Lc@AC@q@CQA}@YiB?g@DWD{@CCIJ@@@AWAGBY?EAAEDGAKQRe@L]^?LBTVXJXBVCTMDINMHKNMFKNWHCLPXCC_@b@g@ZMX?FCHG@?C@@_@MSEWQUKC?Yh@BB?D[?OHWAQWESOOIBU\IDEAOBACABDA@B@IL@KEBBB`@AFP`@Ad@@RAVIT?PN`@R?PMT@JEH@ZCBENFTCLGLFH?F@DEL@h@SAAB@?E@BECDEHJIAEIEk@?]BMAQJQFAAG@CE?AFGOOOMK??oAc@KREJAHEHWFGJEAS?OIUk@E?ADIDK@ETCIGAJADEBDKBCGBCACL@BEF?GAKKAOB?PMHU@]Ts@B[BABGAc@CKHYT]@OFIJENYHALMd@_@NQFS^[HQFAJONCDIRGFKc@q@y@qBAWBMFIv@SXARDRCRUP?PETQTEL@NCRDd@ATG`@OF?FCXDLINCvACXKLAD@ADACDEN?d@IR@^MHGP?RG\ATDDCX@NTd@ZEDAx@JRDb@Nl@BRALU\KFi@d@UHMNW@GBAD[FSTG@MAKJYJOBs@ZQNSF[RGAQD_@CYDGHMB?A[FYCIDW@UHc@@ODCDMDS@ODOGAEMQISI[P?CMY?\jAXh@Pz@LNFJAJ@Nc@PCJIFITYJKJCbAIFKL[TIPE@Qr@GjAEHBVALDLFABC@@WJq@N[?IDAASAWFMGW@UFM?OHK?MDw@ACDEAUDGAi@DIDKYQBZHIEAXICIHAEi@g@O]{Am@}@EhBx@@THAtATDDYGm@TIEEBGAKFi@HOLm@DKL?BC@a@b@EBUAYLEPKJEJHZAX
-- id: 10640711964
-  name: Lunch Ride
-  sport_type: Ride
-  start_date_local: '2024-01-27T12:07:31Z'
-  distance: 4694.1
-  total_elevation_gain: 12.0
-  moving_time: 905
-  map_summary_polyline: '{np~Hwlw\jBgAFMRMx@c@vBsALa@NqADs@T_A|@iAXc@j@m@`@i@\SDIOm@cBmEm@_Cs@{BGm@AWl@cDDcAFe@@kBToFAEF@@CFyBH_AbACtA@|@GVBHDR@tCEx@@TDBCHa@Dq@CmG@gKBuALgADCd@A`CJ|AVr@H|ACXBp@Pb@DASDsEEg@?k@VyLA_@NaD@aALcJLsH?cAH}AJuEBoCE{BFcAFa@fAiCPcAWoD@MLQrDqAfASzJsChAYjEuAnA]VG~@El@B^o@Tm@K_A@UDGb@WZ]dAqA\i@vAaBh@g@`DwDt@eAj@s@nBuBBIZcDLUFCV@n@X^F'
