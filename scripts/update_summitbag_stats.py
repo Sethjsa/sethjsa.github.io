@@ -284,6 +284,7 @@ def save_state(state):
             "distance": a.get("distance"),
             "total_elevation_gain": a.get("total_elevation_gain"),
             "moving_time": a.get("moving_time"),
+            "location_city": a.get("location_city"),
             "map_summary_polyline": a.get("map_summary_polyline"),
         }
         for a in public_activities[:5]
