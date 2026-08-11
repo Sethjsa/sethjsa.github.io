@@ -11,7 +11,19 @@
           <span class="strava-recent-meta">
             {{ a.start_date_local | date: "%-d %b %Y" }}
             {% if a.distance %}&middot; {{ a.distance | divided_by: 1000.0 | round: 1 }} km{% endif %}
-            {% if a.total_elevation_gain %}&middot; {{ a.total_elevation_gain | round }} m gain{% endif %}
+            {% if a.total_elevation_gain %}&middot; {{ a.total_elevation_gain | round }} m D+{% endif %}
+          {% if a.elapsed_time %}
+            &middot;
+            {% assign seconds = a.elapsed_time | modulo:60 %}
+            {% assign minutes = a.elapsed_time | divided_by:60 | modulo:60 %}
+            {% assign hours = a.elapsed_time | divided_by:3600 %}
+            {% if hours > 0 %}
+              {{ hours }}:{% if minutes < 10 %}0{% endif %}{{ minutes }}:{% if seconds < 10 %}0{% endif %}{{ seconds }} h
+            {% else %}
+              {{ minutes }}:{% if seconds < 10 %}0{% endif %}{{ seconds }} min
+            {% endif %}
+          {% endif %}
+     
           </span>
         </span>
       </a>
