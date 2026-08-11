@@ -85,3 +85,24 @@ recent:
   rewatch: false
   url: https://letterboxd.com/ducksalad/film/a-cock-and-bull-story/
   poster: https://a.ltrbxd.com/resized/sm/upload/jm/9k/um/k6/qrLrMTKfsDvMqt9YymXTceSXGiE-0-600-0-900-crop.jpg?v=82e8ff49d4
+- name: When Harry Met Sally...
+  year: 1989
+  rating: 3.5
+  watched_date: '2026-03-07'
+  rewatch: false
+  url: https://letterboxd.com/ducksalad/film/when-harry-met-sally/
+  poster: https://a.ltrbxd.com/resized/film-poster/5/1/4/8/5/51485-when-harry-met-sally--0-600-0-900-crop.jpg?v=2f277e2fe7
+- name: The One and Only Herb McGwyer Plays Wallis Island
+  year: 2007
+  rating: 4.0
+  watched_date: '2026-02-28'
+  rewatch: false
+  url: https://letterboxd.com/ducksalad/film/the-one-and-only-herb-mcgwyer-plays-wallis-island/
+  poster: https://a.ltrbxd.com/resized/film-poster/2/7/9/5/5/8/279558-the-one-and-only-herb-mcgwyer-plays-wallis-island-0-600-0-900-crop.jpg?v=61719dc861
+- name: The Ballad of Wallis Island
+  year: 2025
+  rating: 5.0
+  watched_date: '2026-02-28'
+  rewatch: false
+  url: https://letterboxd.com/ducksalad/film/the-ballad-of-wallis-island/
+  poster: https://a.ltrbxd.com/resized/film-poster/1/0/1/1/3/1/3/1011313-the-ballad-of-wallis-island-0-600-0-900-crop.jpg?v=55cd22eb99
