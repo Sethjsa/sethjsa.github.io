@@ -30,6 +30,15 @@
       .track-description {
         font-size: 0.8em;
         color: #666;
+        white-space: pre-line;
+      }
+      .track-lyrics summary {
+        font-size: 0.8em;
+        color: #666;
+        cursor: pointer;
+      }
+      .track-lyrics .track-description {
+        margin-top: 0.4em;
       }
       .track-item iframe {
         display: block;
@@ -118,15 +127,24 @@
             item.appendChild(title);
 
             if (sound.description && sound.description.trim()) {
+              var details = document.createElement('details');
+              details.className = 'track-lyrics';
+
+              var summary = document.createElement('summary');
+              summary.textContent = 'lyrics';
+              details.appendChild(summary);
+
               var desc = document.createElement('div');
               desc.className = 'track-description';
               desc.textContent = sound.description.trim();
-              item.appendChild(desc);
+              details.appendChild(desc);
+
+              item.appendChild(details);
             }
 
             var iframe = document.createElement('iframe');
             iframe.width      = '100%';
-            iframe.height     = '80';
+            iframe.height     = '166';
             iframe.scrolling  = 'no';
             iframe.frameBorder = 'no';
             iframe.allow      = 'autoplay';
