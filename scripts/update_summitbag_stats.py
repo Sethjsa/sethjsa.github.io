@@ -298,11 +298,15 @@ def save_state(state):
     peaks_sorted = sorted(state["peaks"].values(), key=lambda p: p["date"])
     latest_peaks = [dict(p) for p in reversed(peaks_sorted[-5:])]
     top_peaks = []
-    seen_dates = set()
+    seen_names = set()
     for p in sorted(peaks_sorted, key=lambda p: p["height_m"], reverse=True):
-        if p["date"] in seen_dates:
+        # Downhill skiing gets you to the top by lift, not by climbing it -
+        # doesn't belong alongside hike/run/ride ascents in the highlight list.
+        if p["type"] == "Ski":
             continue
-        seen_dates.add(p["date"])
+        if p["name"] in seen_names:
+            continue
+        seen_names.add(p["name"])
         top_peaks.append(dict(p))
         if len(top_peaks) == 5:
             break

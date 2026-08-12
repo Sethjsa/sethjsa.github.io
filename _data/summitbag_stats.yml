@@ -26,31 +26,36 @@ latest_peaks:
   type: Hike
   date: '2026-08-03'
 top_peaks:
-- name: Quandary Peak
+- &id001
+  name: Quandary Peak
   height_m: 4348
   type: Hike
   date: '2022-08-23'
-- name: Kengamine - Mt Fuji
-  height_m: 3776
-  type: Hike
-  date: '2026-08-03'
-- name: Aiguille Rouge
-  height_m: 3227
-  type: Ski
-  date: '2025-03-25'
-- name: Aiguille Rouge
-  height_m: 3227
-  type: Ski
-  date: '2025-03-27'
   location_city: null
   location_country: null
   flag: null
-  activity_id: 14002133921
-  activity_name: 'Les Arcs Day 5: Springtime conditions'
-- name: Mount Okuhotaka
-  height_m: 3190
+  activity_id: 7687842154
+  activity_name: Quandary Peak - 1st 14er
+- &id005
+  name: Kengamine - Mt Fuji
+  height_m: 3776
   type: Hike
-  date: '2026-07-15'
+  date: '2026-08-03'
+- &id002
+  name: Joujugatake Peak
+  height_m: 3734
+  type: Hike
+  date: '2026-08-03'
+- &id004
+  name: Mishimagatake Peak
+  height_m: 3734
+  type: Hike
+  date: '2026-08-03'
+- &id003
+  name: Asahidake Peak
+  height_m: 3733
+  type: Hike
+  date: '2026-08-03'
 peaks:
 - name: Bradda Hill
   height_m: 233
@@ -268,15 +273,7 @@ peaks:
   flag: null
   activity_id: 7678471573
   activity_name: Afternoon Hike
-- name: Quandary Peak
-  height_m: 4348
-  type: Hike
-  date: '2022-08-23'
-  location_city: null
-  location_country: null
-  flag: null
-  activity_id: 7687842154
-  activity_name: Quandary Peak - 1st 14er
+- *id001
 - name: Federal Hill
   height_m: 13
   type: Hike
@@ -1903,26 +1900,14 @@ peaks:
   height_m: 3725
   type: Hike
   date: '2026-08-03'
-- name: Joujugatake Peak
-  height_m: 3734
-  type: Hike
-  date: '2026-08-03'
-- name: Asahidake Peak
-  height_m: 3733
-  type: Hike
-  date: '2026-08-03'
+- *id002
+- *id003
 - name: Sengendake
   height_m: 3722
   type: Hike
   date: '2026-08-03'
-- name: Mishimagatake Peak
-  height_m: 3734
-  type: Hike
-  date: '2026-08-03'
-- name: Kengamine - Mt Fuji
-  height_m: 3776
-  type: Hike
-  date: '2026-08-03'
+- *id004
+- *id005
 - name: Atagoyama
   height_m: 26
   type: Hike
