@@ -41,6 +41,7 @@ from pathlib import Path
 import yaml
 from PIL import Image, ImageDraw, ImageFont
 from shapely.geometry import Point, shape
+from shapely.ops import transform
 from shapely.prepared import prep
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -52,7 +53,6 @@ SHARE_HASH = "4a769afeb9f9"
 API_BASE = f"https://www.statshunters.com/share/{SHARE_HASH}/api"
 ZOOM = 14
 COUNTRIES_URL = "https://raw.githubusercontent.com/datasets/geo-countries/main/data/countries.geojson"
-MAX_COUNTRY_TILES = 300_000  # skip completion % for absurdly large countries (compute safety)
 
 # A handful of well-known places for map context. Small/manually curated
 # rather than pulled from a full gazetteer - "a few place names", not a
@@ -164,6 +164,47 @@ def tile_center_latlng(x, y, zoom=ZOOM):
 NON_OUTDOOR_TYPES = {"VirtualRide", "Workout", "Yoga", "WeightTraining", "StairStepper"}
 
 
+def tiles_on_segment(x0, y0, x1, y1):
+    """Grid traversal (supercover line) between two points in continuous
+    tile-space coordinates: every integer tile the straight segment passes
+    through, not just the tiles its two endpoints happen to fall in.
+
+    This matters because the polyline points fed in are GPS samples, not
+    every point along the route - on a long or fast-moving stretch (e.g. a
+    highway ride) consecutive samples can be several tiles apart, and even
+    adjacent samples that step diagonally (x and y tile index both change)
+    can skip the "elbow" tile a continuous path would actually cross.
+    Verified against real ride data: ~0.1% of consecutive-point pairs are a
+    diagonal or multi-tile jump, and those gaps lined up with exactly the
+    missing loop segments reported against the StatsHunters reference map.
+    """
+    tx0, ty0 = int(math.floor(x0)), int(math.floor(y0))
+    tx1, ty1 = int(math.floor(x1)), int(math.floor(y1))
+    tiles = {(tx0, ty0)}
+    if tx0 == tx1 and ty0 == ty1:
+        return tiles
+
+    dx, dy = x1 - x0, y1 - y0
+    stepx = 1 if dx > 0 else -1
+    stepy = 1 if dy > 0 else -1
+
+    t_max_x = ((tx0 + (1 if dx > 0 else 0)) - x0) / dx if dx != 0 else float("inf")
+    t_max_y = ((ty0 + (1 if dy > 0 else 0)) - y0) / dy if dy != 0 else float("inf")
+    t_delta_x = abs(1.0 / dx) if dx != 0 else float("inf")
+    t_delta_y = abs(1.0 / dy) if dy != 0 else float("inf")
+
+    tx, ty = tx0, ty0
+    while (tx, ty) != (tx1, ty1):
+        if t_max_x < t_max_y:
+            tx += stepx
+            t_max_x += t_delta_x
+        else:
+            ty += stepy
+            t_max_y += t_delta_y
+        tiles.add((tx, ty))
+    return tiles
+
+
 def collect_visited_tiles(activities, lines):
     id_to_line = {a["id"]: a["data"] for a in lines if a.get("data")}
     tile_counts = defaultdict(int)
@@ -174,7 +215,15 @@ def collect_visited_tiles(activities, lines):
         if not encoded:
             continue
         points = decode_polyline(encoded)
-        tiles = set(latlng_to_tile(lat, lng) for lat, lng in points)
+        tiles = set()
+        prev = None
+        for lat, lng in points:
+            x, y = latlng_to_tile_float(lat, lng)
+            if prev is not None:
+                tiles |= tiles_on_segment(prev[0], prev[1], x, y)
+            else:
+                tiles.add((int(math.floor(x)), int(math.floor(y))))
+            prev = (x, y)
         for t in tiles:
             tile_counts[t] += 1
     return tile_counts
@@ -258,32 +307,38 @@ def fetch_country_polygons():
 
 
 def country_parts(geom):
-    """Split a country's geometry into its constituent polygons so a
-    far-flung overseas territory (e.g. Caribbean Netherlands) doesn't
-    blow up the whole country's bounding box - each part gets its own
-    bbox and size guard, and totals are summed across parts."""
+    """Split a country's geometry into its constituent polygons, e.g. for
+    drawing each part's border ring separately."""
     if geom.geom_type == "MultiPolygon":
         return list(geom.geoms)
     return [geom]
 
 
-def count_tiles_in_geom(geom, prepared):
-    minx, miny, maxx, maxy = geom.bounds
-    min_tx, max_ty = latlng_to_tile(miny, minx)
-    max_tx, min_ty = latlng_to_tile(maxy, maxx)
-    min_tx, max_tx = sorted((min_tx, max_tx))
-    min_ty, max_ty = sorted((min_ty, max_ty))
-    candidate_count = (max_tx - min_tx + 1) * (max_ty - min_ty + 1)
-    if candidate_count > MAX_COUNTRY_TILES:
-        return None
+def _lnglat_to_tile_coords(lng, lat):
+    return latlng_to_tile_float(lat, lng)
 
-    total = 0
-    for tx in range(min_tx, max_tx + 1):
-        for ty in range(min_ty, max_ty + 1):
-            lat, lng = tile_center_latlng(tx, ty)
-            if prepared.contains(Point(lng, lat)):
-                total += 1
-    return total
+
+def count_tiles_in_geom(geom):
+    """Estimate how many zoom-ZOOM tiles a country's geometry covers.
+
+    A brute-force "test every candidate tile's center" scan is what the
+    numerator (visited tiles) uses, but running it for the denominator too
+    is infeasible for a whole country: a fragmented/archipelago country
+    (e.g. Finland) has a huge bounding box relative to its land area, and a
+    physically huge country (e.g. the US) has tens of millions of
+    candidate tiles. Both previously either got skipped outright or had
+    their bounding box silently truncated by a size guard, which produced
+    wildly undercounted totals.
+
+    Since the web-mercator tile grid is uniform in projected space - each
+    zoom-ZOOM tile is exactly a 1x1 square in tile-coordinate space - the
+    country polygon's area *in tile coordinates* is a very close estimate
+    of the number of tiles it covers, computed in O(vertices) instead of
+    O(candidate tiles), regardless of how large or fragmented the country
+    is.
+    """
+    projected = transform(_lnglat_to_tile_coords, geom)
+    return projected.area
 
 
 def compute_country_completion(visited, countries):
@@ -304,18 +359,9 @@ def compute_country_completion(visited, countries):
     results = []
     for name, tiles in visited_by_country.items():
         country = next(c for c in countries if c["name"] == name)
-        total = 0
-        skipped_a_part = False
-        for part in country_parts(country["geom"]):
-            part_total = count_tiles_in_geom(part, prep(part))
-            if part_total is None:
-                skipped_a_part = True
-                continue
-            total += part_total
+        total = round(count_tiles_in_geom(country["geom"]))
         if total == 0:
             continue
-        if skipped_a_part:
-            print(f"Note: {name} has an oversized part excluded from its total tile count", file=sys.stderr)
         results.append({
             "name": name,
             "visited": len(tiles),

@@ -5,7 +5,7 @@
   <div class="strava-recent-list">
     {% for a in sb.recent_public_activities %}
       <a class="strava-recent-card" href="https://www.strava.com/activities/{{ a.id }}" target="_blank" rel="noopener">
-        <span class="strava-minimap" data-polyline="{{ a.map_summary_polyline }}"></span>
+        <span class="strava-minimap" data-polyline="{{ a.map_summary_polyline }}" data-bucket="{{ a.bucket }}"></span>
         <span class="strava-recent-info">
           <strong>{{ a.name }}</strong>
           <span class="strava-recent-meta">
@@ -56,6 +56,14 @@
     return points;
   }
 
+  var BUCKET_COLORS = {
+    Hike: 'var(--series-hike)',
+    Run: 'var(--series-run)',
+    Ride: 'var(--series-ride)',
+    Ski: 'var(--series-ski)',
+    Other: 'var(--series-other)'
+  };
+
   function buildMinimap(el) {
     var encoded = el.getAttribute('data-polyline');
     if (!encoded) return;
@@ -94,6 +102,8 @@
     var path = document.createElementNS(svgns, 'path');
     path.setAttribute('d', d);
     path.setAttribute('class', 'strava-minimap-path');
+    var color = BUCKET_COLORS[el.getAttribute('data-bucket')] || BUCKET_COLORS.Other;
+    path.style.stroke = color;
     svg.appendChild(path);
     el.appendChild(svg);
   }

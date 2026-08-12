@@ -282,23 +282,28 @@ ul.updates .date {
 }
 
 /* summit bag stats */
-.summitbag-viz {
+:root {
   --series-hike:  #008300;
   --series-run:   #e34948;
   --series-ride:  #2a78d6;
   --series-ski:   #4a3aa7;
   --series-other: #1baf7a;
+}
+
+.summitbag-viz {
   --chart-gridline: #e1e0d9;
   max-width: 800px;
 }
 
 @media (prefers-color-scheme: dark) {
-  .summitbag-viz {
+  :root {
     --series-hike:  #008300;
     --series-run:   #e66767;
     --series-ride:  #3987e5;
     --series-ski:   #9085e9;
     --series-other: #199e70;
+  }
+  .summitbag-viz {
     --chart-gridline: #2c2c2a;
   }
 }

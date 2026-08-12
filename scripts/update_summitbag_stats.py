@@ -339,6 +339,7 @@ def save_state(state):
             "id": a["id"],
             "name": a["name"],
             "sport_type": a.get("sport_type") or a.get("type"),
+            "bucket": bucket_for(a.get("sport_type") or a.get("type")),
             "start_date_local": a.get("start_date_local"),
             "distance": a.get("distance"),
             "total_elevation_gain": a.get("total_elevation_gain"),
@@ -405,6 +406,14 @@ def process_activity(state, summary):
         # already-seen activity - e.g. after adding a new field - fills in
         # the gap instead of skipping it.
         key = peak_key(detail.get("id"), name, date)
+        # If this peak was previously recorded before activity_id capture
+        # existed (or before this activity had its detail fetched), it'll be
+        # sitting under the legacy date:name key. Now that we have the real
+        # activity, drop the legacy record so it doesn't linger as a duplicate.
+        if detail.get("id"):
+            legacy_key = peak_key(None, name, date)
+            if legacy_key != key:
+                state["peaks"].pop(legacy_key, None)
         state["peaks"][key] = {
             "name": name,
             "height_m": height_m,

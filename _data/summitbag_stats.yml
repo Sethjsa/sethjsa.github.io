@@ -3,7 +3,7 @@ last_updated: '2026-08-11'
 last_processed_epoch: 1707845470
 backfill_cursor_epoch: 0
 full_backfill_complete: false
-peak_count: 313
+peak_count: 244
 latest_peaks:
 - name: Atagoyama
   height_m: 26
@@ -51,19 +51,11 @@ peaks:
   height_m: 233
   type: Hike
   date: '2020-08-30'
-- name: Bradda Hill
-  height_m: 233
-  type: Hike
-  date: '2020-08-30'
   location_city: null
   location_country: null
   flag: null
   activity_id: 3992436858
   activity_name: Port Erin to Laxey
-- name: Arthur's Seat
-  height_m: 251
-  type: Run
-  date: '2021-08-29'
 - name: Arthur's Seat
   height_m: 251
   type: Run
@@ -77,10 +69,6 @@ peaks:
   height_m: 129
   type: Hike
   date: '2021-11-18'
-- name: Húsklond
-  height_m: 129
-  type: Hike
-  date: '2021-11-18'
   location_city: null
   location_country: null
   flag: null
@@ -90,38 +78,6 @@ peaks:
   height_m: 329
   type: Hike
   date: '2021-11-20'
-- name: Spáafelli
-  height_m: 462
-  type: Hike
-  date: '2021-11-20'
-- name: Spinarnir
-  height_m: 439
-  type: Hike
-  date: '2021-11-20'
-- name: Lambaklettur
-  height_m: 235
-  type: Hike
-  date: '2021-11-20'
-- name: Skálin
-  height_m: 286
-  type: Hike
-  date: '2021-11-20'
-- name: Hesturin Hái
-  height_m: 392
-  type: Hike
-  date: '2021-11-20'
-- name: Brunabergshálsur
-  height_m: 132
-  type: Hike
-  date: '2021-11-20'
-- name: Kálvaskarð
-  height_m: 189
-  type: Hike
-  date: '2021-11-20'
-- name: Knúkin
-  height_m: 329
-  type: Hike
-  date: '2021-11-20'
   location_city: null
   location_country: null
   flag: null
@@ -190,10 +146,6 @@ peaks:
   flag: null
   activity_id: 6284263835
   activity_name: Suduroy
-- name: Eggjarklettur
-  height_m: 372
-  type: Hike
-  date: '2021-11-21'
 - name: Eggjarklettur
   height_m: 372
   type: Hike
@@ -216,19 +168,11 @@ peaks:
   height_m: 293
   type: Hike
   date: '2022-02-06'
-- name: Leckhampton Hill
-  height_m: 293
-  type: Hike
-  date: '2022-02-06'
   location_city: null
   location_country: null
   flag: null
   activity_id: 6639986180
   activity_name: Morning Hike
-- name: Painswick Beacon
-  height_m: 283
-  type: Ride
-  date: '2022-05-22'
 - name: Painswick Beacon
   height_m: 283
   type: Ride
@@ -242,10 +186,6 @@ peaks:
   height_m: 998
   type: Hike
   date: '2022-07-03'
-- name: Old Rag Mountain
-  height_m: 998
-  type: Hike
-  date: '2022-07-03'
   location_city: null
   location_country: null
   flag: null
@@ -255,19 +195,11 @@ peaks:
   height_m: 538
   type: Hike
   date: '2022-07-17'
-- name: Annapolis Rock
-  height_m: 538
-  type: Hike
-  date: '2022-07-17'
   location_city: null
   location_country: null
   flag: null
   activity_id: 7486551118
   activity_name: Morning Hike
-- name: Federal Hill
-  height_m: 13
-  type: Hike
-  date: '2022-07-28'
 - name: Federal Hill
   height_m: 13
   type: Hike
@@ -290,10 +222,6 @@ peaks:
   height_m: 76
   type: Hike
   date: '2022-08-15'
-- name: Alamo Heights
-  height_m: 76
-  type: Hike
-  date: '2022-08-15'
   location_city: null
   location_country: null
   flag: null
@@ -303,14 +231,6 @@ peaks:
   height_m: 1930
   type: Hike
   date: '2022-08-17'
-- name: Sentinel Dome
-  height_m: 2475
-  type: Hike
-  date: '2022-08-17'
-- name: Union Point
-  height_m: 1930
-  type: Hike
-  date: '2022-08-17'
   location_city: null
   location_country: null
   flag: null
@@ -325,10 +245,6 @@ peaks:
   flag: null
   activity_id: 7655987623
   activity_name: Glacier Point, Panorama Trail, Nevada and Vernal Falls
-- name: Wawona Point
-  height_m: 1992
-  type: Hike
-  date: '2022-08-18'
 - name: Wawona Point
   height_m: 1992
   type: Hike
@@ -342,19 +258,11 @@ peaks:
   height_m: 2197
   type: Hike
   date: '2022-08-21'
-- name: Horsetooth Mountain
-  height_m: 2197
-  type: Hike
-  date: '2022-08-21'
   location_city: null
   location_country: null
   flag: null
   activity_id: 7678471573
   activity_name: Afternoon Hike
-- name: Quandary Peak
-  height_m: 4348
-  type: Hike
-  date: '2022-08-23'
 - name: Quandary Peak
   height_m: 4348
   type: Hike
@@ -377,18 +285,6 @@ peaks:
   height_m: 700
   type: Hike
   date: '2022-12-03'
-- name: Pike of Stickle
-  height_m: 708
-  type: Hike
-  date: '2022-12-03'
-- name: Pike Howe
-  height_m: 396
-  type: Hike
-  date: '2022-12-03'
-- name: Pavey Ark
-  height_m: 700
-  type: Hike
-  date: '2022-12-03'
   location_city: null
   location_country: null
   flag: null
@@ -412,10 +308,6 @@ peaks:
   flag: null
   activity_id: 8202649427
   activity_name: Langdale Pikes w/ Jack's Rake for Nat's bash
-- name: Stow-on-the-Wold Hill
-  height_m: 235
-  type: Hike
-  date: '2023-03-25'
 - name: Stow-on-the-Wold Hill
   height_m: 235
   type: Hike
@@ -429,14 +321,6 @@ peaks:
   height_m: 596
   type: Hike
   date: '2023-04-07'
-- name: Tor y Foel
-  height_m: 551
-  type: Hike
-  date: '2023-04-07'
-- name: Sugar Loaf
-  height_m: 596
-  type: Hike
-  date: '2023-04-07'
   location_city: null
   location_country: null
   flag: null
@@ -451,38 +335,6 @@ peaks:
   flag: null
   activity_id: 8848245458
   activity_name: 'Beacons Traverse: Day 1'
-- name: Bwlch y Ddwyallt
-  height_m: 754
-  type: Hike
-  date: '2023-04-08'
-- name: Gwaun Cerrig Llwydion
-  height_m: 730
-  type: Hike
-  date: '2023-04-08'
-- name: Fan y Big
-  height_m: 717
-  type: Hike
-  date: '2023-04-08'
-- name: Cribyn
-  height_m: 795
-  type: Hike
-  date: '2023-04-08'
-- name: Pen y Fan
-  height_m: 886
-  type: Hike
-  date: '2023-04-08'
-- name: Corn Du
-  height_m: 872
-  type: Hike
-  date: '2023-04-08'
-- name: Fan Nedd
-  height_m: 663
-  type: Hike
-  date: '2023-04-08'
-- name: Fan Gyhirych
-  height_m: 725
-  type: Hike
-  date: '2023-04-08'
 - name: Bwlch y Ddwyallt
   height_m: 754
   type: Hike
@@ -555,54 +407,6 @@ peaks:
   flag: null
   activity_id: 8861984215
   activity_name: 'Beacons Traverse: Day 2'
-- name: Fan Hir
-  height_m: 760
-  type: Hike
-  date: '2023-04-09'
-- name: Fan Brycheiniog - Trig Point
-  height_m: 802
-  type: Hike
-  date: '2023-04-09'
-- name: Fan Brycheiniog - Twr y Fan Foel
-  height_m: 803
-  type: Hike
-  date: '2023-04-09'
-- name: Fan Foel
-  height_m: 781
-  type: Hike
-  date: '2023-04-09'
-- name: Bannau Sir Gaer - Picws Du
-  height_m: 749
-  type: Hike
-  date: '2023-04-09'
-- name: Waun Lefrith
-  height_m: 676
-  type: Hike
-  date: '2023-04-09'
-- name: Garreg Las
-  height_m: 635
-  type: Hike
-  date: '2023-04-09'
-- name: Foel Fraith
-  height_m: 602
-  type: Hike
-  date: '2023-04-09'
-- name: Garreg Lwyd
-  height_m: 616
-  type: Hike
-  date: '2023-04-09'
-- name: Carn Pen-rhiw-ddu
-  height_m: 535
-  type: Hike
-  date: '2023-04-09'
-- name: Tair Carn Isaf
-  height_m: 460
-  type: Hike
-  date: '2023-04-09'
-- name: Carreg Cennen
-  height_m: 266
-  type: Hike
-  date: '2023-04-09'
 - name: Fan Hir
   height_m: 760
   type: Hike
@@ -711,10 +515,6 @@ peaks:
   flag: null
   activity_id: 8862008696
   activity_name: 'Beacons Traverse: Day 3'
-- name: Bingwell Hill
-  height_m: 237
-  type: Run
-  date: '2023-05-06'
 - name: Bingwell Hill
   height_m: 237
   type: Run
@@ -724,10 +524,6 @@ peaks:
   flag: null
   activity_id: 9022504729
   activity_name: Tiverton hilly bash
-- name: Haddenham village
-  height_m: 39
-  type: Ride
-  date: '2023-06-25'
 - name: Haddenham village
   height_m: 39
   type: Ride
@@ -746,19 +542,6 @@ peaks:
   flag: null
   activity_id: 9532943193
   activity_name: Lunch Hike
-- name: Bradda Hill
-  height_m: 233
-  type: Hike
-  date: '2023-07-26'
-  location_city: null
-  location_country: null
-  flag: null
-  activity_id: 9524453258
-  activity_name: ' Bradda Head '
-- name: Trou de la Mouche
-  height_m: 2453
-  type: Hike
-  date: '2023-09-09'
 - name: Trou de la Mouche
   height_m: 2453
   type: Hike
@@ -772,38 +555,6 @@ peaks:
   height_m: 2750
   type: Hike
   date: '2023-09-10'
-- name: Col de l'Oulettaz
-  height_m: 1925
-  type: Hike
-  date: '2023-09-10'
-- name: Pointe des Delevrets
-  height_m: 1966
-  type: Hike
-  date: '2023-09-10'
-- name: Tête des Annes
-  height_m: 1869
-  type: Hike
-  date: '2023-09-10'
-- name: Col des Annes
-  height_m: 1721
-  type: Hike
-  date: '2023-09-10'
-- name: Mount Lachat
-  height_m: 2050
-  type: Hike
-  date: '2023-09-10'
-- name: Col de Châtillon
-  height_m: 1690
-  type: Hike
-  date: '2023-09-10'
-- name: Roc des Arces
-  height_m: 1772
-  type: Hike
-  date: '2023-09-10'
-- name: Pointe Percée
-  height_m: 2750
-  type: Hike
-  date: '2023-09-10'
   location_city: null
   location_country: null
   flag: null
@@ -876,22 +627,6 @@ peaks:
   height_m: 1291
   type: Run
   date: '2023-09-11'
-- name: Mont Baron
-  height_m: 1299
-  type: Run
-  date: '2023-09-11'
-- name: Col des contrebandiers
-  height_m: 1054
-  type: Run
-  date: '2023-09-11'
-- name: Mont Baret
-  height_m: 1243
-  type: Run
-  date: '2023-09-11'
-- name: Mont Veyrier
-  height_m: 1291
-  type: Run
-  date: '2023-09-11'
   location_city: null
   location_country: null
   flag: null
@@ -924,10 +659,6 @@ peaks:
   flag: null
   activity_id: 9827506234
   activity_name: Half marathon above Annecy Lac
-- name: Lhiattee ny Beinnee
-  height_m: 301
-  type: Run
-  date: '2023-12-24'
 - name: Lhiattee ny Beinnee
   height_m: 301
   type: Run
@@ -937,10 +668,6 @@ peaks:
   flag: null
   activity_id: 10431281471
   activity_name: Afternoon Run
-- name: Cronk ny Arrey Laa
-  height_m: 439
-  type: Run
-  date: '2023-12-26'
 - name: Cronk ny Arrey Laa
   height_m: 439
   type: Run
@@ -972,17 +699,13 @@ peaks:
   height_m: 483
   type: Run
   date: '2023-12-29'
-- name: Cronk ny Arrey Laa
-  height_m: 439
-  type: Run
-  date: '2023-12-29'
   location_city: null
   location_country: null
   flag: null
   activity_id: 10455090578
   activity_name: South Barrule
-- name: South Barrule
-  height_m: 483
+- name: Cronk ny Arrey Laa
+  height_m: 439
   type: Run
   date: '2023-12-29'
   location_city: null
@@ -999,10 +722,6 @@ peaks:
   flag: null
   activity_id: 10455090578
   activity_name: South Barrule
-- name: Shielmartin Hill
-  height_m: 163
-  type: Hike
-  date: '2024-01-20'
 - name: Shielmartin Hill
   height_m: 163
   type: Hike
