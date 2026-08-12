@@ -297,9 +297,17 @@ def load_state():
 def save_state(state):
     peaks_sorted = sorted(state["peaks"].values(), key=lambda p: p["date"])
     latest_peaks = [dict(p) for p in reversed(peaks_sorted[-5:])]
+    # A single day out often bags several peaks along one route (e.g. a
+    # ridge walk) - only the highest of those should be a top-peaks
+    # candidate, so one big day doesn't crowd out other days' ascents.
+    highest_per_day = {}
+    for p in peaks_sorted:
+        if p["date"] not in highest_per_day or p["height_m"] > highest_per_day[p["date"]]["height_m"]:
+            highest_per_day[p["date"]] = p
+
     top_peaks = []
     seen_names = set()
-    for p in sorted(peaks_sorted, key=lambda p: p["height_m"], reverse=True):
+    for p in sorted(highest_per_day.values(), key=lambda p: p["height_m"], reverse=True):
         # Downhill skiing gets you to the top by lift, not by climbing it -
         # doesn't belong alongside hike/run/ride ascents in the highlight list.
         if p["type"] == "Ski":

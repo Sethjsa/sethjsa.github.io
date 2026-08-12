@@ -41,21 +41,21 @@ top_peaks:
   height_m: 3776
   type: Hike
   date: '2026-08-03'
-- &id002
-  name: Joujugatake Peak
-  height_m: 3734
-  type: Hike
-  date: '2026-08-03'
 - &id004
-  name: Mishimagatake Peak
-  height_m: 3734
+  name: Mount Okuhotaka
+  height_m: 3190
   type: Hike
-  date: '2026-08-03'
+  date: '2026-07-15'
 - &id003
-  name: Asahidake Peak
-  height_m: 3733
+  name: Mount Yari
+  height_m: 3180
   type: Hike
-  date: '2026-08-03'
+  date: '2026-07-14'
+- &id002
+  name: Mt. Tate
+  height_m: 3015
+  type: Hike
+  date: '2026-07-12'
 peaks:
 - name: Bradda Hill
   height_m: 233
@@ -1776,10 +1776,7 @@ peaks:
   height_m: 2999
   type: Hike
   date: '2026-07-12'
-- name: Mt. Tate
-  height_m: 3015
-  type: Hike
-  date: '2026-07-12'
+- *id002
 - name: Oyama
   height_m: 3003
   type: Hike
@@ -1844,10 +1841,7 @@ peaks:
   height_m: 2755
   type: Hike
   date: '2026-07-14'
-- name: Mount Yari
-  height_m: 3180
-  type: Hike
-  date: '2026-07-14'
+- *id003
 - name: Mt. Ohbami
   height_m: 3101
   type: Hike
@@ -1868,10 +1862,7 @@ peaks:
   height_m: 3103
   type: Hike
   date: '2026-07-15'
-- name: Mount Okuhotaka
-  height_m: 3190
-  type: Hike
-  date: '2026-07-15'
+- *id004
 - name: Mount Mae-Hotaka
   height_m: 3090
   type: Hike
@@ -1900,13 +1891,22 @@ peaks:
   height_m: 3725
   type: Hike
   date: '2026-08-03'
-- *id002
-- *id003
+- name: Joujugatake Peak
+  height_m: 3734
+  type: Hike
+  date: '2026-08-03'
+- name: Asahidake Peak
+  height_m: 3733
+  type: Hike
+  date: '2026-08-03'
 - name: Sengendake
   height_m: 3722
   type: Hike
   date: '2026-08-03'
-- *id004
+- name: Mishimagatake Peak
+  height_m: 3734
+  type: Hike
+  date: '2026-08-03'
 - *id005
 - name: Atagoyama
   height_m: 26
