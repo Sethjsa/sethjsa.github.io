@@ -3,13 +3,8 @@
 <div class="widget-box squadrats-viz">
   <div class="lfm-top-lists">
     <div class="lfm-top-col sq-map-col">
-      <div class="lfm-period-toggle sq-view-toggle">
-        <button type="button" data-view="squares" class="active">Squares</button>
-        <button type="button" data-view="map">Map</button>
-      </div>
       <a class="sq-tilemap" href="https://www.statshunters.com/share/4a769afeb9f9/heatmap" target="_blank" rel="noopener" title="My explorer tiles">
-        <img id="sq-img-squares" src="/images/squadrats_tiles.svg" alt="Grid of my explorer tiles">
-        <img id="sq-img-map" src="/images/squadrats_map.png" alt="Same tiles overlaid on an OpenStreetMap basemap" style="display:none;">
+        <img src="/images/squadrats_map.png" alt="My explorer tiles overlaid on an OpenStreetMap basemap">
       </a>
     </div>
     <div class="lfm-top-col">
@@ -40,22 +35,4 @@
     &middot; map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors
   </p>
 </div>
-
-<script>
-(function() {
-  var toggle = document.querySelector('.sq-view-toggle');
-  if (!toggle) return;
-  var squares = document.getElementById('sq-img-squares');
-  var map = document.getElementById('sq-img-map');
-  toggle.querySelectorAll('button').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      toggle.querySelectorAll('button').forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var isMap = btn.getAttribute('data-view') === 'map';
-      squares.style.display = isMap ? 'none' : '';
-      map.style.display = isMap ? '' : 'none';
-    });
-  });
-})();
-</script>
 {% endif %}

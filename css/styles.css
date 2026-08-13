@@ -735,15 +735,9 @@ ol.lb-top-rated li {
 
 .sq-map-col {
   flex: 0 0 auto;
-}
-
-.squadrats-viz .sq-view-toggle {
-  margin: 0 0 0.4em;
-}
-
-.squadrats-viz .sq-view-toggle button.active {
-  border-color: #fc4c02;
-  color: #fc4c02;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sq-tilemap {
@@ -760,7 +754,6 @@ ol.lb-top-rated li {
   max-height: 190px;
   width: auto;
   height: auto;
-  image-rendering: pixelated;
 }
 
 .sq-stat-list {
