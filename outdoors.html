@@ -60,6 +60,35 @@
         </div>
         -->
         {% include frags/squadrats.html %}
+
+        <!-- Countries visited - draft, not wired up yet. Strava/squadrats data
+             only covers countries with a logged GPS activity, so this would
+             need a small manually-maintained list (_data/countries_visited.yml,
+             same pattern as the Rinjani peak override in
+             scripts/update_summitbag_stats.py) merged with whatever's
+             auto-detectable, for trips with no GPS activity at all. Two layout
+             options sketched below - pick one (or neither) before wiring up
+             real data.
+
+        <p>I've been fortunate enough to visit some other countries too.</p>
+
+        Option A: a single "xx/xx (xx%)" stat line, matching the
+        .lb-section-title / stat-value pattern already used elsewhere on this
+        page.
+        <div class="widget-box">
+          <p class="lb-section-title">Countries visited</p>
+          <p class="sq-stat-value">23<span class="lfm-sub">/ 195 countries (12%)</span></p>
+        </div>
+
+        Option B: a flag grid, one flag per visited country - simplest to
+        build from a flat list, no map rendering needed.
+        <div class="widget-box">
+          <p class="lb-section-title">Countries visited</p>
+          <p style="font-size:1.4em; line-height:1.6;">
+            &#127475;&#127472; &#127468;&#127463; &#127465;&#127466; &#127475;&#127477; &#127482;&#127480; &#127471;&#127468;
+          </p>
+        </div>
+        -->
       </section>
 
     </section>
