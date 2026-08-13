@@ -20,6 +20,28 @@
         color: #444;
         margin: 0.3em 0 0;
       }
+      .tag-filters {
+        margin: 0.5em 0 1.5em;
+      }
+      .tag-pill {
+        display: inline-block;
+        margin: 0 0.3em 0.3em 0;
+        padding: 0.15em 0.6em;
+        border: 1px solid #ccc;
+        border-radius: 1em;
+        background: none;
+        font-size: 0.8em;
+        color: #666;
+        cursor: pointer;
+      }
+      .tag-pill.active {
+        background: #333;
+        color: #fff;
+        border-color: #333;
+      }
+      tr[hidden] {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -40,6 +62,19 @@
         <a href="/cv.html">CV</a>
       </p>
 
+      <p class="tag-filters">
+        <button class="tag-pill active" data-tag="all">all</button>
+        <button class="tag-pill" data-tag="machine-translation">machine translation</button>
+        <button class="tag-pill" data-tag="llms">llms</button>
+        <button class="tag-pill" data-tag="multilinguality">multilinguality</button>
+        <button class="tag-pill" data-tag="evaluation">evaluation</button>
+        <button class="tag-pill" data-tag="low-resource">low-resource</button>
+        <button class="tag-pill" data-tag="shared-task">shared-task</button>
+        <button class="tag-pill" data-tag="security">security</button>
+        <button class="tag-pill" data-tag="syntax">syntax</button>
+        <button class="tag-pill" data-tag="linguistics">linguistics</button>
+      </p>
+
       <section>
         <header><h1>2026</h1></header>
         <table style="width:100%">
@@ -50,7 +85,7 @@
             <td style="width:8%">Under Submission</td>
             <td style="width:10%">[<a href="about:blank">TBC</a>]</td>
           </tr> -->
-          <tr>
+          <tr data-tags="multilinguality,llms">
             <td style="width:8%">2026</td>
             <td style="width:24%"><strong>S. Aycock</strong>, F. Vitiugin, A. Umnov, C. Monz, &amp; K. Sima'an</td>
             <td style="width:50%">
@@ -81,7 +116,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="llms,evaluation">
             <td style="width:8%">2026</td>
             <td style="width:24%">N. Chirkova, T. O. Ajayi, <strong>S. Aycock</strong>, Z. M. Mujahid, V. Perlić, E. Borisova &amp; M. Vartampetian</td>
             <td style="width:50%">
@@ -114,7 +149,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="machine-translation,llms">
             <td style="width:8%">2026</td>
             <td style="width:24%">P. Schmidtová<sup>*</sup>, N. Bafna<sup>*</sup>, <strong>S. Aycock</strong><sup>*</sup>, G. Vico, W. Kamzela, K. Hämmerl &amp; V. Zouhar</td>
             <td style="width:50%">
@@ -153,7 +188,7 @@
       <section>
         <header><h1>2025</h1></header>
         <table style="width:100%">
-          <tr>
+          <tr data-tags="machine-translation,llms,low-resource">
             <td style="width:8%">2025</td>
             <td style="width:24%"><strong>S. Aycock</strong>, D. Stap, D. Wu, C. Monz &amp; K. Sima'an</td>
             <td style="width:50%">
@@ -180,7 +215,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="machine-translation,llms">
             <td style="width:8%">2025</td>
             <td style="width:24%">D. Wu<sup>*</sup>, <strong>S. Aycock</strong><sup>*</sup> &amp; C. Monz</td>
             <td style="width:50%">
@@ -209,7 +244,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="machine-translation,shared-task">
             <td style="width:8%">2025</td>
             <td style="width:24%">D. Wu, Y. Meng, M. Nachesa, <strong>S. Aycock</strong> &amp; C. Monz</td>
             <td style="width:50%">
@@ -240,7 +275,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="security,llms">
             <td style="width:8%">2025</td>
             <td style="width:24%">K. Alperin, R. Leekha, A. Uchendu, T. Nguyen, S. Medarametla, C. L. Capote, <strong>S. Aycock</strong> &amp; C. Dagli</td>
             <td style="width:50%">
@@ -280,7 +315,7 @@
       <section>
         <header><h1>2024</h1></header>
         <table style="width:100%">
-          <tr>
+          <tr data-tags="machine-translation,llms">
             <td style="width:8%">2024</td>
             <td style="width:24%"><strong>S. Aycock</strong> &amp; R. Bawden</td>
             <td style="width:50%">
@@ -308,7 +343,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="machine-translation,shared-task">
             <td style="width:8%">2024</td>
             <td style="width:24%">S. Tan, D. Wu, D. Stap, <strong>S. Aycock</strong> &amp; C. Monz</td>
             <td style="width:50%">
@@ -345,7 +380,7 @@
       <section>
         <header><h1>2021</h1></header>
         <table style="width:100%">
-          <tr>
+          <tr data-tags="machine-translation,syntax">
             <td style="width:8%">2021</td>
             <td style="width:24%"><strong>S. Aycock</strong></td>
             <td style="width:50%">
@@ -372,7 +407,7 @@
       <section>
         <header><h1>2020</h1></header>
         <table style="width:100%">
-          <tr>
+          <tr data-tags="security,linguistics">
             <td style="width:8%">2020</td>
             <td style="width:24%">J. Hughes, <strong>S. Aycock</strong>, A. Caines, P. Buttery &amp; A. Hutchings</td>
             <td style="width:50%">
@@ -403,7 +438,7 @@
 }">cite</a>]
             </td>
           </tr>
-          <tr>
+          <tr data-tags="linguistics,syntax">
             <td style="width:8%">2020</td>
             <td style="width:24%"><strong>S. Aycock</strong></td>
             <td style="width:50%">
@@ -442,6 +477,56 @@
           setTimeout(function () { link.textContent = original; }, 1500);
         });
       });
+    </script>
+
+    <script>
+      (function () {
+        var activeTags = new Set();
+        var rows = Array.prototype.slice.call(document.querySelectorAll('tr[data-tags]'));
+        var yearSections = rows.map(function (row) {
+          return row.closest('section');
+        }).filter(function (section, i, arr) {
+          return arr.indexOf(section) === i;
+        });
+
+        function applyFilter() {
+          rows.forEach(function (row) {
+            var tags = row.dataset.tags.split(',');
+            var visible = activeTags.size === 0 || tags.some(function (t) { return activeTags.has(t); });
+            row.hidden = !visible;
+          });
+          yearSections.forEach(function (section) {
+            var anyVisible = Array.prototype.slice.call(section.querySelectorAll('tr[data-tags]')).some(function (row) {
+              return !row.hidden;
+            });
+            section.hidden = !anyVisible;
+          });
+        }
+
+        document.addEventListener('click', function (e) {
+          var pill = e.target.closest('.tag-pill');
+          if (!pill) return;
+
+          if (pill.dataset.tag === 'all') {
+            activeTags.clear();
+          } else {
+            if (activeTags.has(pill.dataset.tag)) {
+              activeTags.delete(pill.dataset.tag);
+            } else {
+              activeTags.add(pill.dataset.tag);
+            }
+          }
+
+          document.querySelectorAll('.tag-pill').forEach(function (p) {
+            var isActive = activeTags.size === 0
+              ? p.dataset.tag === 'all'
+              : activeTags.has(p.dataset.tag);
+            p.classList.toggle('active', isActive);
+          });
+
+          applyFilter();
+        });
+      })();
     </script>
   </body>
 </html>
