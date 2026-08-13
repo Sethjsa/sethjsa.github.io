@@ -112,6 +112,16 @@ API_BASE = "https://www.strava.com/api/v3"
 PEAK_RE = re.compile(r"⛰️\s*([^•\n]+?)\s*\(\s*([\d,]+)\s*m\s*\)")
 ELEVATION_RE = re.compile(r"⬆️\s*(\d{4})\s*=\s*([\d,]+)\s*m")
 
+# Summit Bag's peak database doesn't cover Mt Rinjani (Lombok, Indonesia) -
+# no "⛰️" segment was ever appended to these activities' descriptions, even
+# though the GPS elevation (elev_high on the summit-day activity) matches
+# Rinjani's real 3,726m summit almost exactly. Filled in manually rather
+# than left as a permanent gap. Keyed by Strava activity_id, not name, so
+# it applies only to that specific ascent.
+MANUAL_PEAK_OVERRIDES = {
+    14351074800: [("Mt Rinjani", 3726)],  # "Mt Rinjani Day 2" - Crater Rim - Summit - Crater Lake
+}
+
 RUN_TYPES = {"Run", "TrailRun", "VirtualRun"}
 RIDE_TYPES = {"Ride", "MountainBikeRide", "GravelRide", "EBikeRide", "VirtualRide", "Velomobile", "Handcycle"}
 HIKE_TYPES = {"Hike", "Walk", "Snowshoe"}
@@ -404,6 +414,7 @@ ACTIVITY_FIELDS = (
 def process_activity(state, summary):
     detail = get_activity_detail(summary["id"])
     peaks, elevation_reading = parse_description(detail.get("description"))
+    peaks = peaks + MANUAL_PEAK_OVERRIDES.get(detail.get("id"), [])
     sport_type = summary.get("sport_type") or summary.get("type", "Other")
     bucket = bucket_for(sport_type)
     date = summary["start_date"][:10]

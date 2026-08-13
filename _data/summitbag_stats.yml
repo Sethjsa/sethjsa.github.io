@@ -3,7 +3,7 @@ last_updated: '2026-08-13'
 last_processed_epoch: 1786604057
 backfill_cursor_epoch: 0
 full_backfill_complete: false
-peak_count: 309
+peak_count: 310
 latest_peaks:
 - name: Atagoyama
   height_m: 26
@@ -69,6 +69,15 @@ top_peaks:
   flag: null
   activity_id: 19593361636
   activity_name: Mt Fuji
+- name: Mt Rinjani
+  height_m: 3726
+  type: Hike
+  date: '2025-04-30'
+  location_city: null
+  location_country: null
+  flag: null
+  activity_id: 14351074800
+  activity_name: Mt Rinjani Day 2
 - name: Mount Okuhotaka
   height_m: 3190
   type: Hike
@@ -87,15 +96,6 @@ top_peaks:
   flag: null
   activity_id: 19318490639
   activity_name: Kita Alps Traverse - Day 4
-- name: Mt. Tate
-  height_m: 3015
-  type: Hike
-  date: '2026-07-12'
-  location_city: null
-  location_country: null
-  flag: null
-  activity_id: 19302606339
-  activity_name: Kita Alps Traverse - Day 2
 peaks:
 - name: Bradda Hill
   height_m: 233
@@ -1492,6 +1492,15 @@ peaks:
   flag: null
   activity_id: 14029918469
   activity_name: Lunch Walk
+- name: Mt Rinjani
+  height_m: 3726
+  type: Hike
+  date: '2025-04-30'
+  location_city: null
+  location_country: null
+  flag: null
+  activity_id: 14351074800
+  activity_name: Mt Rinjani Day 2
 - name: Vaalserberg
   height_m: 323
   type: Ride

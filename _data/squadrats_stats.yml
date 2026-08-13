@@ -8,95 +8,95 @@ max_connected_row: 23
 max_connected_column: 25
 max_visited_tile_visits: 842
 country_completion:
-- name: Isle of Man
-  visited: 99
-  total: 281
-  pct: 35.2
-- name: Malta
-  visited: 11
-  total: 83
-  pct: 13.3
 - name: Netherlands
   visited: 915
   total: 16589
   pct: 5.5
-- name: Singapore
-  visited: 4
-  total: 86
-  pct: 4.7
-- name: Faroe Islands
-  visited: 18
-  total: 1009
-  pct: 1.8
-- name: Luxembourg
-  visited: 9
-  total: 1044
-  pct: 0.9
 - name: United Kingdom
   visited: 563
   total: 119111
   pct: 0.5
-- name: Belgium
-  visited: 57
-  total: 12730
-  pct: 0.4
-- name: Japan
-  visited: 297
-  total: 100236
-  pct: 0.3
-- name: Slovenia
-  visited: 23
-  total: 7069
-  pct: 0.3
 - name: Finland
   visited: 307
   total: 302686
   pct: 0.1
-- name: Italy
-  visited: 123
-  total: 93893
-  pct: 0.1
-- name: Czechia
-  visited: 32
-  total: 31482
-  pct: 0.1
+- name: Japan
+  visited: 297
+  total: 100236
+  pct: 0.3
 - name: France
   visited: 203
   total: 209272
-  pct: 0.1
-- name: Germany
-  visited: 78
-  total: 151842
   pct: 0.1
 - name: United States of America
   visited: 145
   total: 3630645
   pct: 0.0
+- name: Italy
+  visited: 123
+  total: 93893
+  pct: 0.1
+- name: Isle of Man
+  visited: 99
+  total: 281
+  pct: 35.2
+- name: Germany
+  visited: 78
+  total: 151842
+  pct: 0.1
+- name: Belgium
+  visited: 57
+  total: 12730
+  pct: 0.4
 - name: China
   visited: 38
   total: 2494342
   pct: 0.0
+- name: Czechia
+  visited: 32
+  total: 31482
+  pct: 0.1
 - name: Iceland
   visited: 24
   total: 95478
   pct: 0.0
+- name: Slovenia
+  visited: 23
+  total: 7069
+  pct: 0.3
+- name: Faroe Islands
+  visited: 18
+  total: 1009
+  pct: 1.8
 - name: Indonesia
   visited: 14
   total: 317837
+  pct: 0.0
+- name: Malta
+  visited: 11
+  total: 83
+  pct: 13.3
+- name: Ireland
+  visited: 10
+  total: 32275
+  pct: 0.0
+- name: Luxembourg
+  visited: 9
+  total: 1044
+  pct: 0.9
+- name: Austria
+  visited: 9
+  total: 30849
   pct: 0.0
 - name: Switzerland
   visited: 6
   total: 14775
   pct: 0.0
-- name: Ireland
-  visited: 10
-  total: 32275
-  pct: 0.0
+- name: Singapore
+  visited: 4
+  total: 86
+  pct: 4.7
 - name: Estonia
   visited: 4
   total: 28248
-  pct: 0.0
-- name: Austria
-  visited: 9
-  total: 30849
   pct: 0.0

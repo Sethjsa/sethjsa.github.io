@@ -353,7 +353,7 @@ def compute_country_completion(visited, countries):
             "pct": round(len(tiles) / total * 100, 1),
         })
 
-    results.sort(key=lambda r: r["pct"], reverse=True)
+    results.sort(key=lambda r: r["visited"], reverse=True)
     return results, visited_by_country
 
 
@@ -405,6 +405,21 @@ def render_map_overlay(tiles, pad=1):
     bg_max_y = math.floor((max_y + pad) / factor)
     bg_grid_w = bg_max_x - bg_min_x + 1
     bg_grid_h = bg_max_y - bg_min_y + 1
+
+    # Pad the shorter side so the final image is square, splitting the extra
+    # background tiles evenly on both sides rather than cropping anything -
+    # every visited square still needs to show, just the canvas around them
+    # grows to keep the cluster centered.
+    if bg_grid_w < bg_grid_h:
+        extra = bg_grid_h - bg_grid_w
+        bg_min_x -= extra // 2
+        bg_max_x += extra - extra // 2
+        bg_grid_w = bg_grid_h
+    elif bg_grid_h < bg_grid_w:
+        extra = bg_grid_w - bg_grid_h
+        bg_min_y -= extra // 2
+        bg_max_y += extra - extra // 2
+        bg_grid_h = bg_grid_w
 
     base = Image.new("RGBA", (bg_grid_w * OSM_TILE_PX, bg_grid_h * OSM_TILE_PX), (255, 255, 255, 255))
     for gx in range(bg_grid_w):

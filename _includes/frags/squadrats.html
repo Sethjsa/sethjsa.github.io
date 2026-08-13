@@ -22,7 +22,7 @@
           {% for c in sq.country_completion limit:5 %}
             <li>
               {{ c.name }}
-              <span class="lfm-sub">{{ c.pct }}% &middot; {{ c.visited }} / {{ c.total }} tiles</span>
+              <span class="lfm-sub">{{ c.visited }} tiles &middot; {{ c.pct }}% of country</span>
             </li>
           {% endfor %}
         </ol>
