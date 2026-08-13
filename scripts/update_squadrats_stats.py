@@ -20,7 +20,8 @@ an endpoint, so this script reimplements that from scratch:
   3. Cross-reference visited tiles against a public country-boundary
      dataset to compute per-country tile completion percentages.
   4. Render the largest cluster as a small pixel-grid PNG (one pixel
-     block per tile) - a literal "squares" visualisation.
+     block per tile) - a literal "squares" visualisation - and again
+     overlaid on real OpenStreetMap raster tiles for geographic context.
 
 These numbers won't be bit-identical to StatsHunters' own UI (its
 exact "cluster"/"touching tiles" definitions aren't public), but the
@@ -30,6 +31,7 @@ development and matched closely.
 Usage:
     python scripts/update_squadrats_stats.py
 """
+import io
 import json
 import math
 import sys
@@ -39,46 +41,38 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 from shapely.geometry import Point, shape
 from shapely.ops import transform
 from shapely.prepared import prep
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = REPO_ROOT / "_data" / "squadrats_stats.yml"
-HEATMAP_FILE = REPO_ROOT / "images" / "squadrats_tiles.png"
+HEATMAP_FILE = REPO_ROOT / "images" / "squadrats_tiles.svg"
 MAP_FILE = REPO_ROOT / "images" / "squadrats_map.png"
 
 SHARE_HASH = "4a769afeb9f9"
 API_BASE = f"https://www.statshunters.com/share/{SHARE_HASH}/api"
 ZOOM = 14
 COUNTRIES_URL = "https://raw.githubusercontent.com/datasets/geo-countries/main/data/countries.geojson"
+USER_AGENT = "sethjsa.github.io stats script (+https://sethjsa.github.io)"
 
-# A handful of well-known places for map context. Small/manually curated
-# rather than pulled from a full gazetteer - "a few place names", not a
-# real map's worth of labels. Only ones that fall within the rendered
-# crop actually get drawn. Extend this list if the home region shifts.
-PLACE_LABELS = [
-    ("Amsterdam", 52.3676, 4.9041),
-    ("Rotterdam", 51.9244, 4.4777),
-    ("Utrecht", 52.0907, 5.1214),
-    ("The Hague", 52.0705, 4.3007),
-    ("Haarlem", 52.3874, 4.6462),
-    ("Almere", 52.3508, 5.2647),
-    ("Hilversum", 52.2292, 5.1669),
-    ("Alkmaar", 52.6324, 4.7534),
-    ("Amersfoort", 52.1561, 5.3878),
-    ("Leiden", 52.1601, 4.4970),
-    ("Purmerend", 52.5050, 4.9591),
-    ("Hoorn", 52.6425, 5.0597),
-    ("Gouda", 52.0115, 4.7104),
-    ("Antwerp", 51.2194, 4.4025),
-    ("Brussels", 50.8503, 4.3517),
-]
+# The largest connected cluster's *bounding box* can be far bigger than its
+# tile count if it's a sprawling/winding shape (e.g. a route network) rather
+# than a compact blob, so fetching one real map tile per zoom-ZOOM cell in
+# that bbox can mean thousands of tile requests for a mostly-empty area.
+# Background map imagery is fetched at a coarser zoom instead (few tiles,
+# one HTTP request each) and the visited squares are projected onto it -
+# web-mercator tile coordinates scale by an exact power of two between zoom
+# levels, so this needs no lat/lng round-trip, just integer division.
+OSM_TILE_PX = 256
+BG_MIN_ZOOM = 6
+BG_TARGET_TILES = 5
+MAP_OUTPUT_MAX_DIM = 480
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": "sethjsa.github.io stats script"})
+    req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
@@ -306,14 +300,6 @@ def fetch_country_polygons():
     return countries
 
 
-def country_parts(geom):
-    """Split a country's geometry into its constituent polygons, e.g. for
-    drawing each part's border ring separately."""
-    if geom.geom_type == "MultiPolygon":
-        return list(geom.geoms)
-    return [geom]
-
-
 def _lnglat_to_tile_coords(lng, lat):
     return latlng_to_tile_float(lat, lng)
 
@@ -374,6 +360,9 @@ def compute_country_completion(visited, countries):
 
 
 def render_tile_grid(tiles, scale=8, pad=1):
+    """Render the tile grid as SVG rather than raster - it's just solid
+    blocks on a grid, so a vector square per tile stays crisp at any zoom
+    instead of blurring like a small raster does when scaled up."""
     xs = [t[0] for t in tiles]
     ys = [t[1] for t in tiles]
     min_x, max_x = min(xs), max(xs)
@@ -381,79 +370,97 @@ def render_tile_grid(tiles, scale=8, pad=1):
     w = (max_x - min_x + 1 + pad * 2) * scale
     h = (max_y - min_y + 1 + pad * 2) * scale
 
-    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    pixels = img.load()
-    color = (252, 76, 2, 255)  # Strava orange, matches the rest of the outdoors section
-    for (x, y) in tiles:
+    color = "#fc4c02"  # Strava orange, matches the rest of the outdoors section
+    rects = []
+    for (x, y) in sorted(tiles):
         px0 = (x - min_x + pad) * scale
         py0 = (y - min_y + pad) * scale
-        for dx in range(scale - 1):
-            for dy in range(scale - 1):
-                pixels[px0 + dx, py0 + dy] = color
+        rects.append(f'<rect x="{px0}" y="{py0}" width="{scale - 1}" height="{scale - 1}" fill="{color}"/>')
+
+    svg = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" '
+        f'width="{w}" height="{h}">\n' + "\n".join(rects) + "\n</svg>\n"
+    )
 
     HEATMAP_FILE.parent.mkdir(parents=True, exist_ok=True)
-    img.save(HEATMAP_FILE)
+    HEATMAP_FILE.write_text(svg)
 
 
-def render_map_overlay(tiles, countries, scale=8, pad=1):
-    """Same tile-grid canvas as render_tile_grid, but with basic country
-    border outlines drawn underneath the tiles for geographic context."""
+def fetch_osm_tile(z, x, y, size):
+    """Fetch a single OpenStreetMap raster tile and downscale it to
+    `size`x`size`. Falls back to a plain grey square on any fetch error so
+    one missing tile doesn't fail the whole render - the public tile
+    server is unauthenticated and best-effort."""
+    url = f"https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            tile = Image.open(io.BytesIO(resp.read())).convert("RGBA")
+        return tile.resize((size, size), Image.LANCZOS)
+    except Exception as e:
+        print(f"  osm tile fetch failed for {z}/{x}/{y}: {e!r}", file=sys.stderr)
+        return Image.new("RGBA", (size, size), (230, 230, 230, 255))
+
+
+def choose_background_zoom(grid_w, grid_h):
+    """Pick a zoom level for the background map tiles that covers the
+    tile-grid's bounding box in roughly BG_TARGET_TILES tiles along its
+    longer side, without zooming out past BG_MIN_ZOOM."""
+    span = max(grid_w, grid_h)
+    if span <= BG_TARGET_TILES:
+        return ZOOM
+    zoom_out = max(0, round(math.log2(span / BG_TARGET_TILES)))
+    return max(BG_MIN_ZOOM, ZOOM - zoom_out)
+
+
+def render_map_overlay(tiles, pad=1):
+    """Same tiles as render_tile_grid, overlaid on real OpenStreetMap raster
+    tiles for geographic context. Background imagery is fetched at a zoom
+    coarser than the zoom-ZOOM visited-tile grid (see choose_background_zoom)
+    and each visited tile is projected onto it as a small rectangle."""
     xs = [t[0] for t in tiles]
     ys = [t[1] for t in tiles]
     min_x, max_x = min(xs), max(xs)
     min_y, max_y = min(ys), max(ys)
-    w = (max_x - min_x + 1 + pad * 2) * scale
-    h = (max_y - min_y + 1 + pad * 2) * scale
+    grid_w = max_x - min_x + 1 + pad * 2
+    grid_h = max_y - min_y + 1 + pad * 2
 
-    def to_px(lat, lng):
-        tx, ty = latlng_to_tile_float(lat, lng)
-        return (tx - min_x + pad) * scale, (ty - min_y + pad) * scale
+    bg_zoom = choose_background_zoom(grid_w, grid_h)
+    factor = 2 ** (ZOOM - bg_zoom)  # zoom-ZOOM tile units per background tile
 
-    # Only draw countries whose bbox actually overlaps this crop, in lat/lng
-    # terms (cheap to test before projecting every ring).
-    crop_min_lat, crop_min_lng = tile_center_latlng(min_x - pad, max_y + pad)
-    crop_max_lat, crop_max_lng = tile_center_latlng(max_x + pad, min_y - pad)
+    bg_min_x = math.floor((min_x - pad) / factor)
+    bg_max_x = math.floor((max_x + pad) / factor)
+    bg_min_y = math.floor((min_y - pad) / factor)
+    bg_max_y = math.floor((max_y + pad) / factor)
+    bg_grid_w = bg_max_x - bg_min_x + 1
+    bg_grid_h = bg_max_y - bg_min_y + 1
 
-    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
-    border_color = (180, 180, 180, 255)
-    border_width = max(1, scale // 4)
+    base = Image.new("RGBA", (bg_grid_w * OSM_TILE_PX, bg_grid_h * OSM_TILE_PX), (255, 255, 255, 255))
+    for gx in range(bg_grid_w):
+        for gy in range(bg_grid_h):
+            tile_img = fetch_osm_tile(bg_zoom, bg_min_x + gx, bg_min_y + gy, OSM_TILE_PX)
+            base.paste(tile_img, (gx * OSM_TILE_PX, gy * OSM_TILE_PX))
 
-    for c in countries:
-        minx, miny, maxx, maxy = c["bounds"]
-        if maxx < crop_min_lng or minx > crop_max_lng or maxy < crop_min_lat or miny > crop_max_lat:
-            continue
-        for part in country_parts(c["geom"]):
-            rings = [part.exterior] + list(part.interiors)
-            for ring in rings:
-                points = [to_px(lat, lng) for lng, lat in ring.coords]
-                if len(points) > 1:
-                    draw.line(points, fill=border_color, width=border_width)
-
-    tile_color = (252, 76, 2, 200)  # semi-transparent so borders stay visible underneath
+    # Draw the visited squares on a separate transparent layer and alpha-
+    # composite it over the fetched map tiles, rather than drawing directly
+    # onto `base` - a direct draw would overwrite pixels outright (including
+    # alpha), losing the map detail a translucent overlay is meant to show
+    # through.
+    overlay = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+    tile_color = (252, 76, 2, 140)
+    square_px = OSM_TILE_PX / factor
     for (x, y) in tiles:
-        px0 = (x - min_x + pad) * scale
-        py0 = (y - min_y + pad) * scale
-        draw.rectangle([px0, py0, px0 + scale - 2, py0 + scale - 2], fill=tile_color)
+        px0 = (x / factor - bg_min_x) * OSM_TILE_PX
+        py0 = (y / factor - bg_min_y) * OSM_TILE_PX
+        draw.rectangle([px0, py0, px0 + square_px, py0 + square_px], fill=tile_color)
 
-    # Font/marker sizes scale with `scale` so labels stay the same apparent
-    # size once the image is displayed at a fixed CSS box - the point of
-    # bumping `scale` is a sharper source image (like a @2x asset), not a
-    # bigger one.
-    font_size = round(11 * scale / 4)
-    try:
-        font = ImageFont.load_default(size=font_size)
-    except TypeError:
-        font = ImageFont.load_default()
-    label_color = (110, 110, 110, 255)
-    marker_r = 1.5 * scale / 4
-    label_offset = 4 * scale / 4
-    for name, lat, lng in PLACE_LABELS:
-        if not (crop_min_lat <= lat <= crop_max_lat and crop_min_lng <= lng <= crop_max_lng):
-            continue
-        px, py = to_px(lat, lng)
-        draw.ellipse([px - marker_r, py - marker_r, px + marker_r, py + marker_r], fill=label_color)
-        draw.text((px + label_offset, py - label_offset - 1), name, fill=label_color, font=font)
+    img = Image.alpha_composite(base, overlay)
+
+    if max(img.size) > MAP_OUTPUT_MAX_DIM:
+        ratio = MAP_OUTPUT_MAX_DIM / max(img.size)
+        new_size = (max(1, round(img.width * ratio)), max(1, round(img.height * ratio)))
+        img = img.resize(new_size, Image.LANCZOS)
 
     MAP_FILE.parent.mkdir(parents=True, exist_ok=True)
     img.save(MAP_FILE)
@@ -483,7 +490,7 @@ def main():
     # meant to be a small square showing the biggest connected grid.
     render_tiles = components[0]
     render_tile_grid(render_tiles)
-    render_map_overlay(render_tiles, countries)
+    render_map_overlay(render_tiles)
 
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
