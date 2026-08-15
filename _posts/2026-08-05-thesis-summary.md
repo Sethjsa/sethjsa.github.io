@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Explaining my PhD thesis"
+title: "PhD thesis, briefly"
 date: 2026-08-05
 ---
 
 ### Outline
 
-LLMs are good at predicting the next word. Does that mean they process language similarly to humans?
+LLMs are good at translating between languages. Does that mean they process languages similarly to humans?
 
 1. Do LLMs have the ability to learn a new language from grammar rules, like humans do?
 

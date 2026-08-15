@@ -1,7 +1,7 @@
 {% assign sb = site.data.summitbag_stats %}
 {% if sb.recent_public_activities and sb.recent_public_activities.size > 0 %}
 <div class="widget-box strava-recent">
-  <span class="strava-recent-title">STRAVA &middot; RECENT ACTIVITIES</span>
+  <span class="strava-recent-title">Activities</span>
   <div class="strava-recent-list">
     {% for a in sb.recent_public_activities %}
       <a class="strava-recent-card" href="https://www.strava.com/activities/{{ a.id }}" target="_blank" rel="noopener">
