@@ -1,7 +1,7 @@
 {% assign sb = site.data.summitbag_stats %}
 {% if sb.recent_public_activities and sb.recent_public_activities.size > 0 %}
 <div class="widget-box strava-recent">
-  <span class="strava-recent-title">Activities</span>
+  <p class="lb-section-title">Activities</p>
   <div class="strava-recent-list">
     {% for a in sb.recent_public_activities %}
       <a class="strava-recent-card" href="https://www.strava.com/activities/{{ a.id }}" target="_blank" rel="noopener">
@@ -25,6 +25,15 @@
       </a>
     {% endfor %}
   </div>
+
+  <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
+    <span style="color:var(--series-run); font-weight:600;">{{ sb.distance_totals_km.Run }} km</span> run
+    &middot;
+    <span style="color:var(--series-ride); font-weight:600;">{{ sb.distance_totals_km.Ride }} km</span> cycled
+    &middot;
+    <span style="color:var(--series-hike); font-weight:600;">{{ sb.distance_totals_km.Hike }} km</span> hiked
+    &middot; updated {{ sb.last_updated }}
+  </p>
 </div>
 
 <script>

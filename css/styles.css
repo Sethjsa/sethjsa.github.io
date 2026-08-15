@@ -148,15 +148,6 @@ ul.updates .date {
 }
 
 /* recent public activities, with minimaps */
-.strava-recent-title {
-  display: block;
-  color: #fc4c02;
-  font-weight: bold;
-  font-size: 0.75em;
-  letter-spacing: 0.03em;
-  margin-bottom: 0.4em;
-}
-
 .strava-recent-list {
   display: flex;
   flex-direction: column;
@@ -736,8 +727,7 @@ ol.lb-top-rated li {
 .sq-map-col {
   flex: 0 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .sq-tilemap {

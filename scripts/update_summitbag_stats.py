@@ -376,6 +376,13 @@ def save_state(state):
         m for by_year in state["elevation"].values() for m in by_year.values()
     )
 
+    distance_totals_km = {"Run": 0.0, "Ride": 0.0, "Hike": 0.0}
+    for a in state["activities"].values():
+        bucket = bucket_for(a.get("sport_type") or a.get("type"))
+        if bucket in distance_totals_km and a.get("distance"):
+            distance_totals_km[bucket] += a["distance"] / 1000.0
+    distance_totals_km = {k: round(v) for k, v in distance_totals_km.items()}
+
     out = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "last_processed_epoch": state["last_processed_epoch"],
@@ -387,6 +394,7 @@ def save_state(state):
         "peaks": peaks_sorted,
         "elevation": state["elevation"],
         "total_elevation_m": round(total_elevation_m),
+        "distance_totals_km": distance_totals_km,
         "recent_public_activities": recent_public_activities,
     }
     with open(DATA_FILE, "w") as f:

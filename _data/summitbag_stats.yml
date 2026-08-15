@@ -2910,6 +2910,10 @@ elevation:
     2025: 11187
     2026: 15390
 total_elevation_m: 339254
+distance_totals_km:
+  Run: 6814
+  Ride: 10211
+  Hike: 3002
 recent_public_activities:
 - id: 19729686772
   name: 30' D0
