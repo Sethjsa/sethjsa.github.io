@@ -103,6 +103,10 @@ a:hover {
   color: #000;
 }
 
+tt {
+  font-family: inherit;
+}
+
 h1 tt {
   font-size: 1rem;
   font-weight: bold;
