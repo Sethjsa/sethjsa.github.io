@@ -39,8 +39,9 @@ nav hr {
 .nav-icon-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 4px 8px;
+  padding: 4px 0;
 }
 
 .nav-icon-row a {
