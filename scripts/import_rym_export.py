@@ -41,6 +41,19 @@ TOP_N = 5
 ITUNES_SEARCH_URL = "https://itunes.apple.com/search"
 
 
+def rym_slug(text):
+    text = text.lower().strip()
+    text = "".join(c if c.isalnum() or c.isspace() else " " for c in text)
+    return "-".join(text.split())
+
+
+def rym_url(artist, title):
+    # Best-effort guess at RYM's release URL - not guaranteed to match
+    # (RYM appends a numeric suffix when a slug collides with another
+    # release, e.g. "funeral-5"), so spot-check these after a re-import.
+    return f"https://rateyourmusic.com/release/album/{rym_slug(artist)}/{rym_slug(title)}/"
+
+
 def lookup_artwork(artist, title):
     params = {"term": f"{artist} {title}", "media": "music", "entity": "album", "limit": 1}
     url = f"{ITUNES_SEARCH_URL}?{urllib.parse.urlencode(params)}"
@@ -92,6 +105,7 @@ def main():
         image, url = lookup_artwork(a["artist"], a["name"])
         a["image"] = image
         a["url"] = url
+        a["rym_url"] = rym_url(a["artist"], a["name"])
         time.sleep(0.5)
 
     out = {

@@ -42,7 +42,7 @@
     <ol class="lb-top-rated">
       {% for a in rym_ratings.top_rated %}
         <li>
-          <a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.name }}</a>
+          <a href="{{ a.rym_url | default: a.url }}" target="_blank" rel="noopener">{{ a.name }}</a>
           {% if a.year %}({{ a.year }}){% endif %}
           <span class="lb-rating-text">&middot; {{ a.stars }}&#9733;</span>
         </li>
