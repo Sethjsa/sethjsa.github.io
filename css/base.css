@@ -51,8 +51,9 @@ nav hr {
 }
 
 .nav-icon-row svg {
-  width: 18px;
-  height: 18px;
+  display: block;
+  width: auto;
+  height: 16px;
 }
 
 nav > section > ul {
