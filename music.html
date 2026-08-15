@@ -6,13 +6,6 @@
     {% include frags/meta.html %}
     <title>Music &ndash; Seth Aycock</title>
     <style>
-      .track-section {
-        margin-top: 1.6em;
-      }
-      .track-section h2 {
-        font-size: 1em;
-        margin-bottom: 0.8em;
-      }
       .track-list {
         display: flex;
         flex-direction: column;
@@ -71,13 +64,13 @@
 
         <p id="loading">Loading tracks&hellip;</p>
 
-        <div id="originals-section" class="track-section" style="display:none">
-          <header><h2><tt>originals</tt></h2></header>
+        <div id="originals-section" style="display:none">
+          <p class="media-section-title">Originals</p>
           <div id="originals-list" class="track-list"></div>
         </div>
 
-        <div id="covers-section" class="track-section" style="display:none">
-          <header><h2><tt>covers</tt></h2></header>
+        <div id="covers-section" style="display:none">
+          <p class="media-section-title">Covers</p>
           <div id="covers-list" class="track-list"></div>
         </div>
       </section>
