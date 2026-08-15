@@ -15,8 +15,8 @@
         <header>
           <h1><tt>outdoors</tt></h1>
         </header>
-        <p>
-           I spend time outdoors. <!-- <a href="https://www.strava.com/athletes/34997852">outdoors</a>. -->
+        <!-- I spend time outdoors. <a href="https://www.strava.com/athletes/34997852">outdoors</a>. -->
+        <p class="media-section-title">Sports</p>
         <!-- Strava's public embed widget started showing a login wall instead of
              activity data (not a code issue on this end - likely a Strava-side
              privacy/deprecation change). Replaced with a plain link card below;
@@ -42,13 +42,9 @@
           </a>
         </div>
         {% endunless %}
-        <p></p>
-        <p>Uphill:
-        </p>
+        <p class="media-section-title">Uphill</p>
         {% include frags/summitbag.html %}
-        <p></p>
-        <p><a href="https://squadrats.com/map/4d6ktQflKPatJGolMC8z8WmIFg93/14/earth">Squares</a>:
-        </p>
+        <p class="media-section-title">Squares</p>
         <!-- Replaced with a static widget sourced from StatsHunters - see
              _includes/frags/squadrats.html. Leaving the live iframe here in
              case we want to revert.

@@ -3,7 +3,7 @@
 <div class="widget-box summitbag-viz">
   <script type="application/json" id="summitbag-data">{{ sb | jsonify }}</script>
 
-  <!-- <p class="sb-subtitle">Here are all the peaks I've summited since 2022.</p> -->
+  <p class="lb-section-title">Summits</p>
   <div id="peaksbox">
     <table class="peaks-table">
       <colgroup>
@@ -17,7 +17,7 @@
 
   {% if sb.top_peaks and sb.top_peaks.size > 0 %}
     <div class="top-peaks-box">
-      <p class="top-peaks-title">Highest peaks bagged</p>
+      <p class="top-peaks-title">Highest summits</p>
       <ol>
         {% for p in sb.top_peaks %}
           <li>
