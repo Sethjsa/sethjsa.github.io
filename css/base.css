@@ -31,18 +31,24 @@ nav header {
 }
 
 nav hr {
+  border: none;
+  border-top: 1px solid #ddd;
   margin: 6px auto;
 }
 
 .nav-icon-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   padding: 4px 8px;
 }
 
 .nav-icon-row a {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
   color: #999;
 }
 
@@ -52,8 +58,8 @@ nav hr {
 
 .nav-icon-row svg {
   display: block;
-  width: auto;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 nav > section > ul {
