@@ -34,6 +34,27 @@ nav hr {
   margin: 6px auto;
 }
 
+.nav-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 8px;
+}
+
+.nav-icon-row a {
+  display: inline-flex;
+  color: #999;
+}
+
+.nav-icon-row a:hover {
+  color: #222;
+}
+
+.nav-icon-row svg {
+  width: 18px;
+  height: 18px;
+}
+
 nav > section > ul {
   display: inline-flex;
   width: 100%;
