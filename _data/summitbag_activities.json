@@ -95840,5 +95840,42 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": "wwu~Hcao[@p@C^Of@KH]PUDSTAb@FvBDfDb@tN"
+},
+{
+"id": 19766226877,
+"name": "70' D1, 20' D2",
+"sport_type": "Run",
+"type": "Run",
+"start_date": "2026-08-16T10:59:59Z",
+"start_date_local": "2026-08-16T12:59:59Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 19315.2,
+"moving_time": 5406,
+"elapsed_time": 5410,
+"total_elevation_gain": 49.0,
+"elev_high": 4.4,
+"elev_low": -8.4,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.3341,
+4.913407
+],
+"end_latlng": [
+52.332916,
+4.913951
+],
+"average_speed": 3.573,
+"max_speed": 4.72,
+"kudos_count": 18,
+"achievement_count": 0,
+"comment_count": 1,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "First time since February that a run feels okay\n\n🦶⬆️ 2026 = 29,086 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "ozl~Hio~\\w@?w@_@]Eq@^m@HwB~@oAx@w@`Ao@|AEXFbAVdAd@xARZJf@^bAf@z@^Lx@Ad@[nA]xBS`A@hCZ|@\\|@x@jAbBn@pAh@vAvAhFh@xCV`CLnD?fE[tFEjABt@Bj@Ln@l@bC`@fANRXJx@D~AUfC{@fB?hB\\lBbApGrGrAf@zCfBnBn@`GzChA`@p@NvA?lBk@h@_@pAyBvBqGNq@Bk@EqHB_CV_EZkCz@}Dv@qBhB{FzByL~AcHZy@bB_D`@[l@JnAp@\\Xv@pAl@hAh@dB~@xDt@hDxAlB|@d@r@K|C}AbC_@d@?p@NxE|BtA`@fCXjDUfBk@bEcCbCyChBcBjDoAh@G\\JpEpDnApBf@lAvDxEnArC`FjIpGjMxCvEnAhA~@Zd@Y^q@Pu@PKHD|ClK@TCDeAaCOQWHkAt@i@HiBWqA_@_@[eE_G_DsHgDgGg@u@{DeH}DwF{@yAeB_Ci@g@wAy@uAYiAXwJnJuC`B_AVeE^mBOuAa@qEwBiAWy@AoANaF~BiAJuAo@gA{A_AwDkA{Fi@sAa@m@YYeAUk@T]b@i@pAm@jBUdA}@|F}@~E}CnKe@bCYrDKbC@`EEdBMdCWdC_@|Bi@jBcBpCa@l@e@f@Hx@F`KFr@PTfAIbIaDtXuJXk@J}A?_XFm@JMTAdSnA`APTCp@mWJg@FoBQYuAWkBcAuCkAq@IaCHsFbC_ADw@Y}@y@k@gA{@kDq@{Dk@qBe@u@c@e@{@Wk@H]Xm@nAq@nB]xAw@|EmA~Fg@xBwAtEe@nBQ|@SnBQ|ECdH[|Eo@vD]jA}B`E]^kDpBiCf@k@EqBs@y@g@_IiDcF_BwF}E{B}B}@g@}@Q_E|@kFdBSRk@xA]`@s@zAIFGGBOrIyTbAiBvA_DxDcJp@eBPEJHCZi@`BeBxDQbAo@bHWv@sARgAh@wBN?F_ByASKSUg@{BM_BBuALmAPeECwEIqBUwBi@gD{AyFy@}BeAkBm@{@mA}@iA_@sEQmALiCt@i@?UKWa@i@[MSm@kBIe@_@cAOq@A[Bc@^oAj@cA`@e@nC_BnBs@ZWj@D`Ah@\\?rAc@j@a@bCkAlAM~E_DN@NTX|AHH^LlAOlAu@bBaBLA?NkA|@"
 }
 ]
