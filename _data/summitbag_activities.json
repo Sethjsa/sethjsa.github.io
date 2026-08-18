@@ -95877,5 +95877,79 @@
 "private": false,
 "peak_names": [],
 "map_summary_polyline": "ozl~Hio~\\w@?w@_@]Eq@^m@HwB~@oAx@w@`Ao@|AEXFbAVdAd@xARZJf@^bAf@z@^Lx@Ad@[nA]xBS`A@hCZ|@\\|@x@jAbBn@pAh@vAvAhFh@xCV`CLnD?fE[tFEjABt@Bj@Ln@l@bC`@fANRXJx@D~AUfC{@fB?hB\\lBbApGrGrAf@zCfBnBn@`GzChA`@p@NvA?lBk@h@_@pAyBvBqGNq@Bk@EqHB_CV_EZkCz@}Dv@qBhB{FzByL~AcHZy@bB_D`@[l@JnAp@\\Xv@pAl@hAh@dB~@xDt@hDxAlB|@d@r@K|C}AbC_@d@?p@NxE|BtA`@fCXjDUfBk@bEcCbCyChBcBjDoAh@G\\JpEpDnApBf@lAvDxEnArC`FjIpGjMxCvEnAhA~@Zd@Y^q@Pu@PKHD|ClK@TCDeAaCOQWHkAt@i@HiBWqA_@_@[eE_G_DsHgDgGg@u@{DeH}DwF{@yAeB_Ci@g@wAy@uAYiAXwJnJuC`B_AVeE^mBOuAa@qEwBiAWy@AoANaF~BiAJuAo@gA{A_AwDkA{Fi@sAa@m@YYeAUk@T]b@i@pAm@jBUdA}@|F}@~E}CnKe@bCYrDKbC@`EEdBMdCWdC_@|Bi@jBcBpCa@l@e@f@Hx@F`KFr@PTfAIbIaDtXuJXk@J}A?_XFm@JMTAdSnA`APTCp@mWJg@FoBQYuAWkBcAuCkAq@IaCHsFbC_ADw@Y}@y@k@gA{@kDq@{Dk@qBe@u@c@e@{@Wk@H]Xm@nAq@nB]xAw@|EmA~Fg@xBwAtEe@nBQ|@SnBQ|ECdH[|Eo@vD]jA}B`E]^kDpBiCf@k@EqBs@y@g@_IiDcF_BwF}E{B}B}@g@}@Q_E|@kFdBSRk@xA]`@s@zAIFGGBOrIyTbAiBvA_DxDcJp@eBPEJHCZi@`BeBxDQbAo@bHWv@sARgAh@wBN?F_ByASKSUg@{BM_BBuALmAPeECwEIqBUwBi@gD{AyFy@}BeAkBm@{@mA}@iA_@sEQmALiCt@i@?UKWa@i@[MSm@kBIe@_@cAOq@A[Bc@^oAj@cA`@e@nC_BnBs@ZWj@D`Ah@\\?rAc@j@a@bCkAlAM~E_DN@NTX|AHH^LlAOlAu@bBaBLA?NkA|@"
+},
+{
+"id": 19776250160,
+"name": "Morning Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-17T08:32:11Z",
+"start_date_local": "2026-08-17T10:32:11Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 4412.5,
+"moving_time": 905,
+"elapsed_time": 921,
+"total_elevation_gain": 17.0,
+"elev_high": 3.8,
+"elev_low": -4.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.334214,
+4.913457
+],
+"end_latlng": [
+52.355534,
+4.955403
+],
+"average_speed": 4.876,
+"max_speed": 12.04,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 15,407 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "izl~Hwr~\\oAuH_@gBI{@]iB_@}Cs@aEcAuG_@wBk@aC_@cCMeACi@I]_@k@i@sBmAaEGaA[_BKaAo@uCOOOFGHMT}@rCWj@GDQQcC_D?MDYz@{B^kANgATs@Hi@Ai@Oc@cDmGq@yAa@o@kB{Du@sAaD_H]o@KWE]EKo@OWQmBgDKYH[gEaIg@sA{@mAqAgCsAqCmA{Bk@mAYw@]i@Y]KUAYiDiGg@wAg@cAgAkBOUmAaC{@iBW_Ae@i@kBsDyA}Cy@wAo@mA}@qB}@cCm@aA]w@u@{@S_@eByDIIYo@WuAiBqD"
+},
+{
+"id": 19782796450,
+"name": "60' Z2 - Recovery Hoep",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-17T16:48:04Z",
+"start_date_local": "2026-08-17T18:48:04Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 31794.1,
+"moving_time": 3674,
+"elapsed_time": 3674,
+"total_elevation_gain": 65.0,
+"elev_high": 3.4,
+"elev_low": -6.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.334239,
+4.913417
+],
+"end_latlng": [
+52.333972,
+4.913586
+],
+"average_speed": 8.654,
+"max_speed": 10.088,
+"kudos_count": 8,
+"achievement_count": 10,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 15,472 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "w{l~Hao~\\gBg@QpAoBZgClAuAtBCtB|@bD~@jAAjAXVv@DrFaAlDLlClAnCjExBrHv@lE^~HA`E]`Hj@tEl@rBf@d@tBB`DmAbELzCzAxF`GrFtCvLlFpBTrAUpAa@jA}AbDkJBaNJyCh@cEhAsEtC}IfEiTZcA`CkEz@AxBxA`BxCbDpMfBrBl@RjEgBbE_@rIlD`CVrEe@rE}BhGuGzD}A|@@zE|D|ClF`CtC`Rr]tChEbBpAx@AbA}Bv@jBZJT]Lw@EqAlCkGrByBf@wBlAoI^@dAjAKtBdB~@lDhFJnChAvCjOdIPf@c@nEyFdVuAlHk@xACl@N`@`CLxFw@nAP|AnC`DxOfAjB\\N`A?x@s@hB}G~AwC`Bc@~@Zt@fAn@nBf@vCb@xI\\zA|@zAzA~@xDXxDtBxE|FrHrKdJrJ~A^rDu@|BsAtFyGvB{ApBi@rCXpDdApFeBbALnIzDdHbBfBhA|Bn@lBeAfIqLlA_AvBWjBhAf@p@rB~DrDfFlAjCt@lCx@lIXjOh@bCv@p@~@VbCOpAuA~@c@tAGtAZzDlCrLnL~Av@`C@hAt@pIaIdAyB`@cC?uAWkAiEuI_DwHiBsP}@wDUkEByDX{At@cBdAoA|GcFx@mAx@uC?{@m@wDcGaIkCeEYcAMiBJiC^cCvAkChCqInBiCl@_Cf@wHMmBeAcEgAsCoDgFcAqB_@sBQcENiHpAqQhAqG@uAUkBsAiC_DgC_AgAsAiC_CgC}FaOyEaHaCsAyEw@}KrBeAg@qA}DuBqQo@eC{@uB_BgBoH]sFiAoBkA_AgBo@}BmAeLi@gCo@_AqBmAgDLiBlD_DxA_BTyAfFsAbAqCsDkB}@qHpEyHIyFvCqHm@_CzBkAbCUvEX~IU|Am@dAeCnBy@@qEcAyHfAs@j@g@fAsA~GyClJoGrEIjEqA`NBjCv@`ISnDsLr^eI``@qCoBsKmFuA{DI{BaEsFmAg@HmBwAkBSHWdAqAbJUr@aB~AcCjFSr@JpAQ^q@n@s@{BgAzBYLcBw@eD{E_IsOyFkK{EqGkAeCmGqFyEhAgAv@mFvF{DrBkBZ_CJwDi@kEwBiBc@yBNwFtB_CoB}DeOeBuCaCiAw@l@oBrDwBxIoB`LaEfMo@vDWbDGfPU`AiBrF_AjBaA~@yAb@uCCyTgK{F_GeBgAaEq@{AL_DfAsAIg@i@cAqDScB^uLSiIaB_JkCyHkAeBeA_AkBm@qEGqF|@YQOsAk@m@gAyDGm@JwAvAqBdF}AReAVIdAd@bA@"
 }
 ]
