@@ -1,0 +1,519 @@
+# Auto-generated image dimensions for images/gallery/, used to set
+# width/height on <img> in gallery.html so the browser reserves the
+# correct box before the image loads (prevents layout shift in the
+# CSS multi-column gallery). Regenerate with:
+#   for f in images/gallery/*; do sips -g pixelWidth -g pixelHeight "$f"; done
+
+"000000200002.jpg":
+  width: 1565
+  height: 1037
+"000000200005.jpg":
+  width: 1565
+  height: 1037
+"000000200018.jpg":
+  width: 1565
+  height: 1037
+"000000210001.jpg":
+  width: 1565
+  height: 1037
+"000000210006.jpg":
+  width: 1565
+  height: 1037
+"000000210008.jpg":
+  width: 1565
+  height: 1037
+"000000210025.jpg":
+  width: 1565
+  height: 1037
+"000000220004.jpg":
+  width: 1565
+  height: 1037
+"000000220005.jpg":
+  width: 1565
+  height: 1037
+"000000220009.jpg":
+  width: 1565
+  height: 1037
+"000000220012.jpg":
+  width: 1565
+  height: 1037
+"000000220015.jpg":
+  width: 1565
+  height: 1037
+"000000220023.jpg":
+  width: 1565
+  height: 1037
+"000003010004.jpg":
+  width: 1565
+  height: 1037
+"000003010012.jpg":
+  width: 1565
+  height: 1037
+"000003010014.jpg":
+  width: 1565
+  height: 1037
+"000003010023.jpg":
+  width: 1565
+  height: 1037
+"000003010025.jpg":
+  width: 1565
+  height: 1037
+"000003010027.jpg":
+  width: 1565
+  height: 1037
+"000003010029.jpg":
+  width: 1565
+  height: 1037
+"000003010030.jpg":
+  width: 1565
+  height: 1037
+"000003010034.jpg":
+  width: 1565
+  height: 1037
+"000003010037.jpg":
+  width: 1565
+  height: 1037
+"000015.JPG":
+  width: 1818
+  height: 1228
+"000329650008.jpg":
+  width: 1545
+  height: 1024
+"000329650011.jpg":
+  width: 1545
+  height: 1024
+"000329660006.jpg":
+  width: 1545
+  height: 1024
+"000329660008.jpg":
+  width: 1545
+  height: 1024
+"000329660016.jpg":
+  width: 1545
+  height: 1024
+"000329660018.jpg":
+  width: 1545
+  height: 1024
+"000329660027.jpg":
+  width: 1545
+  height: 1024
+"000329660033.jpg":
+  width: 1545
+  height: 1024
+"000329670028.jpg":
+  width: 1545
+  height: 1024
+"000329670034.jpg":
+  width: 1545
+  height: 1024
+"000329670037.jpg":
+  width: 1545
+  height: 1024
+"000878490011.jpg":
+  width: 3130
+  height: 2075
+"000878490017.jpg":
+  width: 3130
+  height: 2075
+"000878490023.jpg":
+  width: 3130
+  height: 2075
+"000878490028.jpg":
+  width: 3130
+  height: 2075
+"000878490035.jpg":
+  width: 3130
+  height: 2075
+"000878490037.jpg":
+  width: 3130
+  height: 2075
+"000958310014.jpg":
+  width: 3130
+  height: 2075
+"000958460010.jpg":
+  width: 3130
+  height: 2075
+"000958460023.jpg":
+  width: 3130
+  height: 2075
+"000958460033.jpg":
+  width: 3130
+  height: 2075
+"000996920010.jpg":
+  width: 3130
+  height: 2075
+"000996920034.jpg":
+  width: 3130
+  height: 2075
+"000996920036.jpg":
+  width: 3130
+  height: 2075
+"000996960031.jpg":
+  width: 3130
+  height: 2075
+"000996960032.jpg":
+  width: 3130
+  height: 2075
+"000996960036.jpg":
+  width: 3130
+  height: 2075
+"0066 - 18a.jpg":
+  width: 3617
+  height: 2398
+"0066 - 26a.jpg":
+  width: 2398
+  height: 3637
+"0258 - 08a.jpg":
+  width: 3617
+  height: 2398
+"0258 - 29a.jpg":
+  width: 3617
+  height: 2398
+"0258 - 32a.jpg":
+  width: 3617
+  height: 2398
+"0258 - 33a.jpg":
+  width: 3617
+  height: 2398
+"11.jpg":
+  width: 2218
+  height: 1468
+"115160_2_9A1626521700252.jpg":
+  width: 2936
+  height: 1936
+"17.jpg":
+  width: 2218
+  height: 1468
+"18.jpg":
+  width: 2218
+  height: 1468
+"22.jpg":
+  width: 2218
+  height: 1468
+"24.jpg":
+  width: 2218
+  height: 1468
+"3.jpg":
+  width: 2218
+  height: 1468
+"30.jpg":
+  width: 2218
+  height: 1468
+"38.jpg":
+  width: 2218
+  height: 1468
+"418795070011.jpg":
+  width: 3130
+  height: 2075
+"418795070014.jpg":
+  width: 3130
+  height: 2075
+"418795070017.jpg":
+  width: 3130
+  height: 2075
+"418795070030.jpg":
+  width: 3130
+  height: 2075
+"418795070033.jpg":
+  width: 3130
+  height: 2075
+"418795080023.jpg":
+  width: 3130
+  height: 2075
+"418795090027.jpg":
+  width: 3130
+  height: 2075
+"418795090036.jpg":
+  width: 3130
+  height: 2075
+"418795100020.jpg":
+  width: 3130
+  height: 2075
+"418795100021.jpg":
+  width: 3130
+  height: 2075
+"418795100023.jpg":
+  width: 3130
+  height: 2075
+"418795100024.jpg":
+  width: 3130
+  height: 2075
+"418795100026.jpg":
+  width: 3130
+  height: 2075
+"418795100028.jpg":
+  width: 3130
+  height: 2075
+"418795100029.jpg":
+  width: 3130
+  height: 2075
+"418795100038.jpg":
+  width: 3130
+  height: 2075
+"507624030012.jpg":
+  width: 3130
+  height: 2075
+"507624030017.jpg":
+  width: 3130
+  height: 2075
+"507624030020.jpg":
+  width: 3130
+  height: 2075
+"507624030022.jpg":
+  width: 3130
+  height: 2075
+"507624030024.jpg":
+  width: 3130
+  height: 2075
+"507624030026.jpg":
+  width: 3130
+  height: 2075
+"507624030029.jpg":
+  width: 3130
+  height: 2075
+"507624040007.jpg":
+  width: 3130
+  height: 2075
+"507624040028.jpg":
+  width: 3130
+  height: 2075
+"507624040031.jpg":
+  width: 3130
+  height: 2075
+"507624050005.jpg":
+  width: 2075
+  height: 3130
+"507624050020.jpg":
+  width: 3130
+  height: 2075
+"507624050025.jpg":
+  width: 3130
+  height: 2075
+"507624050027.jpg":
+  width: 3130
+  height: 2075
+"507624050034.jpg":
+  width: 3130
+  height: 2075
+"6037 - 29.jpg":
+  width: 3617
+  height: 2398
+"606916530012.jpg":
+  width: 3130
+  height: 2075
+"606916530013.jpg":
+  width: 3130
+  height: 2075
+"606916530028.jpg":
+  width: 3130
+  height: 2075
+"606916530032.jpg":
+  width: 3130
+  height: 2075
+"606916530035.jpg":
+  width: 3130
+  height: 2075
+"606916540016.jpg":
+  width: 3130
+  height: 2075
+"606916540018.jpg":
+  width: 3130
+  height: 2075
+"606916540025.jpg":
+  width: 3130
+  height: 2075
+"606916540031.jpg":
+  width: 3130
+  height: 2075
+"606916540032.jpg":
+  width: 3130
+  height: 2075
+"606916540034.jpg":
+  width: 3130
+  height: 2075
+"606916550001.jpg":
+  width: 3130
+  height: 2075
+"606916550002.jpg":
+  width: 3130
+  height: 2075
+"606916550004.jpg":
+  width: 3130
+  height: 2075
+"606916550019.jpg":
+  width: 3130
+  height: 2075
+"606916550020.jpg":
+  width: 3130
+  height: 2075
+"606916560002.jpg":
+  width: 3130
+  height: 2075
+"606916560004.jpg":
+  width: 3130
+  height: 2075
+"606916560007.jpg":
+  width: 3130
+  height: 2075
+"606916560009.jpg":
+  width: 3130
+  height: 2075
+"606916560025.jpg":
+  width: 3130
+  height: 2075
+"606916560026.jpg":
+  width: 3130
+  height: 2075
+"606916560031.jpg":
+  width: 3130
+  height: 2075
+"606916560032.jpg":
+  width: 3130
+  height: 2075
+"606916560034.jpg":
+  width: 3130
+  height: 2075
+"6377_0A1626521700252.jpg":
+  width: 2936
+  height: 1936
+"6377_11A1626521700252.jpg":
+  width: 2936
+  height: 1936
+"6377_23A1626521700255.jpg":
+  width: 2936
+  height: 1936
+"6377_351626521700258.jpg":
+  width: 2936
+  height: 1936
+"6377_3A1626521700258.jpg":
+  width: 2936
+  height: 1936
+"6377_9A1626521700259.jpg":
+  width: 2936
+  height: 1936
+"6378_141626521700260.jpg":
+  width: 2936
+  height: 1936
+"6378_291626521700264.jpg":
+  width: 2936
+  height: 1936
+"6378_301626521700264.jpg":
+  width: 2936
+  height: 1936
+"6378_371626521700265.jpg":
+  width: 2936
+  height: 1936
+"6734 - 10.jpg":
+  width: 3617
+  height: 2398
+"6734 - 22.jpg":
+  width: 3617
+  height: 2398
+"6734 - 34.jpg":
+  width: 3617
+  height: 2398
+"6735 - 06.jpg":
+  width: 2398
+  height: 3637
+"6735 - 12.jpg":
+  width: 2398
+  height: 3637
+"6735 - 19.jpg":
+  width: 2398
+  height: 3637
+"6816 - 02a.jpg":
+  width: 3617
+  height: 2398
+"6816 - 04a.jpg":
+  width: 3617
+  height: 2398
+"6816 - 05a.jpg":
+  width: 2398
+  height: 3637
+"6816 - 07a.jpg":
+  width: 3617
+  height: 2398
+"6816 - 09a.jpg":
+  width: 3617
+  height: 2398
+"6816 - 22a.jpg":
+  width: 2398
+  height: 3637
+"6817 - 13.jpg":
+  width: 2398
+  height: 3637
+"6817 - 18.jpg":
+  width: 3617
+  height: 2398
+"6818 - 18a.jpg":
+  width: 3617
+  height: 2398
+"6818 - 29a.jpg":
+  width: 3617
+  height: 2398
+"6818 - 30a.jpg":
+  width: 3617
+  height: 2398
+"6818 - 31a.jpg":
+  width: 3617
+  height: 2398
+"6818 - 35a.jpg":
+  width: 3617
+  height: 2398
+"7212 - 08.jpg":
+  width: 2317
+  height: 1536
+"7212 - 17.jpg":
+  width: 2317
+  height: 1536
+"7212 - 18.jpg":
+  width: 2317
+  height: 1536
+"7212 - 21.jpg":
+  width: 2317
+  height: 1536
+"7212 - 30.jpg":
+  width: 1536
+  height: 2316
+"7213 - 06.jpg":
+  width: 2317
+  height: 1536
+"7213 - 07.jpg":
+  width: 2317
+  height: 1536
+"7213 - 33.jpg":
+  width: 2317
+  height: 1536
+"7213 - 36.jpg":
+  width: 1536
+  height: 2316
+"7214 - 02.jpg":
+  width: 2317
+  height: 1536
+"7214 - 26.jpg":
+  width: 2317
+  height: 1536
+"84440011.jpg":
+  width: 2048
+  height: 3073
+"84440026.jpg":
+  width: 3089
+  height: 2048
+"84440037.jpg":
+  width: 3089
+  height: 2048
+"9.jpg":
+  width: 2218
+  height: 1468
+"img0014.jpg":
+  width: 1968
+  height: 1312
+"img0018.jpg":
+  width: 1968
+  height: 1312
+"img0019.jpg":
+  width: 1968
+  height: 1312
+"img0024.jpg":
+  width: 1968
+  height: 1312

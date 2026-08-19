@@ -210,11 +210,6 @@ ul.updates .date {
   columns: 3;
   column-gap: 6px;
   margin-top: 0.5em;
-  visibility: hidden;
-}
-
-.gallery.shuffled {
-  visibility: visible;
 }
 
 .gallery a {

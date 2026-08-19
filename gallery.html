@@ -17,12 +17,16 @@
          I own all the images. </p>
         <p> Here's an unordered selection of my best.</p>
       <div class="gallery">
-        {% assign gallery_images = site.static_files | where_exp: "f", "f.path contains '/images/gallery/'" %}
+        {% assign unshuffled_images = site.static_files | where_exp: "f", "f.path contains '/images/gallery/'" %}
+        {% assign gallery_images = unshuffled_images | sample: unshuffled_images.size %}
         {% for img in gallery_images %}
           {% assign caption = site.data.gallery_captions[img.name] %}
           {% assign meta = site.data.gallery_metadata[img.name] %}
+          {% assign dims = site.data.gallery_dimensions[img.name] %}
           <a href="{{ img.path }}" target="_blank">
-            <img src="{{ img.path }}" alt="{{ caption | default: '' }}" loading="lazy">
+            <img src="{{ img.path }}" alt="{{ caption | default: '' }}"
+              {% if dims %}width="{{ dims.width }}" height="{{ dims.height }}"{% endif %}
+              {% if forloop.index0 < 6 %}loading="eager"{% if forloop.index0 == 0 %} fetchpriority="high"{% endif %}{% else %}loading="lazy"{% endif %}>
             {% if caption or meta %}
               <span class="overlay">
                 {% if caption %}<span class="caption">{{ caption }}</span>{% endif %}
@@ -42,16 +46,6 @@
     </section>
     <script>
       const gallery = document.querySelector('.gallery');
-      const items = Array.from(gallery.children);
-
-      for (let i = items.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        gallery.appendChild(items[j]);
-        [items[i], items[j]] = [items[j], items[i]];
-      }
-
-      gallery.classList.add('shuffled');
-
       gallery.querySelectorAll('img').forEach((img, i) => {
         img.style.transitionDelay = `${Math.min(i * 25, 400)}ms`;
         const reveal = () => img.classList.add('loaded');
