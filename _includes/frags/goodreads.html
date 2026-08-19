@@ -1,0 +1,21 @@
+{% assign gr_recent = site.data.goodreads_recent %}
+{% if gr_recent.recent.size > 0 %}
+<p class="media-section-title">Books</p>
+<div class="widget-box letterboxd-viz">
+  <p class="lb-section-title">Recently read</p>
+  <div class="lb-recent-scroll">
+    {% for b in gr_recent.recent %}
+      <a class="lb-poster" href="{{ b.url }}" target="_blank" rel="noopener" title="{{ b.title }} by {{ b.author }}{% if b.rating %} - {{ b.rating }} stars{% endif %}">
+        {% if b.cover %}
+          <img src="{{ b.cover }}" alt="{{ b.title }}" loading="lazy">
+        {% endif %}
+        {% if b.rating %}<span class="lb-rating">{{ b.rating }}&#9733;</span>{% endif %}
+      </a>
+    {% endfor %}
+  </div>
+
+  <p style="font-size:0.75em; color:#999; margin:0.5em 0 0;">
+    updated {{ gr_recent.last_updated }}
+  </p>
+</div>
+{% endif %}
