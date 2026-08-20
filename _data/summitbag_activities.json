@@ -96025,5 +96025,79 @@
 "private": false,
 "peak_names": [],
 "map_summary_polyline": "azl~Hko~\\YF]EQEeAa@KAE@OLQHK?gA^GCOJ[Vm@Z{@h@SVq@n@q@tBAVFr@Pz@t@vBV`AVh@n@~@\\Ll@?PE`@Yj@Id@OrASjAARBj@?lAJ^Hb@P`@Xd@b@X\\j@bAj@fAn@~A^jAp@bCn@`D\\pCJ|AFzBArCC`BYjEA~AFx@Lp@l@|B@LVh@RZHDd@Np@BL?f@Kl@UlAm@j@Kb@Cj@@x@J|@R`Ab@dAr@zChD`A~@f@Z\\P`A^`BjAf@PNJZFj@PNHJBl@TVNb@ZhAj@VHPN\\RhA^v@L^Bj@At@Qv@W\\ONOt@gAVm@l@_Bj@oBj@eBHo@BqA?{BGaDB{ATaEZ_Cl@uCZcAb@eAj@mBlAqDNaAVeAJw@t@gEdBuHZ{@\\u@|@_B^c@PIJA\\J`@TZHd@^j@v@x@xAPd@Vx@Pj@RlAh@nB\\jBNh@j@x@b@h@\\Vd@T\\?VIVKb@Yf@W\\K\\Oh@Iz@U^Eb@?P@VFjAl@VFxBjAz@Vj@Lv@Br@RVBn@A`AOTAn@Ij@Od@SRITSv@e@hAk@`@]HM@Cw@f@oAf@q@f@[PWBODy@\\e@JQ?a@Jg@Hm@@]Ag@IoAIg@K_B{@{Aq@m@[aA[]CeBROFq@P{Ah@_@\\m@VYAKCKEQMy@{@Ya@Q[IY]yBcAaEYaAa@eAgAuBe@k@[KgAm@SEYFKHY`@O\\eA~AYp@m@zBO^q@vCg@zCSv@e@|C_@lB_BzEk@xAYbAg@zBKl@OrAUrDEhCBtBBrEEl@Uz@Ud@Uj@u@pCSh@aAfB]`@g@VgA\\i@ByACeAWcCmAOE[OSQm@W{@e@o@QgAa@u@g@oAs@oAe@wAqAmCwCc@a@g@a@oAo@]Ki@KO?YGyAAk@DUF_Ad@e@DIFE@y@BEAMKIAGIk@]_@[Se@g@oBMaBAe@D_APsBJqCEuEKkCe@wDm@cD}@aDw@qB_AiBw@kAa@e@WU[S[MsAUu@E}A@s@AUDM?OFY@OHM?MBMLi@N_@D]GKG[g@QKSEQ]u@gCO_@UaAIq@@OBQd@yA^m@f@g@^[VKXU\\Q`@YzAo@"
+},
+{
+"id": 19806044842,
+"name": "Lunch Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-19T09:29:04Z",
+"start_date_local": "2026-08-19T11:29:04Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 4366.1,
+"moving_time": 792,
+"elapsed_time": 792,
+"total_elevation_gain": 13.0,
+"elev_high": 8.0,
+"elev_low": -1.8,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.334118,
+4.913434
+],
+"end_latlng": [
+52.355525,
+4.956154
+],
+"average_speed": 5.513,
+"max_speed": 12.6,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 15,500 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "}yl~Hyq~\\kBwKIg@Ek@g@sCeDsScBuJ?g@GSW[]QEI@KF?SmAiAcEQe@Q_BWqA_@_CYqAKOMFW`@mAfDGVILECg@}@uAcBUU@KfBgFFu@^wADg@Ic@O]{@wAaAsBwGoMSg@yAsC}@iBi@eBGEc@CQIWW_BaDK[JSKU_D}Fq@_BkBcDqDkHaAkBo@wAu@eAUaA[c@sByDcAcCgA}Bg@k@sAkCYg@Wi@_@wA]_@{D}HsByDs@}AsAmDa@u@u@cAs@m@aAaBq@yA_@aBK_AuCaG"
+},
+{
+"id": 19813838234,
+"name": "5x(800 vlot, 250 (1), 400 vlot)",
+"sport_type": "Run",
+"type": "Run",
+"start_date": "2026-08-19T16:41:37Z",
+"start_date_local": "2026-08-19T18:41:37Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 20240.6,
+"moving_time": 5671,
+"elapsed_time": 8316,
+"total_elevation_gain": 48.0,
+"elev_high": 17.4,
+"elev_low": -6.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.333884,
+4.913784
+],
+"end_latlng": [
+52.343109,
+4.906672
+],
+"average_speed": 3.569,
+"max_speed": 6.0,
+"kudos_count": 14,
+"achievement_count": 2,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "Finally some quality\r\n\r\n🦶⬆️ 2026 = 29,157 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "myl~Huo~\\eANqBi@m@|EaDdDeF`HcGxGCjDJtF[lVJ~AeAjl@@pRWfCu@~AYxCHhJ]~Rg@dDkAnCBhF]nAKdEZfOShGdAlp@_@`A\\l@TtSdAle@[nDyANhKhA~NA\\bJd@jHcDPcFxAaBbAiIhBw@kGkAp@oBC{@qFw@cB}@a@uANbApIh@YP_CWu@g@WoD|@]j@GnAXdA\\TtDy@b@w@BqAY}@]QuDz@e@~@@pAb@x@^JnD}@^u@BkAWy@o@a@sDjAYh@G~@XlA`@XhDa@AQj@e@HeAIeA_@i@k@CkDjAUdADbAt@|@pDq@}Cj@Sc@SsBJg@`Cw@b@l@HtBqAx@jBc@XcAEqA[q@s@EcD`A[z@FxAf@r@^BpDoARcAGkA]i@q@CoDpAOdB`@lAfEc@^a@RkAOsAi@i@}D~@a@r@Ez@RfAj@`@lDu@G\\n@uABsA[aAa@Q{DbA]pBXdAh@VdD{@aDl@Y_C^s@`Bo@`@PTtBoAv@BV|Ac@\\}@?eA[aAa@QsDbAa@x@AnAVr@n@TjDaA\\{@AqAQk@g@WaEnAUz@HnA\\l@h@FpDcAXuAMsA}@k@wDrAWn@@nAVp@l@RlCu@TFIPCSp@{@?eB[u@a@KsDbAWh@ElAXdAn@R`Dq@}DRSsBTg@|Aw@~@?ThAIvBr@k@DuB]u@_@MuDbA]x@?lAZx@l@PlDeAXaACmAw@_AyD`A[t@Cv@XlAd@TzD{@Zu@BkAQy@m@c@uD`A]j@I|@NjAh@b@dDu@PBEVAUd@q@HsAUaAk@]uDbA[r@CbAT|@f@\\vDy@eEb@[kBf@eApCk@T`BIpBv@cAFmASaAq@_@iD|@_@d@IvANn@j@d@pDu@b@u@@yAMm@g@_@yD~@[l@GdAXfA^XvDy@^i@JgAUmAc@_@yD|@e@v@ElANl@l@d@jD}@?`@f@iAFcAO_Ai@g@sDt@[`@O`A`@fBj@PfDw@_C_LkAqC{Dz@s@wAu@uJM{GgCe\\}@{Ie@uICeMm@s[B}Ce@oWd@}AtKkObAwCZcCn@aa@VqCzI_InGXh@KV_AL{CvAaeADwNa@_AmB]g@o@iCh@"
 }
 ]
