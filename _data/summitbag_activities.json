@@ -96247,5 +96247,79 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": "qkm~Hip~\\Ee@EGEAYN_@GGGU{@OiAeAqCa@sAKcAEsAKeAYqBEMKIMg@QQUa@[[s@g@s@aA[y@COYwBI_AKSGAS@u@`@u@Va@Tq@TYNgBl@G@YHe@Zy@XeAj@a@v@u@jB_@j@G\\M\\OF_@hAgA~BOn@[h@]v@KZGH]Fw@Za@VONOAQDIDICYFUL_@FIBY^Wj@]BsAp@a@HW@KH_@Pa@Z]PYJk@XWHo@^WFk@Vm@TSDcBz@a@JKFa@Fm@b@c@Lw@f@OVy@`AUNe@d@WPc@h@q@l@mBrBQJSTKN_Ax@_@l@Y~@w@~A[XQDu@\\SBc@\\_@H_@Na@Dw@\\k@Bg@X{@RqBz@c@Fe@VUHSDa@TYAUPe@Hi@^S?OFk@`@G?SEMSI@}@b@e@Jq@`@OTCPANHnABNKBM?c@Pa@H}B`AI?YJg@Xq@PKNSRE?e@T[Fq@`@c@HMFYFSLYJk@^g@Xm@JU?_@Zi@Ho@\\{@\\]Vc@JI?AC@WC_@Mq@g@oEKo@A_AOm@AeBEWASK]Ei@O_@Es@Mi@e@{@g@{AQYI@GOMGOPIBWCCBGRCFG?OMq@oAY_@m@mAo@gAII{@gB{@oAs@gBy@mAc@cAQMOQK[a@u@[y@[a@g@y@]{@IKCO?@AADGEDOUs@e@KAiAnBKHM@WI]S_@OwBcA_BS_@@]Ho@M{@?UBQHe@BONCJ?r@FVDFHBF?NABD?HAJ"
+},
+{
+"id": 19847222656,
+"name": "170' Z2 - Rainvaart",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-22T06:17:13Z",
+"start_date_local": "2026-08-22T08:17:13Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 79016.6,
+"moving_time": 10259,
+"elapsed_time": 10812,
+"total_elevation_gain": 127.0,
+"elev_high": 9.2,
+"elev_low": -8.6,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.333958,
+4.91367
+],
+"end_latlng": [
+52.333559,
+4.913995
+],
+"average_speed": 7.702,
+"max_speed": 9.888,
+"kudos_count": 10,
+"achievement_count": 197,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 2,
+"description": "🚴⬆️ 2026 = 15,691 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "}yl~Hio~\\aDYo@lEuS`VLfN[rUw@t@gAvp@]|DoETwLhLyAlj@s@~BsLjQZ~Ed@`\\l@da@KpDt@zLkA|BiPfi@sAvASxAH`Ap@|@d@F@jAfApHc@p@aDPsBvAo@pJExHO`@gAB_@n@@fdBr@rtBP|HbAjKAzB`@z@pLraAdC~IJpA|@d@~BjDxDzC|GbDjAJtJxFrC~EfDhCTbA{BtCwBvF{k@rlBud@n~AuCrGyB`CsAp@kEn@{tAiVcPz@gGdBsFjCoIxGwEpFkH`QeG~PoDlQeN|fAq@xM?nDj@xMle@h|Et@vCjCvBl@bDRlDaAdEMdEpGhp@nBrLpDxKvDhGfCzCvF|DxIjBvEN`sAs]rEq@pFD|EhA`F`DzFzG|AwC`DnEjE}EdyAn`CUE}Xho@ORcAo@{AxApFru@Mn@\\vFd@rAjBjXbBvJlT|x@rChIfD~FtBdCbZrWjFtCfI~AffAgA|DdAlE`E~^pe@tt@|f@|FdDjHlB`Cd@bKL~Bp@z`@z\\d_@hOlCfDh^pt@dGlJfEjLbVtf@xAvBnAz@nDJdg@{HbFKrUjCrlBt\\hVnF|At@|C~CtB|FrE~^t@bD~@vBnAbBjEnDrMjJbBf@tDOjA{@xc@s`@fAwCjKesAk@sLiIat@EyId@iGhXklBXqdBkIotAqQ{n@cDoJaBmIaA}JkBgJkHwTuJ}V{FcTkB{JuCgXeBoGuN}VeFyKQkAmKgWcDuGgDaEoTsN_CuEgGy^wKyb@_ByMaEye@{@sC{LkSqG_EeDkCwf@}e@uAcCkR}j@kMiQoIyGeAuA_EuLmD}HiDuMiEgVaD_V}@iDoJiVwJwKiCsFmFwUFcAi@wFUg@{@oQm@yFmMkq@qB_I}Uer@iLc`@ia@ut@yE}FaLaLkGaFiSgI}O{DkBeBaJ}NyAuDyJaZcMwf@g@ZgDlGoRiZgG{Dy@DyAnAgB}Dj@_FV[p@PcA?sCmA}@F]g@kGwAsCSmCaAqj@sKcFN}GjDkCdDcEbJwk@ljBkC|Dg]l]}@uAuB{BgCgF{GgEyE}AoHwD{BiBeC}DWiBaAy@iBeGiLg`AE}Ci@{@OsA{@yMQeoAu@_iCfAE`@iABmL`@wGHwDjBkAzCAh@o@kAwI@w@n@m@BcCa@s@@w@|Pck@zAwAmAqSeAs_A]iCpKkOrAuD`@yHt@a^fJoJ~IVHeU~Ay~@QwNpAaA`QmSj@gE|B\\jAY"
+},
+{
+"id": 19854060068,
+"name": "75' D1",
+"sport_type": "Run",
+"type": "Run",
+"start_date": "2026-08-22T15:56:03Z",
+"start_date_local": "2026-08-22T17:56:03Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 15364.8,
+"moving_time": 4509,
+"elapsed_time": 4509,
+"total_elevation_gain": 61.0,
+"elev_high": 1.2,
+"elev_low": -9.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.333843,
+4.913743
+],
+"end_latlng": [
+52.332844,
+4.91379
+],
+"average_speed": 3.408,
+"max_speed": 4.56,
+"kudos_count": 1,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 29,234 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "eyl~Hyo~\\q@Pc@?_Bi@g@XqA^{BfAeAt@u@lAa@vAC\\@TTjAHLj@jBBZt@zAd@r@NL\\Fn@CLETW~@YjBUjBAnBRbA^dAbAnAfBh@jAv@vBjAnEt@dETtCFjFG|C]tEB|@HbAn@`Dd@pATPp@Ld@?|@ItB{@z@MjA@rB\\zAv@v@n@`CjCh@`@\\d@XTpB|@pBnArBr@`EnBvAx@bA\\x@Pv@ApBc@v@c@b@g@l@mA~BcHL{@BkA@cCEqD@{APwC`@iD`AiEjA_DvAsEhBmKdB{HRk@`BuCRY\\SrA^h@X\\^n@dAt@xAl@rBdAhEV|ANh@`@n@l@r@j@b@VHt@IvAy@bAa@fAUzAMf@Hr@VpEvBr@RjDZ`D[|Ae@bBgA~@e@h@e@jBaC|@}@`Au@hDkAXCj@LtD~C`@b@t@jAf@hA`@t@|CvDZh@p@~A~EjIrGnMpDxFjA`A\\JXAZWr@iBPIPDbBvGp@tBBRE?q@}AMa@OS[HiAx@}@JgDw@q@k@kBwCwAoB_AgC_AwBwBcEe@q@mAaCqBsDwEcHg@m@uA}By@eA{@_AeAm@g@Q{@Ik@BWJcBtAuB|BaDtCcCxA}Ad@kD`@cAA_Ds@sAw@yCiA_BM}AZoEpBu@LiAUq@o@k@y@[w@W_Ag@}Bk@gDU{@e@cAa@g@e@]k@Ik@Nc@d@g@hAo@dBw@dF}AlIg@hB}@hCuA`GS`BOzDEpB?rDGjBa@zEc@~BMl@]|@oB~Cm@p@cAn@sB`As@Rw@H{@GoBq@qAw@oBw@sCwAkBe@uCeAoEuDcDcDw@e@g@Mu@B}ElAi@ZkAb@y@HOPy@dBcAxAK\\QRD[b@mAvHuR`AkBbBwDfD{Hr@iBPMPLCTM`@yBfFOj@QhAq@vGM`@OLq@FsBz@]DqA@a@QeAeAMUc@iBSsAAq@BeAH{@PeDA{BBe@GoEQ{BW}Au@iDcAwDgB_Eq@cAs@u@mAm@cBYgDCyANiAd@y@Vk@MWm@m@_@_@}@y@wCQu@Em@P_AX}@d@s@`@c@hC_Br@QrAs@`@C`Al@h@Bx@UtA}@l@QrD[pAW`DUnBGt@Yt@m@r@u@JGHFGNe@X"
 }
 ]
