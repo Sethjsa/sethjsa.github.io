@@ -96358,5 +96358,42 @@
 "private": false,
 "peak_names": [],
 "map_summary_polyline": "kzl~Hgo~\\k@@cAe@_@Co@\\_Bd@c@Xa@NmBrAe@n@k@lB?TB^Pz@Zz@j@tBf@jAh@v@d@Np@CRGPQfA_@nBSrAAxBNz@X`A|@z@jA~@bBdApC~@hDx@nEHt@RpDBjEEzB[lDEbA?VRdBJh@XnAf@~APT`@Pz@HzA]lAk@p@OvACtBXf@R|AbA|@x@nAxAnAnA^ZzAn@~ChBpBr@hFnCl@X~A`@~@@v@MzAi@n@m@l@iAr@eBz@uCVk@RiAAgGCw@@uCTqDf@sDj@gCfCiHf@gBjBqK|@qDZ{Aj@iBhBcDXO\\D~Ar@p@t@`A|AVj@d@zAd@xB^tAVvAPr@Tb@l@v@b@`@j@Xn@C|BiAt@Y|AWbACR@fBr@bEnBbD`@hDSfBg@xA_AfB_ATUxBsCt@w@h@c@vDqA`@?h@LlEpDf@r@n@xAh@~@`AlAn@j@t@bA`@x@Nb@r@xAtBbD~BhEdDvGh@lAhAnBh@t@`A|Ax@x@z@b@R@`@QP]Vy@R]JEJFRl@dBpGZ|@F\\CDIIeA_CY@wA|@i@@aDm@SK]]eA}A}AkBi@{@}AiE}@kBsAyB{E}Ig@s@s@oAwEyGk@cAcB_Cs@o@o@]wA]i@@_@J_Ar@oDrDwCnCwBpAcBh@iD^k@A{AOsA[qAy@}B_AcAWo@A_BL{EzBk@Ja@@[Eg@Wq@q@e@s@Yw@y@gDq@{Dc@mAo@gAY]YQg@Gc@Jg@h@{@hB_@jAWnA_@vC_AjFo@rCy@jC}@|Co@lCMx@SpCAt@MdBB~CCnBUzDUhB_@~BYx@m@rAgBtCg@\\gBbA{Al@gBLw@ScAa@mBeAkF{BgCu@gAe@qAa@g@]s@u@cAy@yBgCmAcAu@_@}@Oi@DyBj@kGrBU\\c@`Ak@x@k@fAILEC?KRo@nByEzEeMf@cALBOpA[b@s@f@eAT}@e@q@aAQg@e@qBK{A@gA^iEBiB?{CGm@GgBKyA_@}Ba@sBaAqDu@_Cs@}As@kAm@s@c@_@u@[_AQuCM{@BuBViAl@q@Ra@Ou@kA]qAe@gAGYa@oAM_ABUd@}Ar@gA`@a@`Am@ZKf@_@^M"
+},
+{
+"id": 19874813570,
+"name": "Morning Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-24T08:31:53Z",
+"start_date_local": "2026-08-24T10:31:53Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 4279.7,
+"moving_time": 869,
+"elapsed_time": 869,
+"total_elevation_gain": 15.0,
+"elev_high": 4.2,
+"elev_low": -6.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.335239,
+4.913111
+],
+"end_latlng": [
+52.355596,
+4.956197
+],
+"average_speed": 4.925,
+"max_speed": 11.4,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 15,706 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "w{l~Hix~\\m@sDW_Cu@{EmEsWe@aCCg@@SOc@]a@O_@AACDOKMuAS_AWs@c@wAMqA[kBO{Ae@kBQEGBWb@a@hAi@hBEJIBMIcBwBc@w@@YNc@j@{AVw@b@}BPq@De@Ga@yEmJiEgI[s@kCiFa@_AOs@OIYAWOMO_AeBs@iAHc@O]{CwF}@wBy@mA_BcDaE}Hk@sAm@y@UaAc@o@oBqDq@iBa@{@iAuBOQW_@_ByCk@qBOSQQ]m@sEcJ}@_BuBeFw@qA}@iB@e@cAoGH?}@nAOIi@}@YkAM]eDsG"
 }
 ]
