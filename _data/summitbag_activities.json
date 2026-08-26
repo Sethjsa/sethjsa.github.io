@@ -96395,5 +96395,79 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": "w{l~Hix~\\m@sDW_Cu@{EmEsWe@aCCg@@SOc@]a@O_@AACDOKMuAS_AWs@c@wAMqA[kBO{Ae@kBQEGBWb@a@hAi@hBEJIBMIcBwBc@w@@YNc@j@{AVw@b@}BPq@De@Ga@yEmJiEgI[s@kCiFa@_AOs@OIYAWOMO_AeBs@iAHc@O]{CwF}@wBy@mA_BcDaE}Hk@sAm@y@UaAc@o@oBqDq@iBa@{@iAuBOQW_@_ByCk@qBOSQQ]m@sEcJ}@_BuBeFw@qA}@iB@e@cAoGH?}@nAOIi@}@YkAM]eDsG"
+},
+{
+"id": 19889474035,
+"name": "Morning Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-25T08:43:44Z",
+"start_date_local": "2026-08-25T10:43:44Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 4357.0,
+"moving_time": 835,
+"elapsed_time": 835,
+"total_elevation_gain": 15.0,
+"elev_high": 12.6,
+"elev_low": -1.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.334028,
+4.913465
+],
+"end_latlng": [
+52.355618,
+4.956248
+],
+"average_speed": 5.218,
+"max_speed": 9.517,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 15,721 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "}yl~Huq~\\mB{KM_Be@gCcA{G_E}UIgAUe@]g@EEGCSi@Iy@Ki@y@mCKo@Ca@Yy@k@kEMi@EKIEIBMLMPOd@aArCQDSSMWu@}@u@kA?GbBsFD_@^{ADQ?c@Mm@mBuDyAmCgCiFgAsBg@gAs@qAkBaESy@EEIA]@[S{BcE@IHMAIISuBwDwAyCSi@Yg@[_@aJsQMOOUw@oBwB}Ds@oBsAkC]]eBcDq@aBCSM]]]oDkHcB_Ds@_Bo@uAm@cBaCmEg@wAa@w@w@_Ag@eAKm@Sq@kD_H"
+},
+{
+"id": 19896929307,
+"name": "50' D1",
+"sport_type": "Run",
+"type": "Run",
+"start_date": "2026-08-25T17:09:41Z",
+"start_date_local": "2026-08-25T19:09:41Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 10148.0,
+"moving_time": 3010,
+"elapsed_time": 3010,
+"total_elevation_gain": 19.0,
+"elev_high": 1.4,
+"elev_low": -6.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.333855,
+4.9138
+],
+"end_latlng": [
+52.333865,
+4.913808
+],
+"average_speed": 3.371,
+"max_speed": 4.76,
+"kudos_count": 8,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 29,302 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "iyl~Huo~\\_@P]?]Gg@YOGMAI@}@`@aANQHe@\\{Av@o@`@OLIJ[l@KVU|@Ad@PrAl@dBTf@@L\\bAt@pATP\\Dd@CPGNOJEjBg@D@\\IL@|@C`@?xAJDBV@ZH^LbAl@X\\\\f@RVh@`At@jBlAbE\\xA^tB\\`CNvD@fDMdDSxCAfAJfAn@`DNh@Vh@NRNDJHp@PN@^Q\\G\\Ml@]\\MZK^E|@?n@B\\DPDJ?h@L~A|@NPTPzBfCZXHFv@|@VRZLh@NZLvAbAD?VPv@Xr@TfAd@b@VxAp@^TVHBDd@Xp@T~@JZHt@Af@K`@MVEf@UXYV]h@cAt@sBd@cBj@uAJ}@@s@@iDEyC@gAPeDT}BJ{@h@eCNi@x@uBbBkFRaAbBoJfByHVq@|@yAj@mALOJETA\\HjAh@d@b@j@|@t@rAPd@^rAb@pBb@bBVtAPj@`@n@Z^TTd@\\^L\\A^OdAm@dAc@ZIj@GVIz@IR?T@z@\\NJVH|C`Bh@Nh@Ht@Fn@Jf@@j@AHE@EC?g@BKBg@AuBS]Ie@OiAq@wCsAOEo@Ke@@uAPk@Rw@Rg@To@b@a@P]@QGu@o@w@y@MUSq@g@oCi@mBg@wBSo@sAcCg@q@aA_@YQSGQ?WJIHa@j@Yh@g@x@[n@s@hCs@zCcAnFq@jEqAhE{AvDaAnE]lDK~BCnADtC?fFCb@GZg@jAq@~Bk@zAq@tAQXk@b@cA`@i@LQBaAAOGWAs@QUMa@OsAu@wAo@q@a@g@Us@Qq@W_C{AYOu@UUKYW]a@w@m@_AiASQkAoAiB_As@UgBU_@Au@F_@JOJm@VQBWFmA@SEIBk@_@y@}@k@gDGeA@mAJoAJqBFkCAmCIaCGiAOqAM}@a@gBiAgEy@cC]s@_@k@qAgB}@q@u@WiBUQ@wAE}@@mAROFi@f@u@T[?SEKE_@g@We@Og@U_AO[Kk@]{@S{@?[B[ZkA^y@V[TQ`@SJIBGlAo@RQ\\Kh@YJAJE\\WNG\\D\\N`@VNDXAl@S"
 }
 ]
