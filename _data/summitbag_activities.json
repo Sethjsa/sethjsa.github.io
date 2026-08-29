@@ -96654,5 +96654,42 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": "udz|H}kvYXZf@v@TVN^nAzBfA`Cj@fAtAvBbAlBNJ@?PPPK`BeBx@sARSD?HFPXTLTVj@|@~AzCj@z@bBdD\\h@`@bARFHELHP\\L\\"
+},
+{
+"id": 19944950145,
+"name": "Morning Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-08-29T07:38:51Z",
+"start_date_local": "2026-08-29T09:38:51Z",
+"timezone": "(GMT+01:00) Europe/Amsterdam",
+"distance": 2082.4,
+"moving_time": 1038,
+"elapsed_time": 1038,
+"total_elevation_gain": 29.0,
+"elev_high": 2.8,
+"elev_low": -8.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+52.33435,
+4.913428
+],
+"end_latlng": [
+52.378377,
+4.900021
+],
+"average_speed": 2.006,
+"max_speed": 6.54,
+"kudos_count": 0,
+"achievement_count": 4,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 15,848 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "i|l~H_o~\\eAa@SLSz@}BZ}@^qA|@k@dAMf@IJMCOBGAAO@_APm@Xa@ASe@}CM[OHI@g@OEMw@oCoAmDYqBW_D_@sBOc@]m@q@o@sAyAo@sA[_CU_AY?SH}GvCi@XkAZ[LaAn@[l@m@dBqBfE_@fAe@~@kApC]XgCdAqAd@q@XST]h@gBt@i@Hs@PcCrAgAf@sFpBcBt@cAh@YTsDrDoGfGcAdAYdAc@v@o@z@iClAaA`@}@To@ViAXwAd@{DxAq@TmAZmAb@]RKBOEa@?iBt@[NEFI@IJATJv@Cd@GFcCjAqA\\q@ZoCdAgAd@m@XeBp@kCjAo@Ro@\\eEbBOB}Av@Qd@ZbBThBO^e@b@g@bBa@jBOpCIzFBzAJ~B?nEUtDGZU^_@H]n@gAzAsAbB_@Zm@Xc@Hm@GeBi@k@[wFkAoGOe@[m@O_Ai@SW}BkD_CwC}@qAaAiAmAoBSQi@s@}BmDk@_AYm@E?URKAEESW"
 }
 ]
