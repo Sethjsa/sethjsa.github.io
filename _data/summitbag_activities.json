@@ -97488,5 +97488,79 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": ""
+},
+{
+"id": 20258854950,
+"name": "Afternoon Walk",
+"sport_type": "Walk",
+"type": "Walk",
+"start_date": "2026-09-20T12:20:02Z",
+"start_date_local": "2026-09-20T13:20:02Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 1232.6,
+"moving_time": 958,
+"elapsed_time": 977,
+"total_elevation_gain": 6.0,
+"elev_high": 38.6,
+"elev_low": 26.8,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.551042,
+-0.100132
+],
+"end_latlng": [
+51.541145,
+-0.102899
+],
+"average_speed": 1.287,
+"max_speed": 1.958,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 32,054 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "uisyHlvRlClAZTPD\\TXJf@ZFJr@XLHZHLHLL`@Pf@\\TFPLp@Vl@b@VDLHd@PF^A?NVFDZi@RAR@PBRARLXH`@?^Bp@Pf@Dh@Lf@Dn@KbBa@|@?"
+},
+{
+"id": 20259067328,
+"name": "Evening Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-09-20T17:41:19Z",
+"start_date_local": "2026-09-20T18:41:19Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 4715.9,
+"moving_time": 925,
+"elapsed_time": 1014,
+"total_elevation_gain": 9.0,
+"elev_high": 35.8,
+"elev_low": 20.0,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.562796,
+-0.121416
+],
+"end_latlng": [
+51.549562,
+-0.077334
+],
+"average_speed": 5.098,
+"max_speed": 7.263,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 16,141 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "youyHr{UbA{AlA}Af@i@j@mAEW[}@u@sAqCaG}@kCQq@OeAEGKk@MWaA}Dq@cC?IaAaDg@qBs@sCUkAe@wA_@y@_@k@_@mAYg@Og@@EOk@c@mAq@{BSg@?ODMpAeCXe@~BuEb@m@lAqBz@iBl@cAjAiBr@sAl@_A\\c@v@qAn@s@J]Mk@a@{Dg@mF?e@v@eGZgAj@uANs@FqB`@_DBa@Bo@CI@EPQNIFKEc@RuAFs@BiBAwA]k@AOJy@a@{CGkAEaBScCUsAEa@h@g@Em@DGzBiAdCsAzAq@hCuAz@s@Xc@T_APgA|@}AL_@@e@e@qCBMFGRAhBHhDZNEBIFk@f@yKLWRGZ@`@A|Cd@n@?HCf@g@`C[t@CTHhAB\\^`@Xn@i@z@_A"
 }
 ]
