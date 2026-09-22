@@ -97562,5 +97562,42 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": "youyHr{UbA{AlA}Af@i@j@mAEW[}@u@sAqCaG}@kCQq@OeAEGKk@MWaA}Dq@cC?IaAaDg@qBs@sCUkAe@wA_@y@_@k@_@mAYg@Og@@EOk@c@mAq@{BSg@?ODMpAeCXe@~BuEb@m@lAqBz@iBl@cAjAiBr@sAl@_A\\c@v@qAn@s@J]Mk@a@{Dg@mF?e@v@eGZgAj@uANs@FqB`@_DBa@Bo@CI@EPQNIFKEc@RuAFs@BiBAwA]k@AOJy@a@{CGkAEaBScCUsAEa@h@g@Em@DGzBiAdCsAzAq@hCuAz@s@Xc@T_APgA|@}AL_@@e@e@qCBMFGRAhBHhDZNEBIFk@f@yKLWRGZ@`@A|Cd@n@?HCf@g@`C[t@CTHhAB\\^`@Xn@i@z@_A"
+},
+{
+"id": 20272024000,
+"name": "20' D1, 15' D3",
+"sport_type": "Run",
+"type": "Run",
+"start_date": "2026-09-21T18:33:36Z",
+"start_date_local": "2026-09-21T19:33:36Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 8034.5,
+"moving_time": 2121,
+"elapsed_time": 2121,
+"total_elevation_gain": 13.0,
+"elev_high": 8.4,
+"elev_low": 2.6,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.508847,
+0.014547
+],
+"end_latlng": [
+51.508735,
+0.015651
+],
+"average_speed": 3.788,
+"max_speed": 5.42,
+"kudos_count": 10,
+"achievement_count": 27,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 32,067 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "efkyHyeBLc@TODg@JSPgABm@?sDH{@HaB@iBCcB@UNOdAWDICk@A{BCa@BcBCaADyAAg@B]@cMDYBIPOVGJIFg@GkLBoCD{@?yAAg@By@DkEAkIBs@CeAIe@YaCAg@MuABsCAmBB_CAcADq@ASGWCU@gAF}ALWBQBsAAu@Bs@Ae@Gc@[mBC[SoAC_@]sBKeA?SP}KBqCF{@@uAEiDDg@C}@@uAHuB?[HaHA{BHyCNaICg@?mADyBD_GBu@B_GF}@Ao@FqDA[FoC?kEBk@F[Bq@C]Bi@Cs@B}@As@@yAFg@AeAD{B?s@Ei@Dm@Cq@D}CCi@Ju@EsAHqAAiBDg@HYRg@Le@f@}CHkC?y@Dg@@wBC{@DSJKBBITCd@MhJEl@c@|B]zAQf@ATAlEI|BAdA@jAAfBBdA@xAI|BAzBEz@?pACb@Bx@AjCCrBCb@A`DOrG?hBMdMIbBAvDBv@?n@WfN?|BG|B?~AErBIrBBfBEfCEpAEzE@fBIpHB`@hAfIX~DI~DCTQ^E|@?fA@TJlA@d@EdEBpBGfAArARlALhBH^RhDIbI@hGGzE?~ABv@GvE@fBAfAAVMd@g@VEFGRA`@Dv@ClECvAEh@Fp@@xDAdAKtB@~CATEDKDWAODINEXCh@@hCGz@Kj@@|@ClA?fDS|@"
 }
 ]
