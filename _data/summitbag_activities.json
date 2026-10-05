@@ -98040,5 +98040,79 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": "ufkyHeeBBGXOLW`@k@BOB}B?mAJyCCu@NaBAyAAg@Ba@FYHK~@e@Ey@?iAC{A@{@Am@FgC@eCFcA?m@AqBB{@Cw@@_@D[HUh@a@FQC_AAkD?_ABQEu@C}@D{AEiCBs@CgBLqMAw@DkACu@KqAE]OsCOs@A]B[Au@DgGBoB?c@Kq@?q@@]Jo@@g@N[@QDkBAaACs@KkAIo@MaD[iBKu@Ki@CcABsBAuAHmCBoFBa@Cm@@{@CmA?mBDaDPgEHsDAaEBa@CwAJ_CBeBE_C@iAFkAJiFFqHBgB@iDH_ECaFLqEImCHk@Ao@@]DW?_@D_A@eBD[IaC?sAFs@EiALoA?sBBg@Ao@DiA`A_FNyAAoABq@AYFw@?iADc@?g@IKm@P_@CCC?Er@e@vA_@rAMf@AtBNvBd@vB`AdBh@`DpANATMz@aA`@[PE^@d@PLRFLVlCJn@`@bBL^F\\f@hBb@tCR|@?VZhEFb@JvBBzAClA@pCCb@J`@@RApAQ|B@|@I|A@d@Et@?p@Cx@DXNLL\\B\\El@It@KvAOhAMl@EfAEXQjCGb@SzCYjDKxAWpBKrAKlB[xDEhAWrBCxBIr@IrBGXY`EAv@BF?RIxAEPE|@UhBU|GKvAOdDEb@WdAKbBQxAEj@A~AB^G|@?b@Kh@CZFvACb@Dn@C`@@d@GpAUvBAVFxDAfD@dA?fBDfB?l@F`B@dBKh@Ad@P|EBPL\\@R@pCPtBDv@Fj@FzADd@Kb@Cr@JnCGrA?j@Kh@EhABjACZ@t@Gj@@t@IlBFZAXKp@?f@E`Aa@fCKd@GjAGXk@zBM~@Sv@Ib@O\\EZQd@y@`Eu@tCILSCE@IJ_@vAQb@a@rAe@nAw@jBgAtCo@xAUXg@b@g@^i@PWh@cAt@}DhD[RW@cApAmHvFkBrBw@\\mCpBQMc@iAEO@SBq@PuAAeANyBHKZOLQDOGiBO}@KqA?_@|@uEVeAHu@CkAWoDUi@ASCwBKkAAq@MqBCiAMoBFY^[HOFaABaDGkC@SA}DIcB?SJSr@UPMd@S\\WPCTOTFX@Bt@AhAB~@Fj@?d@DdB?zAHzABjCJ|B@jBD~BBZ?rABd@Fb@B|@BjBNlCj@|GJ~@J\\A\\LhC?dCEZIJG@i@E"
+},
+{
+"id": 20446393707,
+"name": "Lunch Walk",
+"sport_type": "Walk",
+"type": "Walk",
+"start_date": "2026-10-04T11:25:27Z",
+"start_date_local": "2026-10-04T12:25:27Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 1483.1,
+"moving_time": 905,
+"elapsed_time": 1089,
+"total_elevation_gain": 31.0,
+"elev_high": 20.8,
+"elev_low": 4.6,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.509699,
+0.01439
+],
+"end_latlng": [
+51.51047,
+0.00034
+],
+"average_speed": 1.639,
+"max_speed": 9.4,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 32,218 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "oikyHatA?XFJF^Df@@z@Gj@Px@?\\CA@l@y@hAa@rAeBxIc@~DKzAEpAK`B?d@AICdF@`ANvE?bA@|@C`ABJF?HuAFuFO]KCCC@DBCA@CG@DFB?@E?CCH?CDLCEC?HBBDJDh@?jAEfBIhB"
+},
+{
+"id": 20449466363,
+"name": "Capital Ring segment",
+"sport_type": "Walk",
+"type": "Walk",
+"start_date": "2026-10-04T12:32:55Z",
+"start_date_local": "2026-10-04T13:32:55Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 7241.6,
+"moving_time": 6094,
+"elapsed_time": 9145,
+"total_elevation_gain": 109.0,
+"elev_high": 90.4,
+"elev_low": 40.6,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.431599,
+0.021645
+],
+"end_latlng": [
+51.459381,
+0.079806
+],
+"average_speed": 1.188,
+"max_speed": 2.017,
+"kudos_count": 7,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 32,327 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "qf|xHcqC@k@E]@[AU@aAEkB@m@@?@FCy@@w@?]CQEGHq@Cy@CcBBq@CCw@B[AUMYCm@SMCu@[kAu@MCg@UKOOGIOk@uA]gAOUQMQGSCUFAAa@?y@FgALSk@c@gBkAoDUi@Oe@EGCKGOC?@MSa@g@kBw@u@_@UCM?ML{@CMM?QGo@GQEWAiDc@g@O]AaASu@Im@MPqAPuEBM@oAAwBDm@BwABYLmCDW@[@{@Dg@DkBJaAAQI[UKYEo@@g@CKADAUIk@E[GWAc@@UIOAc@e@W_@COBM@@[QKa@[_@qAyBE?B@GPKDAC@?ECCKB_@E]QYY]g@{@Qc@E@oA_Ck@qAEMa@y@m@cB?MHIB?@B?E@AAHE@@@A@B@C?@@@EB@C?@GAHCB?CAHDEDA?A?BEBDEEE@H@??BBAC?D?OCCKKB?@G[GOGCEBFA?CIWkAqBKWQQUMg@KIA@DQG}AOKGaAO}@IO@i@KCEW@w@ISG_Ao@e@Uu@e@OEDDGEUEc@a@SMMWOqAEw@@a@F]l@iAFGBBAKDMRMJO@[FQDA@EAMBUCGD@ABBBKQEC@AQ?EKcAuDDWJKHi@JQBQIaC?cBIu@@WHULGDGCEO?MEM[EkAMoASwCKy@Cg@B?Ic@a@}DY_ECw@OuAIwAIw@OaCg@iFAk@Kg@SqBM}AIk@DSDC^aAPWbAi@LC`@SVEf@Yl@QLK?_@Qi@Q[UWc@u@AEJ[Wg@?w@HuA?cAA?@D@ICm@Hk@@e@GSMQG]C[AyAFUF]Ia@KMi@c@@AEEICOBHEH?G@@@MCcC`Ao@J@ACDc@HoA^YDQHqBPMDMJCFODICG@aA\\e@Hw@Vg@L]FaA\\_ATWGKUEQAe@Q_BUs@e@oBi@wCc@aBAQUs@Wk@Qe@[k@w@qBi@gAw@oBK]MSSm@Q[cAeCADCMWe@k@_BICODMHk@JGAB@A@?G@HACD?AAC@?CA@@BBCGBBB@E?@C?@@AK?DBBCIABBFAM@FC?DCGADDAIBFABCCBL?GB@EC@@?CBAEFB?AEB?CD?EBHAM?DA?BAAD?CCAB@A?@BUJi@Ja@CMDOPu@Bk@LO@SHOAGEa@_D@o@Gu@?WOqBO{C[yEE}A"
 }
 ]
