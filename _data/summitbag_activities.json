@@ -98388,5 +98388,42 @@
 "Capelaw Hill"
 ],
 "map_summary_polyline": "eqctIbvpR\\rFThLU`L^v`@fAb@n@vAPrA?zCpBzD~Db@tB|BbAhBJpCdDzD~EhE|AlE^YLm@PsHCoGZyCz@uClDgE`AkC`@uBLcC`@uAHsBNEXl@fBxFzBpBd@`ASdGNrB@rKKtGzBzScGtMg@bDEn@ZfANlE?jE}@`Ih@xCzAtCz@hCFnBfBpMs@xFP`@~Cx@nGhEnMF|HeIbCy@xDgCbEOtCj@lBnClGpAzGdJd@aDhAyD^gFPaAbEuDhCyFZuAbBgCrPgCzCPrAy@p@uBbDoBbE?bAaArBd@b@lAIfHVpPnANb@hAbBRtJ`GnB{F\\iBdAsJNcJZi@t@QJ`B`BtH~@Kh@hAY~DRrDEdFvA|KQpEkAfDQbD}@zFG|Ic@bIZvDIlBVpBAnBl@tGN~HXfC`CtJR~AM^X^v@jDH`Bp@bBfAjBtAbApGhAjBxA`B~Bv@hElDdGdAxDl@zGbB~HbB`A`CVr@zAbCdAb@IjAzA@fAp@zAXtB\\f@NfNtBnRfAhNpAjHVhDtBhIz@vAdCrIjA|EXpCxDpGz@fAzAnAhBtF`EvGn@\\bC|DvBtGh@lDf@xA|AfOl@tAT|Aj@~GBzHi@lCB`GR`Ix@lBJ|@h@nKtAhFnEfGv@fEr@`L^`BtAtC\\jDx@fCFfCZ~A`E`LUdPs@dNeAtOcBxL{AjAkO@kChAiNLsGbAeGyB_DVyAbA{Cj@sQzIgDfGe@dC_C|BwA`AsCj@kHhEcBXkBcAsJlCP_OpI{ERc@z@wHp@eA@sA]uAh@}@PcBn@}AhAyF~C{GPcAWcHoAwB]wCAwD`@eQfAqNq@sFiAmE?cEn@qDmCNgBmAIoAk@{@cI_Go`@qNcG{DcDmE_CcEyDkImBmB_BqBaBkDoAiGcB{CaCwKmB{M[cGmA{Fm@cJo@mDLoFg@wEGoIYeF`BeG`@q@GcAm@iB_@cBfAoF}AwJeCwGc@sJZ{Bx@iCVyL{AhCuAjA_C|@wDZ{GzCkC`@sDk@oJuKmC{DiDyCqBiCcBcCoBsEM}@yAsB]{Am@_@i@{Ey@yDGuATmH~@qEAiBoDuLmH_Lm@}Ag@uCg@kAGuDuD_Xu@}T^{Bn@eAJiBz@}Ce@sA[wJmAcDcAuAo@uEiCqETeD\\uAgBkEsDaPaBgBkA_DuAmIyC{IO{Ae@qA}@_MG{Je@aFu@kA}@cDyIiIi@oAQuB_DiFaESoBmCWaAEgEk@uBwAsDa@o\\XkLU{L[}DJ}C"
+},
+{
+"id": 20578983579,
+"name": "Morning Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-10-14T08:58:56Z",
+"start_date_local": "2026-10-14T09:58:56Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 12714.7,
+"moving_time": 1921,
+"elapsed_time": 1980,
+"total_elevation_gain": 70.0,
+"elev_high": 27.2,
+"elev_low": -4.6,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.511212,
+0.014077
+],
+"end_latlng": [
+51.514662,
+-0.138117
+],
+"average_speed": 6.619,
+"max_speed": 10.717,
+"kudos_count": 0,
+"achievement_count": 49,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🚴⬆️ 2026 = 16,555 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "oykyHsgAHP@ZgAdAUPELsApAc@X[NoAt@k@d@y@x@k@P_A|@iAhAWT}@f@MVIp@QXCN@LHV?l@ALKV@Vx@`Ht@xD^lCn@`EV`ARf@Vd@Zb@z@x@j@VTXn@nBT`AJv@P\\JFL@p@MVATIPHHL?EB^Ld@BxANTTFl@SHGJA\\\\\\lAFdANbBHdBTtA\\pC@PJ^HHJ@TCb@Sh@O\\EFED@VfCJRFBFRHfABFr@MDCF?DNCDe@HULCHC~AF~BFf@Jd@\\^BVI|@@`@VvDEPAJHp@ClCDfFWtOAvJGrDDxCCrCQhDi@tFQ|CGvCd@tEj@`HC`@S~@BFx@n@JVFj@O^SfAM^i@zBE\\DXAHi@zA?d@PrA?nBE`CJhBVlCXdBh@rCVjB@XE~AM~Aq@fF_ApEUpBKxAm@xEQ|BKL[FiAK]?KHEPCTE`IFnBBTRZrAH@DCBWAaAMMYEs@?uAEQIEI?QDEDCHCXKPm@v@Er@Id@Bj@`@~BG`AEXGDG?EZD\\CJKNg@PGHCVFrCJnCItFJrGf@jKLvEP~Ct@lJBvBIvAUz@W~DCrCAhOHlJAdB@pAFv@GxFIxBApABjGDlCh@zM?xA@l@^hE`AfJNtCTjCJp@@PGlA@v@Dn@R|@AlAJv@l@hCPrALnAHnALrDIhAIZIl@IrE?l@Fh@n@lB^tAPlADx@@z@E~@YnDUhE[xE[fDi@pIU|BSjAg@|BYrBQlBU~A_ApJgApQCbCE|AWrFCJVxRf@NVhGBdCEvEEjMO`EFLP@HDBJCzUJ|CN~CXlE\\bDb@lD\\~Bp@rDXvA^jAHf@L`@CJO?YUEBMEmAf@q@`@[b@i@b@a@b@KNC@KK]aAII_Az@OXy@`DkDdEiAdB[n@iA|C?n@Gd@sAtBq@rAWXc@n@Q\\e@pAc@|@y@bAi@h@Mb@]t@{@fAaAf@OPAVBr@T`DCZXzBN~BBlBDxBZdJ^lH"
 }
 ]
