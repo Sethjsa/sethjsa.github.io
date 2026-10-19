@@ -98651,5 +98651,75 @@
 "Whitechapel"
 ],
 "map_summary_polyline": "ausyHttTdBmCNIHSlAoBTe@hBkC~FmHlCyD|AcCv@sAz@iBx@uBbAwCHWRwBBw@T_@d@AdAMbA]tAcB`AsAHGzBgAdAcAxAq@XW^o@r@uA`CoGp@qAz@mBpAiDHCDW\\y@`@k@j@aAd@eApCmFx@iBr@qA`@k@fFwFjCqC`CuCRUpBcBZQ~@a@`@[~@]d@[hCwBhBoAnAu@nAm@tD}Bh@{A\\s@Nc@r@sA~AwEp@}ADGPCt@Lz@XT@RD|@HxFFzAA\\Dr@b@^IVCHCNSTq@r@cB`CeGdAgCzAuCh@}@Vi@~@_B`@_AlAaCL_@DDBo@`@mArCiERUbCeDlA}AtAuAb@[TC~@JdABpAAdCSLErCsBrC_CrDkCp@Sx@QTQH_@Mo@k@aBe@cBb@o@z@[PONQJ_FDoFJoCP_LDeKFoKLqIAy@F}BNoCJyAJ}CVaEF{ALmF?}@BUL}ELiB\\wCNsBh@_GLeB^}D`@mHFoDIoD?kDRwDPsBl@gFHgHVwKJeLV}KBkDRaD@qAOqBEsA@[RcB\\}AJSH[?SFQFa@JmAVoBt@mH~B_[LsB?q@i@yZe@iTGoEGkACkAI{GK}BCUg@mBQiCDsANYB[?O]sDk@cEi@wES}BkBgPBOXUDOTEDUI{@J_@CIMWKy@UcAg@}AY_@m@Yk@e@]a@k@aAo@qBe@eDW_CaAoFs@aGG_AH]BWEW?YXe@BUNe@b@_@BMCBCS@S~AuA\\SvAgA|Am@r@c@NOh@eA|@[p@w@T]|@}@P_@K_@"
+},
+{
+"id": 20636897979,
+"name": "Surrey Hills",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-10-18T10:52:21Z",
+"start_date_local": "2026-10-18T11:52:21Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 100182.0,
+"moving_time": 14359,
+"elapsed_time": 15428,
+"total_elevation_gain": 1373.0,
+"elev_high": 255.0,
+"elev_low": 7.0,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+51.37987,
+-0.353584
+],
+"end_latlng": [
+51.379862,
+-0.353112
+],
+"average_speed": 6.977,
+"max_speed": 14.7,
+"kudos_count": 16,
+"achievement_count": 86,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "Showing the bike what the front derailleur is for. Brisk autumn day, glad to be going uphill again\n\n⛰️ Box Hill (172 m) • 🚴⬆️ 2026 = 18,120 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [
+"Box Hill"
+],
+"map_summary_polyline": "clrxHfcdAeHp@jHw@fJha@zCnw@zArDrTyBvX}MlAuK`QbWx^hXz\\ts@pQjOdc@fTzPdOb}@roBpErTMqBdGo@pAtKfN{EpDjKnA{DPdBbK|CtKkHtF`G~KiGxHn[dD|A`L`@zLnY~LtFxPlRvElKpBfb@dIxQjDw@bC|CzJnWdAng@rC~J~Dv`@|HpXvPzCxIaB`Nh@dBxDjBbSpuAy}@tPcOfRrCxH|MrS|Jtc@rGvn@wr@nVcFfPrMxEePfHe@tGvD`JtMtQnGhH~H`Gtb@vGlLhCd[hHdKjFiC?hPvBjP~AjCdHnA`PVnFeIrGgChB|ArGmE~AsEQyR|A_KlIhAdD`Dfa@sEhEkk@bGuOlFyF`GgQlFyCp@iOfD}I|B}QxS}ChA_KvKqAaLgX}Ayc@mHuJu@cErHwf@dEcGhMeCuAd@gAqExAaToIoY_Bsa@hZwh@gLhAnBq@wFyEaH}VB{GjDuQ_AsJiHiBpMeZ`GuDtQgApNyFpJTvS~MhL`PxDxKbNpHn`@uYtOoBxEuVcCmf@iDoOgEmGWq[aF}No@cRaOXgS{MkF{GgJo`@aUiO{Ny@}VgKaZ`EcXzPmGq@aa@ob@kZaAwMaK_LtBiUqVcU_F{[`K{BwFeTkEqL~@iSu_AkQaE__@aAwMuD_Tq@_@wGgRzCg@mEjCaLzI}SnHmHuG~@_LxKlLkTt]kXNfLnB~DfGFjBqDPoGiCeTpAql@wRu|AoFgUw[}y@oa@s^wFkSh@yJsHmVxIlWiAjGxChN}AzXeSzQgf@lAcFtGmJlRlC|K[jN|JnJrLhUkA~V`AdL|JdKvBlGv@xNnIbh@pNvIlCnF^n\\dBjM`HrS[jN~VxDQ}D~CwLrIgSbHoH_HvAqKpJ~PgXtXiSVrLvBtDvGKhB_LGnFmBbE_GXaCuDWyLg[fUmNfVdNuMpDaA^zAyFtEsJfTaD`LPtF|PgDrDnD~_@~GfWObYbHvRt`AP`LcDxHgF|b@KfdAmHtg@yDfz@t@ru@lKdk@rH|q@qAdn@sPcEaa@o@ag@{OmHfB{]oPyQbCyXqEiy@~\\yT`PsTrXs\\hi@o]n]cc@wQeJaKs[B}f@aTwIrB}g@yKuLfBkLpHaIsFoHdG}DPkIuCF}A`CoFrJwF{AoXhHkPaDcAgOtE_IwGiIqTmL_k@wCaFUuO}BoOqEv@mO{CeDqg@nCai@eL_b@kF_La\\yAmC`DkFqCqv@yDwXbKgTcBwQvIcEwESpJmYfNcTtC{B}DcD_x@wVojAlL~f@"
+},
+{
+"id": 20635681868,
+"name": "Afternoon Ride",
+"sport_type": "Ride",
+"type": "Ride",
+"start_date": "2026-10-18T13:49:26Z",
+"start_date_local": "2026-10-18T14:49:26Z",
+"timezone": "(GMT+00:00) Europe/London",
+"distance": 31.9,
+"moving_time": 44,
+"elapsed_time": 47,
+"total_elevation_gain": 0.0,
+"elev_high": 173.5,
+"elev_low": 172.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [],
+"end_latlng": [],
+"average_speed": 0.725,
+"max_speed": 1.909,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": ""
 }
 ]
