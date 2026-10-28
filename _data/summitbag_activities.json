@@ -99042,5 +99042,79 @@
 "private": true,
 "peak_names": [],
 "map_summary_polyline": ""
+},
+{
+"id": 20753231078,
+"name": "Danube Sunset",
+"sport_type": "Run",
+"type": "Run",
+"start_date": "2026-10-27T15:03:21Z",
+"start_date_local": "2026-10-27T16:03:21Z",
+"timezone": "(GMT+01:00) Europe/Budapest",
+"distance": 18389.5,
+"moving_time": 5423,
+"elapsed_time": 5825,
+"total_elevation_gain": 119.0,
+"elev_high": 118.6,
+"elev_low": 96.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+47.48927,
+19.061584
+],
+"end_latlng": [
+47.487292,
+19.060205
+],
+"average_speed": 3.391,
+"max_speed": 8.02,
+"kudos_count": 8,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "Cutting shapes through the tourists\n\n🦶⬆️ 2026 = 34,618 m | 🌐 summitbag.com",
+"private": false,
+"peak_names": [],
+"map_summary_polyline": "giz`HwrjsBMuAE_CG[Y_Ak@o@SaAWuFUiCB_CIuCGy@OO]KyAO}A?_AM{DMqBPaFQcEDe@Dg@Py@~@sDpATr@ZhB\\j@A^GNCl@x@rB`@bBx@xETv@nBrLlAbGRxBfA~GAVD\\Ix@Bb@Vt@h@@IC?TIHHh@dA`D^|@p@hDP|ABjANr@I|ADR?Nl@rAVbAzAbELdA~@bCz@dDD|@KFI[NKMMKAQJo@x@e@ZMPMf@@xAMXWXsCtBwA|@}@b@_AXc@b@gAj@g@JiB|Ao@LqA~@yCdAWPkAXe@Ke@TSYU`@KDa@?_C|@MLU@]d@Dh@?d@IRKFuCh@w@Zk@Zm@G}AR]X_ANSRm@NwAFyBf@uBJw@PeABu@LWE{@F_AMiABmJy@eASgBk@_McB_AYc@B_BSe@JeBe@?YCC{Au@ES?g@NWRFHIDgARgAAIY?STXw@g@]OX_DvLe@tBi@jBWhAWv@Q|@IJaCe@u@a@e@CsA_@AO[aAw@]eL_HiAcAoBqAaNmIsFuC{@o@cCeAwAy@aGkCkJuDoFgBcHmB{MuCuEo@oOcBQDKR[pBS~@FLlCpBjEzDTJ|CpDtNlNvDhDpGzEnJhGvNfH`K~DnCr@xC^nELbCQ^BrHk@`Ek@tCu@hFeAZYTi@Ai@Yk@}@e@qBm@KJ?NDH?VJFbAL~DnAb@?b@f@POFS~@gEbBgGBe@Lo@ZeAJSd@_BXkAJQX?JH?DWz@Bv@CXGFg@HCJFLE^vAd@jGv@bB`@d@AFb@NHnGz@|D~@v@BhEn@^A^PhACtCXjBEh@IfBDpA]~A[r@C|AYhGwAn@Gb@QjBOnAa@t@c@Vy@?]Ra@VCLQb@YnBi@^?d@y@JAt@^r@M`@UbE{A|@i@p@MfBw@|AiAhGgDhCkB`@i@Vg@BYEg@Le@\\i@x@o@pAuAFuAGk@k@qBa@@KKwAsEQmAo@eCWi@Iq@Ue@Ga@Ws@i@mDU{@e@uCa@cBSiCP_@S{AG?Hc@Yo@{@aEYcCk@aDQ_BcBcKCU?w@[cCy@aA{@oDWcBIuAQeAA}@OYYaBF_@`Aq@z@U`D]tHYd@M`BCTGrAH@x@HWRMxJn@j@CFN@PEP[RGr@Bd@Jb@PxA@bBCrBJhAD`AR~AB~AFXh@JRj@l@rENdB"
+},
+{
+"id": 20754356341,
+"name": "Evening Walk",
+"sport_type": "Walk",
+"type": "Walk",
+"start_date": "2026-10-27T17:43:08Z",
+"start_date_local": "2026-10-27T18:43:08Z",
+"timezone": "(GMT+01:00) Europe/Budapest",
+"distance": 1352.5,
+"moving_time": 916,
+"elapsed_time": 931,
+"total_elevation_gain": 12.0,
+"elev_high": 117.0,
+"elev_low": 104.2,
+"location_city": null,
+"location_state": null,
+"location_country": null,
+"start_latlng": [
+47.50091,
+19.082244
+],
+"end_latlng": [
+47.50875,
+19.094825
+],
+"average_speed": 1.477,
+"max_speed": 1.862,
+"kudos_count": 0,
+"achievement_count": 0,
+"comment_count": 0,
+"photo_count": 0,
+"athlete_count": 1,
+"description": "🦶⬆️ 2026 = 34,630 m | 🌐 summitbag.com",
+"private": true,
+"peak_names": [],
+"map_summary_polyline": "ys|`H_gnsByC_Ia@wAg@qAKi@Yu@i@iBe@eAu@_CEGOg@Kg@GUYW[CUs@e@m@u@mAKMs@eAMYg@o@_A_BKOICWYyAgCq@u@}AiC{@cA"
 }
 ]
